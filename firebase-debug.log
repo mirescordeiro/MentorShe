@@ -1,0 +1,21 @@
+[debug] [2020-06-01T17:41:36.344Z] ----------------------------------------------------------------------
+[debug] [2020-06-01T17:41:36.346Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\natsu\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-06-01T17:41:36.346Z] CLI Version:   8.4.1
+[debug] [2020-06-01T17:41:36.346Z] Platform:      win32
+[debug] [2020-06-01T17:41:36.346Z] Node Version:  v12.16.2
+[debug] [2020-06-01T17:41:36.347Z] Time:          Mon Jun 01 2020 14:41:36 GMT-0300 (GMT-03:00)
+[debug] [2020-06-01T17:41:36.348Z] ----------------------------------------------------------------------
+[debug] [2020-06-01T17:41:36.348Z] 
+[debug] [2020-06-01T17:41:36.355Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-06-01T17:41:36.355Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\natsu\Documents\Laboratoria\Projetos\SAP004-social-network
+

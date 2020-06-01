@@ -4,10 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="/public/style.css">
+  <title>MentorShe</title>
 </head>
 <body>
+
+  <section id="login" class="form">
+    <figure>
+      <img src="/public/img/login_mobile.svg" alt="Ilustração de dois navegadores abertos compartilhando">
+    </figure>
+    <h1>mentor<strong>she</strong></h1>
+    <p>&#60;seja bem-vinda!&#62;</p>
+    <input id="user-email" type="text" placeholder="Email">
+    <input id="user-pass" type="text" placeholder="Senha">
+    <button id="login" type="submit">Entrar</button>
+    <p>Não possui uma conta?<a href="#new-account"> Crie agora</a></p>
+  </section>
+
+  <section id="new-account">
+    <label for="email">Email</label>
+    <input id="account-user" type="text" placeholder="email@host.com.br">
+
+    <label for="password">Senha</label>
+    <input id="account-pass" type="text" placeholder="mínimo 6 caracteres">
+    
+    <label for="pass">Confirmação de senha</label>
+    <input id="confirm-pass" type="text" placeholder="mínimo 6 caracteres">
+    
+    <label for="name">Nome</label>
+    <input id="user-name" type="text" placeholder="Maria">
+
+    <label for="last-name">Sobrenome</label>
+    <input id="last-name" type="text" placeholder="Carneiro">
+    
+    <button id="create-count" type="submit">Criar Conta</button>
+    <p>Já tem uma conta? <a href="#login">Acesse agora</a></p>
+  </section>
+
   <div id="root"></div>
+  <script src="/public/firebase.js"></script>
   <script type="module" src="index.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
 </body>
 </html>
