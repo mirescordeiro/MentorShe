@@ -65,15 +65,16 @@ main{
 /*Larissa*/
 /*form*/
 
-.inputs{
-  display: inline-grid;
+.form{
   border-style: dotted;
-  border-color: blue;
+  border-color: deeppink;
+  text-align: center;
+  display: inline-grid;
+  justify-items: center
 }
 
 .form input, .login input{
-  border-style: dotted;
-  border-color: pink;
+
 }
 
 .form label{
@@ -88,7 +89,7 @@ main{
 }
 
 .form p, .login p{
-
+  
 }
 
 .form a, .login a{
