@@ -6,9 +6,7 @@
 }
 
 body {
-  background-color: whitesmoke;
   background-size: 100vw 100vh;
-  font-family: 'Source Sans Pro', sans-serif;
   height: 100vh;
   font-size: 0.75em;
 }
@@ -30,7 +28,7 @@ body {
 }
 
 /* containers */
-main {
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +43,11 @@ main {
   flex-direction: column;
 }
 
+.flex-left {
+  display: flex;
+  flex-direction: column;
+}
+
 .form {
   width: 242px;
 }
@@ -54,15 +57,16 @@ main {
   height: 148px;
 }
 
-.login-mobile{
+.mobile{
   display: block;
 }
 
-.login-desktop{
+.desktop{
   display: none;
 }
 
 .login h1{
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 3em;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -74,27 +78,69 @@ main {
   color: #3F1583;
 }
 
+.welcome {
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  font-size: 1em;
+}
+
 /*Larissa*/
 /*form*/
 .form input, .login input{
-
+  border-radius: 20px;
+  border: 2px solid black;
+  margin-bottom: 5px;
+  height: 35px;
+  width: 230px;
 }
 
 .form label{
+  text-align: initial;
+  margin-bottom: 3px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
+::placeholder {
+  padding-left: 15px;
+}
+
+:focus{
+  border-color:#3F1583;
+}
+
+:active{
+  border-color:#3F1583;
 }
 
 
 /*Larissa*/
 /*botões*/
 .form button, .login button{
-
+  width: 145px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #3F1583;
+  border-color: #3F1583;
+  border-style: none;
+  color: white;
+  align-self: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  font-size: 1em;
 }
 
 .form p, .login p{
-  
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 0.875em;
 }
 
 .form a, .login a{
+  text-decoration: none;
+}
 
+a:hover {
+  color: hotpink;
 }
