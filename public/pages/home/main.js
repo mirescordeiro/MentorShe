@@ -11,9 +11,6 @@ const firstName = documet.querySelector("#user-name")
 const lastName = documet.querySelector("#last-name")
 const createAccount = documet.querySelector("#create-count")
 
-
-
-
 firebase
   .auth()
   .createUserWithEmailAndPassword(email, password)
