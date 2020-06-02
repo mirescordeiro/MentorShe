@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: whitesmoke;
+  background-size: 100vw 100vh;
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 100vh;
+  font-size: 0.75em;
+}
+
 @media (min-width: 320px) {
   body {
     font-size: 1em;
@@ -20,21 +28,21 @@
     font-size: 2em;
   }
 }
-
-
 /* Kelly */
 /*containers*/
-body{
-  fontes
-}
-
 main{
   display: flex;
 }
 
 .form {
   display: flex;
-  
+  border-radius: 18px;
+  width: 238px;
+  height: 31px;
+  border: 1px solid gray;
+  padding-left: 12px;
+  padding-top: 4px;
+  margin-top: 10px;  
 }
 
 /* Tamires */
