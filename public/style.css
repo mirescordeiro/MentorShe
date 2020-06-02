@@ -64,15 +64,6 @@ main{
 
 /*Larissa*/
 /*form*/
-
-.form{
-  border-style: dotted;
-  border-color: deeppink;
-  text-align: center;
-  display: inline-grid;
-  justify-items: center
-}
-
 .form input, .login input{
 
 }
