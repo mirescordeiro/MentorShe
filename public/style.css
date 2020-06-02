@@ -28,38 +28,50 @@ body {
     font-size: 2em;
   }
 }
-/* Kelly */
-/*containers*/
-main{
+
+/* containers */
+main {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .form {
-  display: flex;
-  border-radius: 18px;
-  width: 238px;
-  height: 31px;
-  border: 1px solid gray;
-  padding-left: 12px;
-  padding-top: 4px;
-  margin-top: 10px;  
+  width: 242px;
 }
 
-/* Tamires */
-/*img*/
 .form img{
-  width: 242.5px;
-  height: 148.15px;
+  width: 242px;
+  height: 148px;
 }
 
-/* Kelly */
-/*logo*/
-.login h1{
+.login-mobile{
+  display: block;
+}
 
+.login-desktop{
+  display: none;
+}
+
+.login h1{
+  font-size: 3em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-align: center;
 }
 
 .login strong{
-
+  font-weight: 900;
+  color: #3F1583;
 }
 
 /*Larissa*/
