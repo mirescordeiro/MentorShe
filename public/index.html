@@ -4,46 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/public/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Source+Sans+Pro&display=swap" 
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Source+Sans+Pro:wght@400;600;700;900&display=swap" 
   rel="stylesheet">
   <title>MentorShe</title>
 </head>
 <body>
 
-  <section id="login" class="form">
-    <figure>
-      <img src="./img/login_mobile.svg" alt="Ilustração de dois navegadores abertos compartilhando">
-    </figure>
-    <div class="login">
-      <h1>mentor<strong>she</strong></h1>
-      <p>&#60;seja bem-vinda!&#62;</p>
-      <input id="user-email" type="text" placeholder="Email">
-      <input id="user-pass" type="text" placeholder="Senha"> 
-      <button id="login-button" type="submit">Entrar</button>
-      <p>Não possui uma conta?<a href="#new-account"> Crie agora</a></p>
-    </div>
-  </section>
-
-  <section id="new-account" class="form">
-    <label for="email">Email</label>
-    <input id="account-user" type="text" placeholder="email@host.com.br">
-
-    <label for="password">Senha</label>
-    <input id="account-pass" type="text" placeholder="mínimo 6 caracteres">
-    
-    <label for="pass">Confirmação de senha</label>
-    <input id="confirm-pass" type="text" placeholder="mínimo 6 caracteres">
-    
-    <label for="name">Nome</label>
-    <input id="user-name" type="text" placeholder="Maria">
-
-    <label for="last-name">Sobrenome</label>
-    <input id="last-name" type="text" placeholder="Carneiro">
-    
-    <button id="create-count" type="submit">Criar Conta</button>
-    <p>Já tem uma conta? <a href="#login">Acesse agora</a></p>
-  </section>
+  <main>
+    <section id="login" class="flex-row form">
+      <figure>
+        <img src="./img/login_mobile.svg" alt="Ilustração de dois navegadores abertos, no primeiro há uma seta grande que clica no segundo, no segundo há uma ovelha com uma mensagem de emoticon de coração" class="login-mobile">
+        <img src="./img/login_desktop.svg" alt="Ilustração de três navegadores abertos, no primeiro há um coração, no segundo uma seta de correto, no terceiro uma emoticon sorrindo. No centro entre eles temos uma ovelha" class="login-desktop">
+      </figure>
+      <div class="flex login">
+        <h1>mentor<strong>she</strong></h1>
+        <p>&#60;seja bem-vinda!&#62;</p>
+        <input id="user-email" type="text" placeholder="Email">
+        <input id="user-pass" type="text" placeholder="Senha">
+        <button id="login" type="submit">Entrar</button>
+        <p>Não possui uma conta?<a href="#new-account"> Crie agora</a></p>
+      </div>
+    </section>
+ 
+    <section id="new-account" class="form">
+      <label for="email">Email</label>
+      <input id="account-user" type="text" placeholder="email@host.com.br">
+  
+      <label for="password">Senha</label>
+      <input id="account-pass" type="text" placeholder="mínimo 6 caracteres">
+      
+      <label for="pass">Confirmação de senha</label>
+      <input id="confirm-pass" type="text" placeholder="mínimo 6 caracteres">
+      
+      <label for="name">Nome</label>
+      <input id="user-name" type="text" placeholder="Maria">
+  
+      <label for="last-name">Sobrenome</label>
+      <input id="last-name" type="text" placeholder="Carneiro">
+      
+      <button id="create-count" type="submit">Criar Conta</button>
+      <p>Já tem uma conta? <a href="#login">Acesse agora</a></p>
+    </section>
+  </main>
 
   <div id="root"></div>
   <script src="/public/firebase.js"></script>
