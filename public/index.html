@@ -1,58 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <title>MentorShe</title>
-</head>
-<body>
-
-  <main class="flex">
-    <section id="login" class="flex-row form">
-      <figure>
-        <img src="./img/login_mobile.svg" alt="Ilustração de dois navegadores abertos, no primeiro há uma seta grande que clica no segundo, no segundo há uma ovelha com uma mensagem de emoticon de coração" class="mobile">
-        <img src="./img/login_desktop.svg" alt="Ilustração de três navegadores abertos, no primeiro há um coração, no segundo uma seta de correto, no terceiro uma emoticon sorrindo. No centro entre eles temos uma ovelha" class="desktop">
-      </figure>
-      <div class="flex login">
-        <h1>mentor<strong>she</strong></h1>
-        <p class="welcome mobile">&#60;seja bem-vinda!&#62;</p>
-        <p class="welcome desktop">&#60;mentoria para todas!&#62;</p>
-        <input id="user-email" type="text" placeholder="Email">
-        <input id="user-pass" type="text" placeholder="Senha">
-        <button id="login" type="submit">ENTRAR</button>
-        <p>Não possui uma conta? <a href="#new-account">Crie agora</a></p>
-      </div>
-    </section>
- 
-    <section id="new-account" class="flex-left form">
-      <label for="email">Email</label>
-      <input id="account-user" type="text" placeholder="email@host.com.br">
-  
-      <label for="password">Senha</label>
-      <input id="account-pass" type="text" placeholder="mínimo 6 caracteres">
-      
-      <label for="pass">Confirmação de senha</label>
-      <input id="confirm-pass" type="text" placeholder="mínimo 6 caracteres">
-      
-      <label for="name">Nome</label>
-      <input id="user-name" type="text" placeholder="Maria">
-  
-      <label for="last-name">Sobrenome</label>
-      <input id="last-name" type="text" placeholder="Carneiro">
-      
-      <button id="create-count" type="submit">Criar Conta</button>
-      <p>Já tem uma conta? <a href="#login">Acesse agora</a></p>
-    </section>
-  </main>
-
-  <div id="root"></div>
-  <script src="/public/firebase.js"></script>
-  <script type="module" src="index.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>MentorShe</title>
+  </head>
+  <body>
+    <main id="root" class="flex">
+    </main>
+    <script type="module" src="index.js"></script>
+  </body>
 </html>
