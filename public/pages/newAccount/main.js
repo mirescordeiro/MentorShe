@@ -1,6 +1,6 @@
 export const newAccount = () => {
   const container = document.createElement('div');
-
+ 
   container.innerHTML = `<section id="new-account" class="flex-left form">
     <h2>Criar uma nova conta</h2>
     <label for="email">Email</label>

@@ -8,7 +8,7 @@
 body {
   background-size: 100vw 100vh;
   height: 100vh;
-  font-size: 0.75em;
+  font-size: 1em;
 }
 
 /* containers */
@@ -32,21 +32,9 @@ body {
   flex-direction: column;
 }
 
-.form {
+/*login*/
+.login {
   width: 242px;
-}
-
-.form img{
-  width: 242px;
-  height: 148px;
-}
-
-.mobile{
-  display: block;
-}
-
-.desktop{
-  display: none;
 }
 
 .login h1{
@@ -71,24 +59,19 @@ body {
   margin: 2.5px 0 20px;
 }
 
-/*Larissa*/
-/*form*/
+/*forms*/
+
+.form img{
+  height: 100%;
+}
 
 .form h2 {
+  color: #3F1583;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.6em;
   font-weight: 600;
   text-align: center;
   margin-bottom: 20px;
-  color: #3F1583;
-}
-
-.form input, .login input{
-  border-radius: 20px;
-  border: 2px solid black;
-  margin-bottom: 12px;
-  height: 35px;
-  width: 230px;
 }
 
 .form label{
@@ -100,22 +83,20 @@ body {
   padding-left: 12px;
 }
 
-::placeholder {
+.form input, .login input{
+  border-radius: 20px;
+  border: 2px solid black;
+  height: 35px;
+  width: 230px;
   padding-left: 12px;
+  margin-bottom: 12px;
+}
+
+::placeholder {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1em;
 }
 
-:focus {
-  border-color:#3F1583;
-}
-
-:active {
-  border-color:#3F1583;
-}
-
-/*Larissa*/
-/*botões*/
 .form button, .login button {
   width: 145px;
   height: 35px;
@@ -133,14 +114,6 @@ body {
   letter-spacing: 0.01em;
 }
 
-.footer {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 600;
-  font-size: 0.875em;
-  align-self: center;
-  margin-top: 12px;
-}
-
 .form a, .login a {
   color: #3F1583;
   
@@ -150,17 +123,24 @@ body {
   background-color: #C285FF;
 }
 
-@media (min-width: 320px) {
-  body {
-    font-size: 1em;
-  }
+.footer {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 0.75em;
+  align-self: center;
+  margin-top: 12px;
+}
+
+/* mobile e desktop*/
+.mobile{
+  display: block;
+}
+
+.desktop{
+  display: none;
 }
 
 @media (min-width: 768px) {
-  body {
-    font-size: 1.5em;
-  }  
-
   .mobile{
     display: none;
   }
@@ -175,10 +155,26 @@ body {
     align-items: center;
     flex-direction: row;
   }
+
+  .login {
+    width: 625px;
+  }
+
+  .login h1 {
+    font-size: 3.5em;
+  }
+
+  .welcome {
+    font-size: 1em;
+  }
+
+  .form input, .login input{
+    width: 315px;
+    padding-left: 12px;
+  }
+
 }
 
 @media (min-width: 1024px) {
-  body {
-    font-size: 2em;
-  }
+
 }
