@@ -1,5 +1,6 @@
 // Este é o ponto de entrada de sua aplicação
 import routes from './routes.js';
+import firebase from './firebase.js';
 
 const main = document.querySelector('#root');
 

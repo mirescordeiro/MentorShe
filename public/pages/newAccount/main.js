@@ -2,6 +2,7 @@ export const newAccount = () => {
   const container = document.createElement('div');
 
   container.innerHTML = `<section id="new-account" class="flex-left form">
+    <h2>Criar uma nova conta</h2>
     <label for="email">Email</label>
       <input id="account-user" type="text" placeholder="email@host.com.br">
   
@@ -17,8 +18,8 @@ export const newAccount = () => {
       <label for="last-name">Sobrenome</label>
       <input id="last-name" type="text" placeholder="Carneiro">
       
-      <button id="create-count" type="submit">Criar Conta</button>
-      <p>Já tem uma conta? <a href="#login">Acesse agora</a></p>
+      <button id="create-count" type="submit">CADASTRE-SE</button>
+      <p class="footer">Já tem uma conta? <a href="#login">Acesse agora</a></p>
       </section>`;
 
   return container;
