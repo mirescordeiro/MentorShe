@@ -6,7 +6,7 @@ export const newAccount = () => {
   container.innerHTML = `<section id="new-account" class="flex-left form">
     <h2>Criar uma nova conta</h2>
     <label for="email">Email</label>
-      <input id="account-user" type="text" placeholder="email@host.com.br">
+      <input id="account-user" type="email" placeholder="email@host.com.br">
   
       <label for="password">Senha</label>
       <input id="account-pass" type="password" placeholder="mínimo 6 caracteres">
