@@ -26,3 +26,17 @@ export const handleSignUp = () => {
       });
   });
 };
+
+/*
+export const validatePassword = () => {
+  const confirmPass = document.querySelector('#confirm-pass');
+  const password = document.querySelector('#account-pass');
+  if(password.value != confirmPass.value){
+    confirmPass.setCustomValidity('As senhas não são iguais');
+  } else {
+    confirmPass.setCustomValidity('');
+  }
+  password.onchange = validatePassword;
+  confirmPass.onkeyup = validatePassword;
+}
+*/

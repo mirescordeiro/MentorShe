@@ -11,8 +11,8 @@ export const login = () => {
         <h1>mentor<strong>she</strong></h1>
         <p class="welcome mobile">&#60;seja bem-vinda!&#62;</p>
         <p class="welcome desktop">&#60;mentoria para todas!&#62;</p>
-        <input id="user-email" type="text" placeholder="Email">
-        <input id="user-pass" type="password" placeholder="Senha">
+        <input id="user-email" type="text" placeholder="Email" required>
+        <input id="user-pass" type="password" placeholder="Senha" required>
         <button id="login-button" type="submit">ENTRAR</button>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
       </div>
