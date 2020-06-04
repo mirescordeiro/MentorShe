@@ -1,5 +1,3 @@
-// import { handleSignUp } from './data.js';
-
 export const newAccount = () => {
   const container = document.createElement('div');
 
@@ -7,12 +5,15 @@ export const newAccount = () => {
     <h2>Criar uma nova conta</h2>
     <label for="email">Email</label>
       <input id="account-user" type="text" placeholder="email@host.com.br">
+      <span id="email-alert"></span>
   
       <label for="password">Senha</label>
       <input id="account-pass" type="password" placeholder="mínimo 6 caracteres">
+      <span id="pass-alert"></span>
       
       <label for="pass">Confirmação de senha</label>
       <input id="confirm-pass" type="password" placeholder="mínimo 6 caracteres">
+      <span id="pass-alert"></span>
       
       <label for="name">Nome</label>
       <input id="user-name" type="text" placeholder="Maria">
@@ -26,9 +27,3 @@ export const newAccount = () => {
 
   return container;
 };
-
-// const email = document.querySelector('#user-email').value;
-// const password = document.querySelector('#user-pass').value;
-// const signinButton = document.querySelector('#create-count');
-
-// signinButton.addEventListener('click', handleSignUp(email, password));
