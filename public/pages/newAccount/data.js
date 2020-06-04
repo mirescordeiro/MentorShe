@@ -3,6 +3,7 @@ export const handleSignUp = () => {
   createButton.addEventListener('click', () => {
     const email = document.querySelector('#account-user').value;
     const password = document.querySelector('#account-pass').value;
+    const confirmPass = document.querySelector('#confirm-pass').value;
     if (email.length <= 5) {
       alert('Por favor insira um endereço de e-mail válido.');
       return;
@@ -11,6 +12,11 @@ export const handleSignUp = () => {
       alert('Por favor insira uma senha.');
       return;
     }
+    if(password != confirmPass){
+      alert('Senhas diferentes');
+      return;
+    }
+
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)

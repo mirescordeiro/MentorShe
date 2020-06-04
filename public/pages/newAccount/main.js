@@ -7,7 +7,7 @@ export const newAccount = () => {
     <h2>Criar uma nova conta</h2>
     <label for="email">Email</label>
     <input id="account-user" type="email" placeholder="email@host.com.br" required>
-  
+
     <label for="password">Senha</label>
     <input id="account-pass" type="password" placeholder="mínimo 6 caracteres" requires>
   
