@@ -9,10 +9,10 @@ export const newAccount = () => {
       <input id="account-user" type="text" placeholder="email@host.com.br">
   
       <label for="password">Senha</label>
-      <input id="account-pass" type="text" placeholder="mínimo 6 caracteres">
+      <input id="account-pass" type="password" placeholder="mínimo 6 caracteres">
       
       <label for="pass">Confirmação de senha</label>
-      <input id="confirm-pass" type="text" placeholder="mínimo 6 caracteres">
+      <input id="confirm-pass" type="password" placeholder="mínimo 6 caracteres">
       
       <label for="name">Nome</label>
       <input id="user-name" type="text" placeholder="Maria">

@@ -12,7 +12,7 @@ export const login = () => {
         <p class="welcome mobile">&#60;seja bem-vinda!&#62;</p>
         <p class="welcome desktop">&#60;mentoria para todas!&#62;</p>
         <input id="user-email" type="text" placeholder="Email">
-        <input id="user-pass" type="text" placeholder="Senha">
+        <input id="user-pass" type="password" placeholder="Senha">
         <button id="login-button" type="submit">ENTRAR</button>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
       </div>
