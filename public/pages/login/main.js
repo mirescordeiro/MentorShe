@@ -1,3 +1,5 @@
+import { toggleSignIn } from './data.js';
+
 export const login = () => {
   const container = document.createElement('div');
 
@@ -17,6 +19,9 @@ export const login = () => {
       </div>
     </section>
   `;
+
+  const loginButton = container.querySelector('#login-button');
+  loginButton.addEventListener('click', toggleSignIn());
 
   return container;
 };

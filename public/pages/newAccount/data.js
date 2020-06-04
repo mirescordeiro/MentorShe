@@ -13,7 +13,7 @@ export function handleSignUp() {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password, loginButton)
-    .catch(function (error) {
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       if (errorCode === 'auth/senha muito fraca') {
