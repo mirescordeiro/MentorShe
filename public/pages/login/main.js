@@ -12,9 +12,9 @@ export const login = () => {
         <p class="welcome mobile">&#60;seja bem-vinda!&#62;</p>
         <p class="welcome desktop">&#60;mentoria para todas!&#62;</p>
         <input id="user-email" type="email" placeholder="Email" required>
-        <div id="email-alert" class="alert">Por favor insira um endereço de e-mail.</div>
+        <div id="email-alert" class="alert"></div>
         <input id="user-pass" type="password" placeholder="Senha" required>
-        <div id="pass-alert" class="alert">Por favor insira uma senha.</div>
+        <div id="pass-alert" class="alert"></div>
         <button id="login-button" type="submit">ENTRAR</button>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
       </div>
