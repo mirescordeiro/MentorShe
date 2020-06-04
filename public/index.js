@@ -1,13 +1,13 @@
 // Este é o ponto de entrada de sua aplicação
 import routes from './routes.js';
-import {firebaseConfig} from './firebase.js';
-import {toggleSignIn} from './public/pages/login/data.js';
-import {handleSignUp} from './public/pages/newAccount/data.js';
+import { firebaseConfig } from './firebase.js';
+import { toggleSignIn } from '';
+import { handleSignUp } from './public/pages/newAccount/data.js';
 
-let email = document.querySelector('#user-email').value;
-let password = document.querySelector('#user-pass').value;
-let loginButton = document.querySelector('#login-button').value;
-const 
+const email = document.querySelector('#user-email').value;
+const password = document.querySelector('#user-pass').value;
+const loginButton = document.querySelector('#login-button').value;
+const signinButton = document.querySelector('#create-count');
 
 const main = document.querySelector('#root');
 

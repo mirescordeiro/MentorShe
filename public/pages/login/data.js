@@ -14,7 +14,7 @@ export  function toggleSignIn() {
         return;
       }
      
-      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      firebase.auth().signInWithEmailAndPassword(email, password, loginButton).catch(function(error) {
         let errorCode = error.code;
         let errorMessage = error.message;
         if (errorCode === 'senha muito fraca') {
@@ -24,4 +24,3 @@ export  function toggleSignIn() {
         }
         return (error);
       });
-  }
