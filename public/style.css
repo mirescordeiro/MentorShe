@@ -32,10 +32,6 @@ body {
 /*------------*/
 
 /*login*/
-.login {
-  width: 242px;
-}
-
 .login h1{
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 2.8em;
@@ -70,22 +66,26 @@ body {
 /*------------*/
 
 /*forms*/
+.register {
+  width: 230px;
+  margin-bottom: 3px;;
+}
+
 .form img{
-  height: 100%;
+  width: 100%;
 }
 
 .form h2 {
   color: #3F1583;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .form label{
-  align-self: baseline;
-  text-align: initial;
+  align-self: start;
   margin-bottom: 3px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
@@ -99,18 +99,18 @@ body {
   border-radius: 20px;
   border: 2px solid black;
   height: 35px;
-  width: 230pxz;
+  width: 230px;
   padding-left: 12px;
-  margin-bottom: 12px;
-}
-
-.remember-me{
-  align-self: baseline;
+  margin-bottom: 10px;
 }
 
 ::placeholder {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1em;
+}
+
+:focus:active{
+  border-color: #3F1583;
 }
 
 .form button, .login button {
@@ -123,7 +123,7 @@ body {
   font-weight: 500;
   font-size: 0.95em;
   letter-spacing: 0.01em;
-  margin: 10px 0;
+  margin-bottom: 10px;
   width: 145px;
   height: 35px;
 }
@@ -136,7 +136,7 @@ body {
   color: #3F1583;
 }
 
-.psw, .footer {
+.remember, .psw, .footer {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   font-size: 0.85em;
@@ -166,23 +166,27 @@ body {
     flex-direction: row;
   }
 
-  .login {
-    width: 40vw;
-  }
-
   .login h1 {
-    font-size: 3.5em;
+    font-size: 3.3em;
   }
 
   .welcome {
     font-size: 1em;
   }
 
+  figure {
+    width: 50vw;
+  }
+
   .form img{
-    height: 35vw;
+    width: 43vw;
   }
 
   .form input, .login input{
+    width: 25vw;
+  }
+
+  .register {
     width: 25vw;
   }
 }
