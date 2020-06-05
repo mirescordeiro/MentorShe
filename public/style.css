@@ -79,11 +79,12 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.6em;
   font-weight: 600;
-  text-align: center;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .form label{
+  align-self: baseline;
   text-align: initial;
   margin-bottom: 3px;
   font-family: 'Source Sans Pro', sans-serif;
@@ -99,6 +100,10 @@ body {
   width: 230px;
   padding-left: 12px;
   margin-bottom: 12px;
+}
+
+.remember-me{
+  align-self: baseline;
 }
 
 ::placeholder {
@@ -131,7 +136,7 @@ body {
   color: #3F1583;
 }
 
-.footer {
+.psw, .footer {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   font-size: 0.85em;

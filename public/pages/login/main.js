@@ -1,4 +1,3 @@
-
 export const login = () => {
   const container = document.createElement('div');
 
@@ -18,7 +17,7 @@ export const login = () => {
         <button id="login-button" type="submit">ENTRAR</button>
         <label>
       <input class="remember-me" type="checkbox" checked="checked" name="remember"> Lembre-me
-      </label>
+      </label>      
       <span class="psw">Esqueceu a <a href="#">senha?</a></span>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
       </div>
