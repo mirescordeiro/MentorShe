@@ -7,11 +7,13 @@ export const toggleSignIn = () => {
       const email = document.querySelector('#user-email').value;
       const password = document.querySelector('#user-pass').value;
       if (email.length <= 5) {
-        alert('Por favor insira um endereço de e-mail.');
+        const alert = document.querySelector('#email-alert');
+        alert.innerHTML = 'Por favor insira um endereço de e-mail.';
         return;
       }
       if (password.length <= 6) {
-        alert('Por favor insira uma senha.');
+        const alertPass = document.querySelector('#pass-alert');
+        alertPass.innerHTML = 'Por favor insira uma senha.';
         return;
       }
 
