@@ -1,31 +1,32 @@
 export const handleSignUp = () => {
-  const errorsEmail = [];
-  const errorsPass = [];
+  const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
+  const invalidPass = [];
+  const invalidEmail = [];
   const createButton = document.querySelector('#create-count');
+  const validationPass = document.querySelector('#pass-alert');
+  const validationMail = document.querySelector('#email-alert');
+  const validacao = document.querySelector('#validation');
+
   createButton.addEventListener('click', () => {
+    validacao.innerHTML = '';
+    validationMail.innerHTML = '';
+    validationPass.innerHTML = '';
+
     const email = document.querySelector('#account-user').value;
     const password = document.querySelector('#account-pass').value;
-    if (email.length <= 5) {
-      errorsEmail.push('Por favor, insira um endereço de e-mail válido.');
-    }
-    if (password.search(/[a-z]/i) < 0) {
-      errorsPass.push('Sua senha deve conter pelo menos uma letra.');
-    }
-    if (password.search(/[0-6]/i) < 0) {
-      errorsPass.push('Sua senha deve conter pelo menos um dígito.');
-    }
-    if (password.length <= 6) {
-      errorsPass.push('Por favor insira uma senha.');
+
+    if (!mailformat.test(email)) {
+      invalidEmail.push('Email inválido');
     }
 
-    if (errorsEmail) {
-      const validationField = document.getElementById('email-alert');
-      validationField.innerHTML = errorsEmail.join('');
-      return;
+    if (!strongPass.test(password)) {
+      invalidPass.push('Senha inválida');
     }
-    if (errorsPass) {
-      const validationField = document.getElementById('pass-alert');
-      validationField.innerHTML = errorsPass.join('');
+
+    if (invalidPass.length > 0 || invalidEmail.length > 0) {
+      validationPass.innerHTML = invalidPass.join('');
+      validationMail.innerHTML = invalidEmail.join('');
       return;
     }
 
@@ -36,9 +37,10 @@ export const handleSignUp = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode === 'auth/senha muito fraca') {
-          alert('Senha muito fraca.');
+          invalidPass.push('Senha muito fraca.');
+          validationPass.innerHTML = invalidPass.join('');
         } else {
-          alert(errorMessage);
+          validacao.innerHTML = errorMessage;
         }
         return error;
       });

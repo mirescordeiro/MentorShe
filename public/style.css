@@ -15,22 +15,21 @@ body {
 .flex {
   display: flex;
   justify-content: center;
+}
+
+.center {
   align-items: center;
-  flex-direction: column;
   height: 100%;
 }
 
-.flex-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.row-desk {
   flex-direction: column;
 }
 
-.flex-left {
-  display: flex;
+.column {
   flex-direction: column;
 }
+/*------------*/
 
 /*login*/
 .login {
@@ -39,7 +38,7 @@ body {
 
 .login h1{
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 3em;
+  font-size: 2.8em;
   font-weight: 400;
   letter-spacing: 0.03em;
   text-align: center;
@@ -51,6 +50,16 @@ body {
   color: #3F1583;
 }
 
+.alert {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 0.7em;
+  letter-spacing: 0.01em;
+  color: #3F1583;
+  margin: -5px 0 12px;
+  text-align: center;
+}
+
 .welcome {
   font-family: 'Fira Code', monospace;
   font-weight: 500;
@@ -58,9 +67,9 @@ body {
   letter-spacing: 0.02em;
   margin: 2.5px 0 20px;
 }
+/*------------*/
 
 /*forms*/
-
 .form img{
   height: 100%;
 }
@@ -114,50 +123,47 @@ body {
   letter-spacing: 0.01em;
 }
 
-.form a, .login a {
-  color: #3F1583;
-  
-}
-
 .form button:hover {
   background-color: #C285FF;
+}
+
+.form a, .login a {
+  color: #3F1583;
 }
 
 .footer {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  font-size: 0.75em;
+  font-size: 0.85em;
   align-self: center;
   margin-top: 12px;
 }
+/*------------*/
 
 /* mobile e desktop*/
-.mobile{
+.mobile {
   display: block;
 }
 
-.desktop{
+.desktop {
   display: none;
 }
 
-@media (min-width: 768px) {
-  .mobile{
+@media (min-width: 900px) {
+  .mobile {
     display: none;
   }
   
-  .desktop{
+  .desktop {
     display: block;
   }
 
-  .flex-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .row-desk {
     flex-direction: row;
   }
 
   .login {
-    width: 20vw;
+    width: 40vw;
   }
 
   .login h1 {
@@ -168,13 +174,12 @@ body {
     font-size: 1em;
   }
 
-  .form input, .login input{
-    width: 315px;
-    padding-left: 12px;
+  .form img{
+    height: 35vw;
   }
 
+  .form input, .login input{
+    width: 25vw;
+  }
 }
-
-@media (min-width: 1024px) {
-
-}
+/*------------*/
