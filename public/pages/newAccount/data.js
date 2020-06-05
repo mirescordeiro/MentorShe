@@ -1,19 +1,32 @@
 export const handleSignUp = () => {
+  const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
+  const invalidPass = [];
+  const invalidEmail = [];
   const createButton = document.querySelector('#create-count');
+  const validationPass = document.querySelector('#pass-alert');
+  const validationMail = document.querySelector('#email-alert');
+  const validacao = document.querySelector('#validation');
+
   createButton.addEventListener('click', () => {
+    validacao.innerHTML = '';
+    validationMail.innerHTML = '';
+    validationPass.innerHTML = '';
+
     const email = document.querySelector('#account-user').value;
     const password = document.querySelector('#account-pass').value;
-    const confirmPass = document.querySelector('#confirm-pass').value;
-    if (email.length <= 5) {
-      alert('Por favor insira um endereço de e-mail válido.');
-      return;
+
+    if (!mailformat.test(email)) {
+      invalidEmail.push('Email inválido');
     }
-    if (password.length <= 6) {
-      alert('Por favor insira uma senha.');
-      return;
+
+    if (!strongPass.test(password)) {
+      invalidPass.push('Senha inválida');
     }
-    if(password != confirmPass){
-      alert('Senhas diferentes');
+
+    if (invalidPass.length > 0 || invalidEmail.length > 0) {
+      validationPass.innerHTML = invalidPass.join('');
+      validationMail.innerHTML = invalidEmail.join('');
       return;
     }
 
@@ -24,25 +37,12 @@ export const handleSignUp = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode === 'auth/senha muito fraca') {
-          alert('Senha muito fraca.');
+          invalidPass.push('Senha muito fraca.');
+          validationPass.innerHTML = invalidPass.join('');
         } else {
-          alert(errorMessage);
+          validacao.innerHTML = errorMessage;
         }
         return error;
       });
   });
 };
-
-/*
-export const validatePassword = () => {
-  const confirmPass = document.querySelector('#confirm-pass');
-  const password = document.querySelector('#account-pass');
-  if(password.value != confirmPass.value){
-    confirmPass.setCustomValidity('As senhas não são iguais');
-  } else {
-    confirmPass.setCustomValidity('');
-  }
-  password.onchange = validatePassword;
-  confirmPass.onkeyup = validatePassword;
-}
-*/

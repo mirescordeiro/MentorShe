@@ -57,6 +57,7 @@ body {
   font-size: 0.7em;
   letter-spacing: 0.01em;
   margin: -5px 0 12px;
+  text-align: center;
 }
 
 .welcome {
@@ -78,11 +79,14 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.6em;
   font-weight: 600;
-  text-align: center;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .form label{
+  align-self: baseline;
+  text-align: initial;
+  margin-bottom: 3px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   font-size: 1em;
@@ -95,9 +99,13 @@ body {
   border-radius: 20px;
   border: 2px solid black;
   height: 35px;
-  width: 230px;
+  width: 230pxz;
   padding-left: 12px;
   margin-bottom: 12px;
+}
+
+.remember-me{
+  align-self: baseline;
 }
 
 ::placeholder {
@@ -128,7 +136,7 @@ body {
   color: #3F1583;
 }
 
-.footer {
+.psw, .footer {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   font-size: 0.85em;
