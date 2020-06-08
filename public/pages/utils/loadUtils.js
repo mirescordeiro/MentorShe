@@ -1,5 +1,3 @@
-
-
 import { handleSignUp } from '../newAccount/data.js';
 import { toggleSignIn } from '../login/data.js';
 
@@ -12,7 +10,6 @@ export const loadFunctionBy = (page) => {
       handleSignUp();
       break;
     default:
-      alert('page not found');
       break;
   }
 };
