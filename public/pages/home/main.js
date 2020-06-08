@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { greeting } from './data.js';
+// import { greeting } from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
