@@ -8,7 +8,7 @@ const user = {
 };
 
 describe('signInUser', () => {
-  const auth = new Authentication();
+  const auth = new Authentication(user);
   auth.signInWithEmailAndPassword(user.email, user.password);
   it('Deveria fazer signIn de usuário existente', () => {
     expect(toggleSignIn()).toBeCalled();
