@@ -1,13 +1,18 @@
 // Aqui serão exportadas as funções que irão ser usadas
 
-export const newPost = () => {
+export const newPost = (obj) => {
+  //escrever onAuthStateChanged
+  //verificar se existe o user
+  //se sim rederizar a pagina
+  // se não voltar pro login
+
   const postButton = document.querySelector('#post-button');
   const editButton = document.querySelector('#edit-button');
   const cancelEditBtn = document.querySelector('#cancel-button');
   const deletePostBtn = document.querySelector('#delete-post');
   const postPublic = document.querySelector('#public-post');
 
-  postButton.addEventListener('submit', () => {
+  postButton.addEventListener('submit', (event) => {
     event.preventDefault();
     const textPostArea = document.querySelector('#post-text').value;
     const post = {
@@ -57,39 +62,23 @@ addPost(post);
 */
 
 export const initApp = function initApp() {
-  const signInStatus = document.querySelector('#quickstart-sign-in-status');
-  const signIn = document.querySelector('#quickstart-sign-in');
-  const accountDetails = document.querySelector('quickstart-account-details');
-  const signUp = document.querySelector('#quickstart-sign-up');
-  const verifyEmail = document.querySelector('#quickstart-verify-email');
-  const passwordReset = document.querySelector('#quickstart-password-reset');
-
   firebase.auth().onAuthStateChanged(function (user) {
-    verifyEmail.disabled = true;
     if (user) {
       const displayName = user.displayName;
       const email = user.email;
-      const emailVerified = user.emailVerified;
       const photoURL = user.photoURL;
-      const isAnonymus = user.isAnonymus;
       const uid = user.uid;
       const providerData = user.providerData;
-
       signInStatus.textContent = 'Signed in';
       signIn.textContent = 'Sign out';
       accountDetails.textContent = JSON.stringify(user, null, '');
-      if (!emailVerified) {
-        document.querySelector('#quickstart-verify-email').disabled = false;
-      }
-    } else {
-      signInStatus.textContent = 'Signed out';
-      signIn.textContent = 'Sign in';
-      accountDetails.textContent = 'null';
     }
-    signIn.disabled = false;
   });
   signIn.addEventListener('click', toggleSignIn, false);
   signUp.addEventListener('click', handleSignUp, false);
-  verifyEmail.addEventListener('click', sendEmailVerification, false);
-  passwordReset.addEventListener('click', sendPasswordReset, false);
+  postInit.addEventListener('click', newPost, false);
+};
+
+window.onload = function () {
+  initApp();
 };
