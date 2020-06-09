@@ -11,9 +11,9 @@ export const newPost = () => {
     event.preventDefault();
     const textPostArea = document.querySelector('#post-text').value;
     const post = {
-      text: textPostArea;
-      user: uid; // olhar o usuário na função de AuthStateChanged
-      likes: 0;
+      text: textPostArea, //Troquei os ponto e vírgulas por vírgulas
+      user: uid, // olhar o usuário na função de AuthStateChanged //Troquei os ponto e vírgulas por vírgulas
+      likes: 0, //Troquei os ponto e vírgulas por vírgulas
       comments: []
     }
   })
@@ -60,7 +60,7 @@ addPost(post);
 }
 */
 
-export const initApp = function initApp(){
+export const initApp = () => {
     const signInStatus = document.querySelector('#quickstart-sign-in-status');
     const signIn = document.querySelector('#quickstart-sign-in');
     const accountDetails = document.querySelector('quickstart-account-details');
@@ -71,13 +71,13 @@ export const initApp = function initApp(){
     firebase.auth().onAuthStateChanged(function(user){
         verifyEmail.disabled = true;
         if(user){
-            const displayName = user.displayName;
-            const email = user.email;
+            const displayName = user.displayName; //Essas variáveis ainda não foram usadas.
+            const email = user.email; //Essas variáveis ainda não foram usadas.
             const emailVerified = user.emailVerified;
-            const photoURL = user.photoURL;
-            const isAnonymus = user.isAnonymus;
-            const uid = user.uid;
-            const providerData = user.providerData;
+            const photoURL = user.photoURL; //Essas variáveis ainda não foram usadas.
+            const isAnonymus = user.isAnonymus; //Essas variáveis ainda não foram usadas.
+            const uid = user.uid; //Essas variáveis ainda não foram usadas.
+            const providerData = user.providerData; //Essas variáveis ainda não foram usadas.
             
             signInStatus.textContent = 'Signed in';
             signIn.textContent = 'Sign out';
