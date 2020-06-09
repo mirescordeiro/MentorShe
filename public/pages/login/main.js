@@ -1,3 +1,5 @@
+import { toggleSignIn } from './data.js';
+
 export const login = () => {
   const container = document.createElement('div');
 
@@ -16,9 +18,54 @@ export const login = () => {
         <span id="pass-alert" class="alert"></span>
         <button id="login-button" type="submit">ENTRAR</button>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
+
+
+        <span id=validation-login></span>
+
       </form>
     </section>
   `;
 
+  const mailformat = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/;
+  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/;
+  const loginButton = container.querySelector('#login-button');
+  const validationPassLogin = container.querySelector('#pass-alert');
+  const validationMailLogin = container.querySelector('#email-alert');
+  const validationLogin = container.querySelector('#validation-login');
+
+  loginButton.addEventListener('click', () => {
+    const invalidPassLogin = [];
+    const invalidEmailLogin = [];
+    const invalidFirebaseLogin = [];
+    validationLogin.innerHTML = '';
+    validationPassLogin.innerHTML = '';
+    validationMailLogin.innerHTML = '';
+
+    const email = document.querySelector('#user-email').value;
+    const password = document.querySelector('#user-pass').value;
+
+    if (!mailformat.test(email)) {
+      invalidEmailLogin.push('Email inválido');
+    }
+
+    if (!strongPass.test(password)) {
+      invalidPassLogin.push('Senha inválida');
+    }
+
+    if (invalidPassLogin.length > 0 || invalidEmailLogin.length > 0) {
+      validationPassLogin.innerHTML = invalidPassLogin.join('');
+      validationMailLogin.innerHTML = invalidEmailLogin.join('');
+    } else {
+      const errorFirebase = (error) => {
+        if (error instanceof Error) {
+          invalidFirebaseLogin.push(error);
+          validationLogin.innerHTML = invalidFirebaseLogin.join('');
+        } else {
+          window.location.hash = '#home';
+        }
+      };
+      toggleSignIn({ email, password }, errorFirebase);
+    }
+  });
   return container;
 };
