@@ -6,10 +6,10 @@ export const handleSignUp = () => {
   const createButton = document.querySelector('#create-count');
   const validationPass = document.querySelector('#pass-alert');
   const validationMail = document.querySelector('#email-alert');
-  const validacao = document.querySelector('#validation');
+  const validation = document.querySelector('#validation');
 
   createButton.addEventListener('click', () => {
-    validacao.innerHTML = '';
+    validation.innerHTML = '';
     validationMail.innerHTML = '';
     validationPass.innerHTML = '';
 
@@ -40,7 +40,7 @@ export const handleSignUp = () => {
           invalidPass.push('Senha muito fraca.');
           validationPass.innerHTML = invalidPass.join('');
         } else {
-          validacao.innerHTML = errorMessage;
+          validation.innerHTML = errorMessage;
         }
         return error;
       });

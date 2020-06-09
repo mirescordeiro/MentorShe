@@ -1,6 +1,6 @@
 import { handleSignUp } from '../newAccount/data.js';
 import { toggleSignIn } from '../login/data.js';
-import { home } from '../home/main.js';
+import { newPost } from '../home/data.js';
 
 export const loadFunctionBy = (page) => {
   switch (page) {
@@ -11,8 +11,9 @@ export const loadFunctionBy = (page) => {
       handleSignUp();
       break;
     case 'home':
-      home();
+      newPost();
       break;
     default:
+      break;
   }
 };
