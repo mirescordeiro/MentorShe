@@ -6,7 +6,7 @@ export const home = (user) => {
 
   container.innerHTML = ` 
       <div class="profile">
-        <button id="profile">Perfil ${user.displayName != null ? user.displayName : 'Usuária'}</button>
+        <button id="profile">Maria ${user.displayName != null ? user.displayName : ''}</button>
         <button id="edit-button">Editar Perfil</button>
         <button id="logout">Sair</button>        
       </div>
