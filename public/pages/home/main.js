@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts } from './data.js';
+import { newPost, loadPosts, deletePost } from './data.js';
 
 export const home = (user) => {
   const container = document.createElement('div');
@@ -48,8 +48,8 @@ export const home = (user) => {
       .map(
         (post) => `<p>${post.text}</p>
         <button id="edit-post">Editar</button>
-        <butgitton id="cancel-edit"></i>Cancelar</button>
-        <button id="delete-post">Delete</button>
+        <button id="cancel-edit"></i>Cancelar</button>
+        <button id="delete-post" data-postId= ${post.id}>Delete</button>
         <div id='numbers-like'>${post.likes}<div>
         <button id='like'>Like</button>
       `
@@ -61,8 +61,14 @@ export const home = (user) => {
     event.preventDefault();
     newPost(textPost.value);
     timeline.innerHTML = '';
-    loadPosts(postTemplate);
+    loadPosts(postTemplate)
+    .then(clear => {textPost = ''});
   });
+
+  deletePostBtn.addEventListener('click', (event) => {
+    console.log('oi')
+  });
+
 
   buttonLogout.addEventListener('click', (event) => {
     event.preventDefault();
@@ -70,3 +76,4 @@ export const home = (user) => {
 
   return container;
 };
+
