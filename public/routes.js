@@ -15,18 +15,17 @@ export default {
 // se não voltar pro login
 
 export const initApp = function initApp() {
-  firebase.auth().onAuthStateChanged(user => {
-    console.log(user);
-    //if (user) {
-    //  const displayName = user.displayName;
-    //  const email = user.email;
-    //  const photoURL = user.photoURL;
-    //  const uid = user.uid;
-    //  const providerData = user.providerData;
-    //  signInStatus.textContent = 'Signed in';
-    //  signIn.textContent = 'Sign out';
-    //  accountDetails.textContent = JSON.stringify(user, null, '');
-    //}
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      const displayName = user.displayName;
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const uid = user.uid;
+      const providerData = user.providerData;
+      signInStatus.textContent = 'Signed in';
+      signIn.textContent = 'Sign out';
+      accountDetails.textContent = JSON.stringify(user, null, '');
+    }
   });
   signIn.addEventListener('click', toggleSignIn, false);
   signUp.addEventListener('click', handleSignUp, false);
