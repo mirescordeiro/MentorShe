@@ -25,11 +25,11 @@ export const home = () => {
       <div id='timeline'></div>
       `;
 
-  const signInStatus = container.querySelector('#signin-status');
-  const signIn = container.querySelector('#sign-in');
-  const accountDetails = container.querySelector('#account-details');
-  const signUp = container.querySelector('#sign-up');
-  const postInit = container.querySelector('#post-init');
+  const signInStatus = container.querySelector("#signin-status");
+  const signIn = container.querySelector("#sign-in");
+  const accountDetails = container.querySelector("#account-details");
+  const signUp = container.querySelector("#sign-up");
+  const postInit = container.querySelector("#post-init");
 
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#post');
@@ -64,7 +64,7 @@ export const home = () => {
     .join('');
   };
 
-  postButton.addEventListener('click', (event) => {
+  postButton.addEventListener("click", (event) => {
     event.preventDefault();
     newPost(textPost.value);
     timeline.innerHTML = '';
