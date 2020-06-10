@@ -1,6 +1,6 @@
 // Este é o ponto de entrada de sua aplicação
 import routes from './routes.js';
-import { newPost } from './pages/home/main.js';
+import { home } from './pages/home/main.js';
 
 const main = document.querySelector('#root');
 
@@ -15,7 +15,7 @@ const renderPage = () => {
       console.log(user);
       switch (page) {
         case 'home':
-          main.appendChild(newPost(user));
+          main.appendChild(home(user));
           break;
 
         default:
