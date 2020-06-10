@@ -1,10 +1,10 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-export const newPost = () => {
+export const newPost = (user) => {
   const container = document.createElement('div');
 
   container.innerHTML = ` 
       <div class="profile">
-        <button id="profile">Perfil</button>
+        <button id="profile">Perfil ${user.displayName != null ? user.displayName : 'Usuária'}</button>
         <button id="edit-button">Editar Perfil</button>
         <button id="logout">Sair</button>        
       </div>
@@ -25,12 +25,6 @@ export const newPost = () => {
           <button class="delete-post">Delete</button>
         </form>
       `;
-
-  const signInStatus = container.querySelector('#signin-status');
-  const signIn = container.querySelector('#sign-in');
-  const accountDetails = container.querySelector('#account-details');
-  const signUp = container.querySelector('#sign-up');
-  const postInit = container.querySelector('#post-init');
 
   return container;
 };
