@@ -1,8 +1,7 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
 import { newPost, loadPosts } from './data.js';
 
-export const home = () => {
-
+export const home = (user) => {
   const container = document.createElement('div');
 
   container.innerHTML = ` 
@@ -34,7 +33,7 @@ export const home = () => {
 
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#post');
-  const editButton = container.querySelector('#edit-post');
+  const editButton = container.querySelector('#edit-button');
   const cancelEditBtn = container.querySelector('#cancel-edit');
   const deletePostBtn = container.querySelector('#delete-post');
   const postPublic = container.querySelector('#public');
@@ -42,6 +41,21 @@ export const home = () => {
   const likeButton = container.querySelector('#like');
   const addImage = container.querySelector('#image');
   const timeline = container.querySelector('#timeline');
+  const buttonLogout = container.querySelector('#logout');
+
+  const postTemplate = (array) => {
+    timeline.innerHTML = array
+      .map(
+        (post) => `<p>${post.text}</p>
+        <button id="edit-post">Editar</button>
+        <butgitton id="cancel-edit"></i>Cancelar</button>
+        <button id="delete-post">Delete</button>
+        <div id='numbers-like'>${post.likes}<div>
+        <button id='like'>Like</button>
+      `
+      )
+      .join('');
+  };
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -50,15 +64,9 @@ export const home = () => {
     loadPosts(postTemplate);
   });
 
-  const postTemplate = (array) => {
-    timeline.innerHTML = array.map(post => `<p>${post.text}</p>
-      <button id="edit-post">Editar</button>
-      <button id="cancel-edit"></i>Cancelar</button>
-      <button id="delete-post">Delete</button>
-      <div id='numbers-like'>${post.likes}<div>
-      <button id='like'>Like</button>
-    `).join('');
-  }
+  buttonLogout.addEventListener('click', (event) => {
+    event.preventDefault();
+  });
+
   return container;
 };
-

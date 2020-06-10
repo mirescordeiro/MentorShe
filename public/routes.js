@@ -1,12 +1,10 @@
 // import { home } from './pages/home/main.js';
 import { login } from './pages/login/main.js';
 import { newAccount } from './pages/newAccount/main.js';
-import { home } from './pages/home/main.js';
 
 export default {
   login: login(),
   newAccount: newAccount(),
-  home: home(),
 };
 
 //escrever onAuthStateChanged
@@ -33,5 +31,4 @@ export const initApp = function initApp() {
 };
 
 window.onload = function () {
-  initApp();
 };
