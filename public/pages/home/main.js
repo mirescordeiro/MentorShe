@@ -1,12 +1,14 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts } from './data.js';
+import { newPost, loadPosts, logout } from "./data.js";
 
 export const home = (user) => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
 
   container.innerHTML = ` 
       <div class="profile">
-        <button id="profile">Perfil ${user.displayName != null ? user.displayName : 'Usuária'}</button>
+        <button id="profile">Perfil ${
+          user.displayName != null ? user.displayName : "Usuária"
+        }</button>
         <button id="edit-button">Editar Perfil</button>
         <button id="logout">Sair</button>        
       </div>
@@ -25,48 +27,50 @@ export const home = (user) => {
       <div id='timeline'></div>
       `;
 
-  const signInStatus = container.querySelector('#signin-status');
-  const signIn = container.querySelector('#sign-in');
-  const accountDetails = container.querySelector('#account-details');
-  const signUp = container.querySelector('#sign-up');
-  const postInit = container.querySelector('#post-init');
+  const signInStatus = container.querySelector("#signin-status");
+  const signIn = container.querySelector("#sign-in");
+  const accountDetails = container.querySelector("#account-details");
+  const signUp = container.querySelector("#sign-up");
+  const postInit = container.querySelector("#post-init");
 
-  const textPost = container.querySelector('#post-text');
-  const postButton = container.querySelector('#post');
-  const editButton = container.querySelector('#edit-button');
-  const cancelEditBtn = container.querySelector('#cancel-edit');
-  const deletePostBtn = container.querySelector('#delete-post');
-  const postPublic = container.querySelector('#public');
-  const postPrivate = container.querySelector('#privacy');
-  const likeButton = container.querySelector('#like');
-  const addImage = container.querySelector('#image');
-  const timeline = container.querySelector('#timeline');
-  const buttonLogout = container.querySelector('#logout');
+  const textPost = container.querySelector("#post-text");
+  const postButton = container.querySelector("#post");
+  const editButton = container.querySelector("#edit-button");
+  const cancelEditBtn = container.querySelector("#cancel-edit");
+  const deletePostBtn = container.querySelector("#delete-post");
+  const postPublic = container.querySelector("#public");
+  const postPrivate = container.querySelector("#privacy");
+  const likeButton = container.querySelector("#like");
+  const addImage = container.querySelector("#image");
+  const timeline = container.querySelector("#timeline");
+  const buttonLogout = container.querySelector("#logout");
 
   const postTemplate = (array) => {
     timeline.innerHTML = array
       .map(
         (post) => `<p>${post.text}</p>
-        <button id="edit-post">Editar</button>
-        <butgitton id="cancel-edit"></i>Cancelar</button>
-        <button id="delete-post">Delete</button>
-        <div id='numbers-like'>${post.likes}<div>
-        <button id='like'>Like</button>
+      <button id="edit-post">Editar</button>
+      <butgitton id="cancel-edit"></i>Cancelar</button>
+      <button id="delete-post">Delete</button>
+      <div id='numbers-like'>${post.likes}<div>
+      <button id='like'>Like</button>
       `
       )
-      .join('');
+      .join("");
   };
 
-  postButton.addEventListener('click', (event) => {
+  postButton.addEventListener("click", (event) => {
     event.preventDefault();
     newPost(textPost.value);
-    timeline.innerHTML = '';
+    timeline.innerHTML = "";
     loadPosts(postTemplate);
   });
 
-  buttonLogout.addEventListener('click', (event) => {
-    event.preventDefault();
-  });
+  buttonLogout.addEventListener('click', logout); // Executa a função de logout
+  
+  //buttonLogout.addEventListener("click", (event) => {
+  //  event.preventDefault();
+  //});
 
   return container;
 };
