@@ -48,7 +48,7 @@ export const home = (user) => {
       .map(
         (post) => `<p>${post.text}</p>
         <button id="edit-post">Editar</button>
-        <button id="cancel-edit"></i>Cancelar</button>
+        <butgitton id="cancel-edit"></i>Cancelar</button>
         <button id="delete-post">Delete</button>
         <div id='numbers-like'>${post.likes}<div>
         <button id='like'>Like</button>
