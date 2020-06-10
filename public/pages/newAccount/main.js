@@ -50,6 +50,7 @@ export const newAccount = () => {
 
     const email = document.querySelector('#account-user').value;
     const password = document.querySelector('#account-pass').value;
+    const name = 
 
     if (!mailformat.test(email)) {
       invalidEmail.push('Email inválido');
@@ -68,3 +69,7 @@ export const newAccount = () => {
 
   return container;
 };
+
+/*
+export const setDisplayName = (name) => (firebase.auth().currentUser.updateProfile({displayName: name}))
+*/

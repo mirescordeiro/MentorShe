@@ -26,10 +26,26 @@ export const loadPosts = (callback) => {
     .onSnapshot((querySnapshot) => {
       const posts = [];
       querySnapshot.forEach((doc) => {
-        posts.push(doc.data());
+        posts.push({
+          id: doc.id,
+          ...doc.data(),
+        });
       });
       callback(posts);
     });
+};
+
+export const deletePost = (postId) => {
+  firebase
+    .firestore()
+    .collection('posts')
+    .doc(postId)
+    .delete()
+    .then( function() {
+      console.log("Document successfully deleted!");
+    }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
 };
 
 export const logout = () => {

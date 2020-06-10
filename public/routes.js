@@ -12,6 +12,7 @@ export default {
 //se sim rederizar a pagina
 // se não voltar pro login
 
+/*
 export const initApp = function initApp() {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -32,3 +33,4 @@ export const initApp = function initApp() {
 
 window.onload = function () {
 };
+*/

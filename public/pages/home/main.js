@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts, logout } from "./data.js";
+import { newPost, loadPosts, logout, deletePost } from "./data.js";
 
 export const home = (user) => {
   const container = document.createElement("div");
@@ -49,11 +49,11 @@ export const home = (user) => {
     timeline.innerHTML = array
       .map(
         (post) => `<p>${post.text}</p>
-      <button id="edit-post">Editar</button>
-      <butgitton id="cancel-edit"></i>Cancelar</button>
-      <button id="delete-post">Delete</button>
-      <div id='numbers-like'>${post.likes}<div>
-      <button id='like'>Like</button>
+        <button id="edit-post">Editar</button>
+        <button id="cancel-edit"></i>Cancelar</button>
+        <button id="delete-post" data-postId= ${post.id}>Delete</button>
+        <div id='numbers-like'>${post.likes}<div>
+        <button id='like'>Like</button>
       `
       )
       .join("");
@@ -62,8 +62,13 @@ export const home = (user) => {
   postButton.addEventListener("click", (event) => {
     event.preventDefault();
     newPost(textPost.value);
-    timeline.innerHTML = "";
-    loadPosts(postTemplate);
+    timeline.innerHTML = '';
+    loadPosts(postTemplate)
+    .then(clear => {textPost = ''});
+  });
+  
+  deletePostBtn.addEventListener('click', (event) => {
+    console.log('oi')
   });
 
   buttonLogout.addEventListener('click', logout); // Executa a função de logout
@@ -74,3 +79,4 @@ export const home = (user) => {
 
   return container;
 };
+
