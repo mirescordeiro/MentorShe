@@ -1,7 +1,7 @@
 export const newAccount = () => {
   const container = document.createElement('div');
 
-  container.innerHTML = `<section id="new-account" class="flex center row-desk form">
+  container.innerHTML = `<form id="new-account" class="flex center row-desk form">
     <figure>
       <img src="./img/register.svg" alt="Ilustração de monitor e dois usuários" class="desktop">
     </figure>
@@ -16,11 +16,13 @@ export const newAccount = () => {
         <input id="account-pass" type="password" placeholder="mínimo 6 caracteres" required>
         <span id="pass-alert" class="alert"></span>
 
+        <span id=validation></span>
+
       </form>
       <button id="create-count" type="submit">CADASTRE-SE</button>
       <p class="footer">Já tem uma conta? <a href="#login">Acesse agora</a></p>
     </div>
-  </section>`;
+  </form>`;
 
   return container;
 };
