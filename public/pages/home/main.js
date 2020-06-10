@@ -1,11 +1,13 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-export const newPost = () => {
+import { newPost, loadPosts } from './data.js';
+
+export const home = () => {
   const container = document.createElement('div');
 
   container.innerHTML = ` 
       <div class="profile">
         <button id="profile">Perfil</button>
-        <button id="edit-button">Editar Perfil</button>
+        <button id="edit-profile">Editar Perfil</button>
         <button id="logout">Sair</button>        
       </div>
       <div class="profile-pic">
@@ -16,14 +18,11 @@ export const newPost = () => {
       <button id="public">Público</button>
       <button id="privacy">Privado</button>
         <form class='home'>
-          <input id='numbers-like' type='number'>
-          <button id='like'>Like</button>
-          <textarea name="post" id="post" placeholder="Compartilhe Conhecimento!"></textarea>
-          <button id="post-text">Compartilhar</button>
-          <button id="edit-post">Editar</button>
-          <button id="cancel-button"></i>Cancelar</button>
-          <button class="delete-post">Delete</button>
+          <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
+          <button id="post">Compartilhar</button>
+          <button id="image">Image</button>
         </form>
+      <div id='timeline'></div>
       `;
 
   const signInStatus = container.querySelector('#signin-status');
@@ -32,5 +31,33 @@ export const newPost = () => {
   const signUp = container.querySelector('#sign-up');
   const postInit = container.querySelector('#post-init');
 
+  const textPost = container.querySelector('#post-text');
+  const postButton = container.querySelector('#post');
+  const editButton = container.querySelector('#edit-post');
+  const cancelEditBtn = container.querySelector('#cancel-edit');
+  const deletePostBtn = container.querySelector('#delete-post');
+  const postPublic = container.querySelector('#public');
+  const postPrivate = container.querySelector('#privacy');
+  const likeButton = container.querySelector('#like');
+  const addImage = container.querySelector('#image');
+  const timeline = container.querySelector('#timeline');
+
+  postButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    newPost(textPost.value);
+    timeline.innerHTML = '';
+    loadPosts(postTemplate);
+  });
+
+  const postTemplate = (array) => {
+    timeline.innerHTML = array.map(post => `<p>${post.text}</p>
+      <button id="edit-post">Editar</button>
+      <button id="cancel-edit"></i>Cancelar</button>
+      <button id="delete-post">Delete</button>
+      <div id='numbers-like'>${post.likes}<div>
+      <button id='like'>Like</button>
+    `).join('');
+  };
   return container;
 };
+
