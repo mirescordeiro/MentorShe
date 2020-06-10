@@ -79,4 +79,3 @@ export const home = (user) => {
 
   return container;
 };
-
