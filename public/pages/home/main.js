@@ -1,22 +1,24 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts } from './data.js';
+import { newPost, loadPosts, logout, deletePost } from './data.js';
 
 export const home = (user) => {
   const container = document.createElement('div');
 
   container.innerHTML = ` 
       <div class="profile">
-        <button id="profile">Maria ${user.displayName != null ? user.displayName : ''}</button>
+        <button id="profile">Perfil ${
+          user.displayName != null ? user.displayName : 'Usuária'
+        }</button>
         <button id="edit-button">Editar Perfil</button>
         <button id="logout">Sair</button>        
       </div>
       <div class="profile-pic">
-      <figure id="user-img"></figure>
+        <figure id="user-img"></figure>
       </div>
       <div class="privacy">
-      <button class="post-button" id="publish">Publicar</button>
-      <button id="public">Público</button>
-      <button id="privacy">Privado</button>
+        <button class="post-button" id="publish">Publicar</button>
+        <button id="public">Público</button>
+        <button id="privacy">Privado</button>
         <form class='home'>
           <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
           <button id="post">Compartilhar</button>
@@ -48,8 +50,8 @@ export const home = (user) => {
       .map(
         (post) => `<p>${post.text}</p>
         <button id="edit-post">Editar</button>
-        <butgitton id="cancel-edit"></i>Cancelar</button>
-        <button id="delete-post">Delete</button>
+        <button id="cancel-edit"></i>Cancelar</button>
+        <button id="delete-post" data-postId= ${post.id}>Delete</button>
         <div id='numbers-like'>${post.likes}<div>
         <button id='like'>Like</button>
       `
@@ -61,12 +63,20 @@ export const home = (user) => {
     event.preventDefault();
     newPost(textPost.value);
     timeline.innerHTML = '';
-    loadPosts(postTemplate);
+    loadPosts(postTemplate).then((clear) => {
+      textPost = '';
+    });
   });
 
-  buttonLogout.addEventListener('click', (event) => {
-    event.preventDefault();
+  deletePostBtn.addEventListener('click', (event) => {
+    console.log('oi');
   });
+
+  buttonLogout.addEventListener('click', logout); // Executa a função de logout
+
+  //buttonLogout.addEventListener("click", (event) => {
+  //  event.preventDefault();
+  //});
 
   return container;
 };
