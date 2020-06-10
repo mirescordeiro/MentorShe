@@ -48,11 +48,14 @@ export const deletePost = (postId) => {
   });
 };
 
-firebase
-  .auth()
-  .signOut()
-  .then(() => {
-  })
-  .catch((error) => {
-    console.error('Error adding document: ', error);
-  });
+export const logout = () => {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      window.location.href = '#login' //Redireciona para a página de login
+    })
+    //.catch((error) => {
+    //  console.error("Error adding document: ", error);
+    //});
+}; 
