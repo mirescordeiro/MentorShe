@@ -52,6 +52,7 @@ export const newAccount = () => {
     const password = document.querySelector('#account-pass').value;
     //const name = document.querySelector('#account-pass')
 
+
     if (!mailformat.test(email)) {
       invalidEmail.push('Email inválido');
     }

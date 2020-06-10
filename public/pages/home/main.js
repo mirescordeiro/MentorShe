@@ -75,4 +75,3 @@ export const home = () => {
   buttonLogout.addEventListener('click', logout);
   return container;
 };
-
