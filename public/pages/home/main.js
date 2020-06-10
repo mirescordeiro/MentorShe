@@ -2,12 +2,13 @@
 import { newPost, loadPosts } from './data.js';
 
 export const home = () => {
+
   const container = document.createElement('div');
 
   container.innerHTML = ` 
       <div class="profile">
-        <button id="profile">Perfil</button>
-        <button id="edit-profile">Editar Perfil</button>
+        <button id="profile">Perfil ${user.displayName != null ? user.displayName : 'Usuária'}</button>
+        <button id="edit-button">Editar Perfil</button>
         <button id="logout">Sair</button>        
       </div>
       <div class="profile-pic">
@@ -57,7 +58,7 @@ export const home = () => {
       <div id='numbers-like'>${post.likes}<div>
       <button id='like'>Like</button>
     `).join('');
-  };
+  }
   return container;
 };
 

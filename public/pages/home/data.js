@@ -26,6 +26,3 @@ export const loadPosts = (callback) => {
     callback(posts);
   });
 };
-
-
-

@@ -33,7 +33,8 @@ export const login = () => {
   const validationMailLogin = container.querySelector('#email-alert');
   const validationLogin = container.querySelector('#validation-login');
 
-  loginButton.addEventListener('click', () => {
+  loginButton.addEventListener('click', (event) => {
+    event.preventDefault();
     const invalidPassLogin = [];
     const invalidEmailLogin = [];
     const invalidFirebaseLogin = [];
