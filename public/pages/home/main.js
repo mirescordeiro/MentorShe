@@ -12,12 +12,12 @@ export const home = () => {
         <button id="logout">Sair</button>        
       </div>
       <div class="profile-pic">
-      <figure id="user-img"></figure>
+        <figure id="user-img"></figure>
       </div>
       <div class="privacy">
-      <button class="post-button" id="publish">Publicar</button>
-      <button id="public">Público</button>
-      <button id="privacy">Privado</button>
+        <button class="post-button" id="publish">Publicar</button>
+        <button id="public">Público</button>
+        <button id="privacy">Privado</button>
         <form class='home'>
           <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
           <button id="post">Compartilhar</button>
