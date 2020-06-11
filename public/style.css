@@ -194,7 +194,8 @@ body #home{
 .top {
   padding: 10px;
   background: #3F1583;
-  border-radius: 10px 10px 0px 0px;
+  color: white;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .bottom {
@@ -245,7 +246,10 @@ body #home{
 .privacy {
   width: 100vw;
   text-align: -webkit-center;
-  margin-top: 30vh;
+}
+
+#timeline{
+  position: absolute;
 }
 
 .post {
@@ -254,12 +258,12 @@ body #home{
   width: 40vh; */
   margin: 27px;
   padding: 10px;
-  position: absolute;
+
   width: 279.15px;
   height: 175px;
   left: 20.42px;
   top: 74.39px;
-  
+
   background: #FFFFFF;
   border: 2px solid #3F1583;
   box-sizing: border-box;
@@ -277,6 +281,7 @@ nav {
   padding: 5px;
   align-items: center;
   justify-content: space-between;
+  z-index: 10;
 }
 
 .nav h1{
@@ -294,14 +299,14 @@ nav {
 }
 
 #post-text {
-  width: 70%;
-  height: 60%;
+  width: 90%;
+  height: 65%;
   margin: 9px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 3px solid #C285FF;
   border-radius: 10px;
-  background-color: rgba(255, 149, 147, 0.15);
+  background-color: rgba(255, 149, 147, 0.15); 
   font-size: 12px;
   resize: none;
   font-family: 'Source Sans Pro', sans-serif;
