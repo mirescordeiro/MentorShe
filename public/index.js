@@ -1,6 +1,6 @@
 // Este é o ponto de entrada de sua aplicação
 import routes from './routes.js';
-import { home } from './pages/home/main.js';
+
 
 const main = document.querySelector('#root');
 
@@ -12,18 +12,8 @@ const renderPage = () => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      console.log(user);
-      switch (page) {
-        case 'home':
-          main.appendChild(home(user));
-          break;
-
-        default:
-          main.appendChild(routes[page]);
-          break;
-      }
+      main.appendChild(routes[page]);
     } else {
-      // switch case, se for diferente de home routes
       switch (page) {
         case page !== 'home':
           main.appendChild(routes[page]);
