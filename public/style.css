@@ -152,6 +152,22 @@ body {
   display: none;
 }
 
+.profile {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home {
+  position: absolute;
+    width: 440px;
+    height: 175px;
+    align-content: center;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
 @media (min-width: 900px) {
   .mobile {
     display: none;

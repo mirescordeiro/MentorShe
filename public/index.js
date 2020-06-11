@@ -15,15 +15,15 @@ const renderPage = () => {
       main.appendChild(routes[page]);
     } else {
       switch (page) {
-        case page!=='home':
+        case page !== 'home':
           main.appendChild(routes[page]);
           break;
         default:
           main.appendChild(routes['login']);
           break;
+      }
     }
-  }
-})
+  });
 };
 
 const init = () => window.addEventListener('hashchange', renderPage);
@@ -31,4 +31,4 @@ const init = () => window.addEventListener('hashchange', renderPage);
 window.addEventListener('load', () => {
   renderPage();
   init();
-})
+});

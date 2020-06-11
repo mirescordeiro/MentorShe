@@ -6,7 +6,7 @@ export const home = () => {
 
   container.innerHTML = ` 
       <div class="profile">
-        <button id="profile">Perfil ${firebase.auth().currentUser ? firebase.auth().currentUser.displayName : 'Usuária'}</button>
+        <button id="profile">Perfil ${firebase.auth().currentUser? firebase.auth().currentUser.displayName: 'Usuária'}</button>
         <button id="edit-button">Editar Perfil</button>
         <button id="logout">Sair</button>        
       </div>
@@ -25,11 +25,11 @@ export const home = () => {
       <div id='timeline'></div>
       `;
 
-  const signInStatus = container.querySelector("#signin-status");
-  const signIn = container.querySelector("#sign-in");
-  const accountDetails = container.querySelector("#account-details");
-  const signUp = container.querySelector("#sign-up");
-  const postInit = container.querySelector("#post-init");
+  const signInStatus = container.querySelector('#signin-status');
+  const signIn = container.querySelector('#sign-in');
+  const accountDetails = container.querySelector('#account-details');
+  const signUp = container.querySelector('#sign-up');
+  const postInit = container.querySelector('#post-init');
 
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#post');
@@ -43,52 +43,32 @@ export const home = () => {
   const buttonLogout = container.querySelector('#logout');
 
   const postTemplate = (array) => {
-    timeline.innerHTML = ''
+    timeline.innerHTML = '';
     array
-      .map(
-        (post) => {
-        const template = document.createElement('div')
+      .map((post) => {
+        const template = document.createElement('div');
         template.innerHTML = `<p>${post.text}</p>
         <button id="edit-post">Editar</button>
         <button id="cancel-edit"></i>Cancelar</button>
         <button id="delete-post" data-postid= ${post.id}>Delete</button>
         <div id='numbers-like'>${post.likes}<div>
         <button id='like'>Like</button>
-      `
-      const deletePostBtn = template.querySelector('#delete-post');
-      deletePostBtn.addEventListener('click', (event) => {
-        deletePost(deletePostBtn.dataset.postid)
-      });
-      timeline.appendChild(template)
-    })
-    .join('');
+      `;
+        const deletePostBtn = template.querySelector('#delete-post');
+        deletePostBtn.addEventListener('click', (event) => {
+          deletePost(deletePostBtn.dataset.postid);
+        });
+        timeline.appendChild(template);
+      })
+      .join('');
   };
 
-  postButton.addEventListener("click", (event) => {
+  postButton.addEventListener('click', (event) => {
     event.preventDefault();
     newPost(textPost.value);
-<<<<<<< HEAD
-    timeline.innerHTML = "";
-    loadPosts(postTemplate).then((clear) => {
-      textPost = "";
-    });
-  });
-
-  deletePostBtn.addEventListener("click", (event) => {
-    console.log("oi");
-  });
-
-  buttonLogout.addEventListener("click", logout); // Executa a função de logout
-
-  //buttonLogout.addEventListener("click", (event) => {
-  //  event.preventDefault();
-  //});
-=======
     timeline.innerHTML = '';
-    loadPosts(postTemplate)
-    //.then(clear => {textPost = ''});
+    loadPosts(postTemplate);
   });
->>>>>>> bdd906ecf32f12830759f200cfb55833886285a6
 
   buttonLogout.addEventListener('click', logout);
   return container;
