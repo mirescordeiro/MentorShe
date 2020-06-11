@@ -45,15 +45,8 @@ export const logout = () => {
   firebase
     .auth()
     .signOut()
-<<<<<<< HEAD
     .then(() => {
-      window.location.href = '#login' //Redireciona para a página de login
-    })
-    //.catch((error) => {
-    //  console.error("Error adding document: ", error);
-    //});
-=======
-    .then(() => {window.location.href = '#login';}); //Redireciona para a página de login
-    //.catch((error) => {console.error("Error adding document: ", error);});
->>>>>>> 77da8f4ccd6194b24ab130e77c0316af358de229
+      window.location.href = '#login';
+    }); //Redireciona para a página de login
+  //.catch((error) => {console.error("Error adding document: ", error);});
 };

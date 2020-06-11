@@ -32,8 +32,8 @@ body {
 /*------------*/
 
 /*login*/
-.login h1{
-  font-family: 'Source Sans Pro', sans-serif;
+.login h1 {
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 2.8em;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -41,14 +41,14 @@ body {
   text-align: center;
 }
 
-.login strong{
+.login strong {
   font-weight: 900;
-  color: #3F1583;
+  color: #3f1583;
 }
 
 .alert {
-  color: #3F1583;
-  font-family: 'Source Sans Pro', sans-serif;
+  color: #3f1583;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 0.7em;
   letter-spacing: 0.01em;
@@ -57,7 +57,7 @@ body {
 }
 
 .welcome {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-weight: 500;
   font-size: 0.87em;
   letter-spacing: 0.02em;
@@ -71,30 +71,31 @@ body {
   margin-bottom: 3px;
 }
 
-.form img{
+.form img {
   width: 100%;
 }
 
 .form h2 {
-  color: #3F1583;
-  font-family: 'Source Sans Pro', sans-serif;
+  color: #3f1583;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.form label{
+.form label {
   align-self: start;
   margin-bottom: 3px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 1em;
   padding-left: 12px;
   text-align: initial;
 }
 
-.form input, .login input{
+.form input,
+.login input {
   border-radius: 20px;
   border: 2px solid black;
   height: 35px;
@@ -104,21 +105,22 @@ body {
 }
 
 ::placeholder {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 1em;
 }
 
-:focus:active{
-  border-color: #3F1583;
+:focus:active {
+  border-color: #3f1583;
 }
 
-.form button, .login button {
+.form button,
+.login button {
   border-radius: 20px;
-  border-color: #3F1583;
+  border-color: #3f1583;
   border-style: none;
-  background-color: #3F1583;
+  background-color: #3f1583;
   color: white;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-weight: 500;
   font-size: 0.95em;
   letter-spacing: 0.01em;
@@ -128,15 +130,18 @@ body {
 }
 
 .form button:hover {
-  background-color: #C285FF;
+  background-color: #c285ff;
 }
 
-.form a, .login a {
-  color: #3F1583;
+.form a,
+.login a {
+  color: #3f1583;
 }
 
-.remember, .psw, .footer {
-  font-family: 'Source Sans Pro', sans-serif;
+.remember,
+.psw,
+.footer {
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 0.85em;
   margin-top: 12px;
@@ -158,20 +163,20 @@ body {
 }
 
 .post {
-    width: 440px;
-    height: 175px;
-    align-content: center;
-    background: #FFFFFF;
-    border: 2px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
+  width: 440px;
+  height: 175px;
+  align-content: center;
+  background: #ffffff;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 @media (min-width: 900px) {
   .mobile {
     display: none;
   }
-  
+
   .desktop {
     display: block;
   }
@@ -192,11 +197,12 @@ body {
     width: 50vw;
   }
 
-  .form img{
+  .form img {
     width: 43vw;
   }
 
-  .form input, .login input{
+  .form input,
+  .login input {
     width: 25vw;
   }
 
@@ -204,64 +210,82 @@ body {
     width: 25vw;
   }
 
-  .all-posts{
+  .all-posts {
     width: 25vw;
     border-style: dotted;
     border-color: rgb(202, 236, 9);
     padding: 10px;
+    margin-top: 10px;
   }
-  .top{
+
+  .top {
     border-style: dotted;
     border-color: deeppink;
     padding: 10px;
   }
-  .bottom{
+
+  .bottom {
     border-style: dotted;
     border-color: rgb(116, 8, 65);
     padding: 10px;
   }
-  .like{
+
+  .like {
     border-style: dotted;
     border-color: deepskyblue;
     padding: 10px;
   }
-  .numbers-like{
+
+  .numbers-like {
     border-style: dotted;
     border-color: rgb(96, 192, 41);
     padding: 10px;
   }
-  #like{
+
+  #like {
     border-style: dotted;
     border-color: rgb(255, 20, 20);
   }
-  #delete-post{
+
+  #delete-post {
     border-style: dotted;
     border-color: rgb(20, 255, 165);
   }
+
   #logout {
     width: 45px;
     height: 20px;
     padding: 5px, 10px;
-    background-color: #3F1583;
+    background-color: #3f1583;
     border-radius: 5px;
     border-style: none;
     color: white;
     padding: 5px 0px 20px 0px;
-    font-family: 'Fire Code', monospace;
+    font-family: "Fire Code", monospace;
     cursor: pointer;
   }
+
   .privacy {
     width: 100vw;
+    text-align: -webkit-center;
+    margin-top: 30vh;
   }
-  nav{
+
+  .post {
+    height: 35vh;
+    display: grid;
+  }
+
+  nav {
     border-style: double;
     position: fixed;
     display: flex;
     right: 0;
     top: 0%;
-    width: 98%;
+    width: 99.98%;
     height: 65px;
     margin-top: 0px;
+    padding: 5px;
     justify-content: space-between;
     align-items: center;
   }
@@ -269,16 +293,19 @@ body {
   #post-text {
     width: 300px;
     height: 150px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
   }
 
   #publish {
-    padding:5px 15px; 
-    background:#3F1583;
+    padding: 5px 15px;
+    background: #3f1583;
     color: white;
-    font-family: 'Fira Code', monospace; 
-    border:0 none;
-    cursor:pointer;
+    font-family: "Fira Code", monospace;
+    border: 0 none;
+    cursor: pointer;
     border-radius: 5px;
+    width: 30vh;
+    margin-top: 5px;
   }
+}
 /*------------*/

@@ -34,7 +34,7 @@ export const home = () => {
   const postPublic = container.querySelector('#public');
   const postPrivate = container.querySelector('#privacy');
   const likeButton = container.querySelector('#like');
-  const addImage = container.querySelector('#image');
+  const addImage = container.querySelector('#image'); 
   const timeline = container.querySelector('#timeline');
   const buttonLogout = container.querySelector('#logout');
 
@@ -45,7 +45,7 @@ export const home = () => {
         const template = document.createElement('div');
         template.innerHTML = `
         <div class='all-posts'>
-          <div class='top'></div>
+          <div class='top'>Nome do usuário</div>
           <p>${post.text}</p>
           <div class='bottom'>
             <div class='like'>
