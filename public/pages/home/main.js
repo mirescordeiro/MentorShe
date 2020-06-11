@@ -62,17 +62,18 @@ export const home = (user) => {
   postButton.addEventListener("click", (event) => {
     event.preventDefault();
     newPost(textPost.value);
-    timeline.innerHTML = '';
-    loadPosts(postTemplate)
-    .then(clear => {textPost = ''});
-  });
-  
-  deletePostBtn.addEventListener('click', (event) => {
-    console.log('oi')
+    timeline.innerHTML = "";
+    loadPosts(postTemplate).then((clear) => {
+      textPost = "";
+    });
   });
 
-  buttonLogout.addEventListener('click', logout); // Executa a função de logout
-  
+  deletePostBtn.addEventListener("click", (event) => {
+    console.log("oi");
+  });
+
+  buttonLogout.addEventListener("click", logout); // Executa a função de logout
+
   //buttonLogout.addEventListener("click", (event) => {
   //  event.preventDefault();
   //});
