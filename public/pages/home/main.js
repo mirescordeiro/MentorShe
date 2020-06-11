@@ -34,7 +34,7 @@ export const home = () => {
   const postPublic = container.querySelector('#public');
   const postPrivate = container.querySelector('#privacy');
   const likeButton = container.querySelector('#like');
-  const addImage = container.querySelector('#image'); 
+  const addImage = container.querySelector('#image');
   const timeline = container.querySelector('#timeline');
   const buttonLogout = container.querySelector('#logout');
 
