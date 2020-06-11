@@ -5,24 +5,20 @@
 export const newPost = (textareaPost) => {
   firebase
     .firestore()
-    .collection("posts")
+    .collection('posts')
     .add({
       text: textareaPost,
       likes: 0,
       comments: [],
     })
-    .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
+    .then((docRef) => {console.log('Document written with ID: ', docRef.id);})
+    .catch((error) => {console.error('Error adding document: ', error);});
 };
 
 export const loadPosts = (callback) => {
   firebase
     .firestore()
-    .collection("posts")
+    .collection('posts')
     .onSnapshot((querySnapshot) => {
       const posts = [];
       querySnapshot.forEach((doc) => {
@@ -41,21 +37,14 @@ export const deletePost = (postId) => {
     .collection('posts')
     .doc(postId)
     .delete()
-    .then( function() {
-      console.log("Document successfully deleted!");
-    }).catch(function(error) {
-      console.error("Error removing document: ", error);
-  });
+    .then(() => {console.log('Document successfully deleted!');})
+    .catch((error) => {console.error('Error removing document: ', error);});
 };
 
 export const logout = () => {
   firebase
     .auth()
     .signOut()
-    .then(() => {
-      window.location.href = '#login' //Redireciona para a página de login
-    })
-    //.catch((error) => {
-    //  console.error("Error adding document: ", error);
-    //});
-}; 
+    .then(() => {window.location.href = '#login';}); //Redireciona para a página de login
+    //.catch((error) => {console.error("Error adding document: ", error);});
+};
