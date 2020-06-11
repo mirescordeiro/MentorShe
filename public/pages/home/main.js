@@ -21,19 +21,12 @@ export const home = () => {
     </section>
     `;
 
-  const signInStatus = container.querySelector('#signin-status');
-  const signIn = container.querySelector('#sign-in');
-  const accountDetails = container.querySelector('#account-details');
-  const signUp = container.querySelector('#sign-up');
-  const postInit = container.querySelector('#post-init');
-
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#publish');
   const editButton = container.querySelector('#edit-button');
   const cancelEditBtn = container.querySelector('#cancel-edit');
   const postPublic = container.querySelector('#public');
   const postPrivate = container.querySelector('#privacy');
-  const likeButton = container.querySelector('#like');
   const addImage = container.querySelector('#image');
   const timeline = container.querySelector('#timeline');
   const buttonLogout = container.querySelector('#logout');
@@ -60,6 +53,9 @@ export const home = () => {
         deletePostBtn.addEventListener('click', () => {
           deletePost(deletePostBtn.dataset.postid);
         });
+
+        const likeButton = container.querySelector('#like');
+
         timeline.appendChild(template);
       })
       .join('');
