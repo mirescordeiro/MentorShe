@@ -9,7 +9,7 @@ export const home = () => {
 
   container.innerHTML = ` 
     <nav>
-      <h1>mentor<strong>she</strong></h1>
+      <h1>mentor<strong id="strong">she</strong></h1>
       <button id="logout">Sair</button>    
     </nav>
     <section class="privacy">
@@ -57,7 +57,7 @@ export const home = () => {
         </div>
       `;
         const deletePostBtn = template.querySelector('#delete-post');
-        deletePostBtn.addEventListener('click', (event) => {
+        deletePostBtn.addEventListener('click', () => {
           deletePost(deletePostBtn.dataset.postid);
         });
         timeline.appendChild(template);

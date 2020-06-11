@@ -11,6 +11,11 @@ body {
   height: 100vh;
 }
 
+body #home{
+  background-color: #C285FF;
+  opacity: 0.3;
+}
+
 /* containers */
 .flex {
   display: flex;
@@ -163,13 +168,158 @@ body {
 }
 
 .post {
-  width: 440px;
+  width: 50vh;
   height: 175px;
   align-content: center;
   background: #ffffff;
   border: 2px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
+}
+
+/*------------------------------------------------------*/
+
+.all-posts {
+  width: 279.15px;
+  border-style: solid;
+  border-color: #000000;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+body #home{
+  opacity: 0.3;
+}
+
+.top {
+  padding: 10px;
+  background: #3F1583;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.bottom {
+  border-style: dotted;
+  border-color: rgb(116, 8, 65);
+  padding: 10px;
+}
+
+.like {
+  border-style: dotted;
+  border-color: deepskyblue;
+  padding: 10px;
+}
+
+.numbers-like {
+  border-style: dotted;
+  border-color: rgb(96, 192, 41);
+  padding: 10px;
+}
+
+#like {
+  border-style: dotted;
+  border-color: rgb(255, 20, 20);
+}
+
+#delete-post {
+  border-style: dotted;
+  border-color: rgb(20, 255, 165);
+}
+
+#strong{
+  color: #3F1583;
+}
+
+#logout {
+  width: 45px;
+  height: 20px;
+  padding: 5px, 10px;
+  background-color: #3f1583;
+  border-radius: 5px;
+  border-style: none;
+  color: white;
+  padding: 5px 0px 20px 0px;
+  font-family: "Fire Code", monospace;
+  cursor: pointer;
+}
+
+.privacy {
+  width: 100vw;
+  text-align: -webkit-center;
+  margin-top: 30vh;
+}
+
+.post {
+  /*height: 35vh;
+  display: grid;
+  width: 40vh; */
+  margin: 27px;
+  padding: 10px;
+  position: absolute;
+  width: 279.15px;
+  height: 175px;
+  left: 20.42px;
+  top: 74.39px;
+  
+  background: #FFFFFF;
+  border: 2px solid #3F1583;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+nav {
+  background-color: white;
+  position: fixed;
+  display: flex;
+  right: 0;
+  top: 0%;
+  width: 99.98%;
+  height: 65px;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav h1{
+  font-family: Source Sans Pro;
+  font-size: 29.5318px;
+  font-style: normal;
+  font-weight: normal;
+  height: 37.05px;
+  left: 91.37px;
+  line-height: 37px;
+  margin: auto;
+  position: absolute;
+  top: 5.06px;
+  width: 137.27px;
+}
+
+#post-text {
+  width: 70%;
+  height: 60%;
+  margin: 9px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 3px solid #C285FF;
+  border-radius: 10px;
+  background-color: rgba(255, 149, 147, 0.15);
+  font-size: 12px;
+  resize: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  
+  /*position: absolute;*/
+}
+
+#publish {
+  padding: 5px 15px;
+  background: #3f1583;
+  color: white;
+  font-family: "Fira Code", monospace;
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 15vh;
+  margin-top: 5px;
 }
 
 @media (min-width: 900px) {
@@ -208,104 +358,6 @@ body {
 
   .register {
     width: 25vw;
-  }
-
-  .all-posts {
-    width: 25vw;
-    border-style: dotted;
-    border-color: rgb(202, 236, 9);
-    padding: 10px;
-    margin-top: 10px;
-  }
-
-  .top {
-    border-style: dotted;
-    border-color: deeppink;
-    padding: 10px;
-  }
-
-  .bottom {
-    border-style: dotted;
-    border-color: rgb(116, 8, 65);
-    padding: 10px;
-  }
-
-  .like {
-    border-style: dotted;
-    border-color: deepskyblue;
-    padding: 10px;
-  }
-
-  .numbers-like {
-    border-style: dotted;
-    border-color: rgb(96, 192, 41);
-    padding: 10px;
-  }
-
-  #like {
-    border-style: dotted;
-    border-color: rgb(255, 20, 20);
-  }
-
-  #delete-post {
-    border-style: dotted;
-    border-color: rgb(20, 255, 165);
-  }
-
-  #logout {
-    width: 45px;
-    height: 20px;
-    padding: 5px, 10px;
-    background-color: #3f1583;
-    border-radius: 5px;
-    border-style: none;
-    color: white;
-    padding: 5px 0px 20px 0px;
-    font-family: "Fire Code", monospace;
-    cursor: pointer;
-  }
-
-  .privacy {
-    width: 100vw;
-    text-align: -webkit-center;
-    margin-top: 30vh;
-  }
-
-  .post {
-    height: 35vh;
-    display: grid;
-  }
-
-  nav {
-    border-style: double;
-    position: fixed;
-    display: flex;
-    right: 0;
-    top: 0%;
-    width: 99.98%;
-    height: 65px;
-    margin-top: 0px;
-    padding: 5px;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #post-text {
-    width: 300px;
-    height: 150px;
-    font-family: "Source Sans Pro", sans-serif;
-  }
-
-  #publish {
-    padding: 5px 15px;
-    background: #3f1583;
-    color: white;
-    font-family: "Fira Code", monospace;
-    border: 0 none;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 30vh;
-    margin-top: 5px;
   }
 }
 /*------------*/
