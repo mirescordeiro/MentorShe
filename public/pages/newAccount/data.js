@@ -3,9 +3,8 @@ export const handleSignUp = ({ email, password, name }, callback) => {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then((user) => {
-      //apos criar usuario ja envia o email de verificacao da conta
       firebase.auth().currentUser.sendEmailVerification();
-      firebase.auth().currentUser.updateProfile({displayName: name})
+      firebase.auth().currentUser.updateProfile({ displayName: name });
       callback(user);
     })
     .catch((error) => {

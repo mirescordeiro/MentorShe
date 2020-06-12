@@ -57,7 +57,7 @@ export const home = () => {
         </div>
       `;
         const deletePostBtn = template.querySelector('#delete-post');
-        deletePostBtn.addEventListener('click', (event) => {
+        deletePostBtn.addEventListener('click', () => {
           deletePost(deletePostBtn.dataset.postid);
         });
         timeline.appendChild(template);

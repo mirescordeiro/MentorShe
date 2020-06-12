@@ -167,6 +167,84 @@ body {
     border-radius: 10px;
 }
 
+.all-posts{
+  width: 25vw;
+  border-style: dotted;
+  border-color: rgb(202, 236, 9);
+  padding: 10px;
+}
+.top{
+  border-style: dotted;
+  border-color: deeppink;
+  padding: 10px;
+}
+.bottom{
+  border-style: dotted;
+  border-color: rgb(116, 8, 65);
+  padding: 10px;
+}
+.like{
+  border-style: dotted;
+  border-color: deepskyblue;
+  padding: 10px;
+}
+.numbers-like{
+  border-style: dotted;
+  border-color: rgb(96, 192, 41);
+  padding: 10px;
+}
+#like{
+  border-style: dotted;
+  border-color: rgb(255, 20, 20);
+}
+#delete-post{
+  border-style: dotted;
+  border-color: rgb(20, 255, 165);
+}
+#logout {
+  width: 45px;
+  height: 20px;
+  padding: 5px, 10px;
+  background-color: #3F1583;
+  border-radius: 5px;
+  border-style: none;
+  color: white;
+  padding: 5px 0px 20px 0px;
+  font-family: 'Fire Code', monospace;
+  cursor: pointer;
+}
+.privacy {
+  width: 100vw;
+}
+nav{
+  border-style: double;
+  position: fixed;
+  display: flex;
+  right: 0;
+  top: 0%;
+  width: 98%;
+  height: 65px;
+  margin-top: 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#post-text {
+  width: 300px;
+  height: 150px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#publish {
+  padding:5px 15px; 
+  background:#3F1583;
+  color: white;
+  font-family: 'Fira Code', monospace; 
+  border:0 none;
+  cursor:pointer;
+  border-radius: 5px;
+}
+
 @media (min-width: 900px) {
   .mobile {
     display: none;
@@ -203,82 +281,4 @@ body {
   .register {
     width: 25vw;
   }
-
-  .all-posts{
-    width: 25vw;
-    border-style: dotted;
-    border-color: rgb(202, 236, 9);
-    padding: 10px;
-  }
-  .top{
-    border-style: dotted;
-    border-color: deeppink;
-    padding: 10px;
-  }
-  .bottom{
-    border-style: dotted;
-    border-color: rgb(116, 8, 65);
-    padding: 10px;
-  }
-  .like{
-    border-style: dotted;
-    border-color: deepskyblue;
-    padding: 10px;
-  }
-  .numbers-like{
-    border-style: dotted;
-    border-color: rgb(96, 192, 41);
-    padding: 10px;
-  }
-  #like{
-    border-style: dotted;
-    border-color: rgb(255, 20, 20);
-  }
-  #delete-post{
-    border-style: dotted;
-    border-color: rgb(20, 255, 165);
-  }
-  #logout {
-    width: 45px;
-    height: 20px;
-    padding: 5px, 10px;
-    background-color: #3F1583;
-    border-radius: 5px;
-    border-style: none;
-    color: white;
-    padding: 5px 0px 20px 0px;
-    font-family: 'Fire Code', monospace;
-    cursor: pointer;
-  }
-  .privacy {
-    width: 100vw;
-  }
-  nav{
-    border-style: double;
-    position: fixed;
-    display: flex;
-    right: 0;
-    top: 0%;
-    width: 98%;
-    height: 65px;
-    margin-top: 0px;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #post-text {
-    width: 300px;
-    height: 150px;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
-
-  #publish {
-    padding:5px 15px; 
-    background:#3F1583;
-    color: white;
-    font-family: 'Fira Code', monospace; 
-    border:0 none;
-    cursor:pointer;
-    border-radius: 5px;
-  }
-/*------------*/
+  
