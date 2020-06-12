@@ -55,6 +55,24 @@ export const deletePost = (postId) => {
     });
 };
 
+/*************** KELLY VER!!!!!*****************/
+// Increases the number of likes in a post using its id
+export const likePost = (postId, listenClick) => {
+  firebase
+    .firestore()
+    .collection('posts')
+    .doc(postId)
+    .set({
+      likes: listenClick,
+    }),{merge:true}
+    .then(() => {
+      console.log('Like successfully included!');
+    })
+    .catch((error) => {
+      console.error('Error liking document: ', error);
+    });
+};
+
 // Logout redirecting to the login page
 export const logout = () => {
   firebase
