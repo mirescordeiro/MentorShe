@@ -340,8 +340,6 @@ nav {
 } */
 .top {
   font-family: 'Fira Code', monospace;
-  border-style: dotted;
-  border-color: deeppink;
   padding: 10px;
 }
 
