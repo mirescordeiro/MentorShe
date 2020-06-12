@@ -10,15 +10,15 @@ export const home = () => {
 
   container.innerHTML = ` 
     <nav>
-      <h1>mentor<strong id="strong">she</strong></h1>
-      <button id="logout">Sair</button>    
+    <h1 id='logo-home'>mentor<strong id="strong">she</strong></h1>
+    <button id="logout">Sair</button>    
     </nav>
     <section class="privacy">
       <form id="post-form" class="post">
         <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
         <button id="publish" type="submit">Compartilhar</button>
       </form>
-    <div id='timeline'></div>
+      <div id='timeline'></div>
     </section>
     `;
 
@@ -46,8 +46,8 @@ export const home = () => {
           <p>${post.text}</p>
           <div class='bottom'>
             <div class='like'>
-              <div id='numbers-like'>${post.likes}<div>
-              <button id='like'${post.id}>Like</button>
+              <button id='like-button'>Like</button>
+              <p id='numbers-like'>${post.likes}<p>
             </div>
             <button id="delete-post" data-postid= ${post.id}>Delete</button>
           </div>
