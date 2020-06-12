@@ -1,8 +1,9 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost } from './data.js';
-import { loadPosts } from './data.js';
-import { deletePost } from './data.js';
-import { logout } from './data.js';
+import { newPost, loadPosts, deletePost, likePost, logout } from './data.js';
+//import { loadPosts } from './data.js';
+//import { deletePost } from './data.js';
+//import { logout } from './data.js';
+//import { likePost } from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -13,14 +14,15 @@ export const home = () => {
       <button id="logout">Sair</button>    
     </nav>
     <section class="privacy">
-      <form class='post'>
+      <form id="post-form" class="post">
         <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
-        <button id="publish">Compartilhar</button>
+        <button id="publish" type="submit">Compartilhar</button>
       </form>
     <div id='timeline'></div>
     </section>
     `;
 
+  const resetForm = container.querySelector('#post-form');
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#publish');
   const editButton = container.querySelector('#edit-button');
@@ -33,6 +35,8 @@ export const home = () => {
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';
+
+    // Template for the posts of the user
     array
       .map((post) => {
         const template = document.createElement('div');
@@ -43,31 +47,45 @@ export const home = () => {
           <div class='bottom'>
             <div class='like'>
               <div id='numbers-like'>${post.likes}<div>
-              <button id='like'>Like</button>
+              <button id='like'${post.id}>Like</button>
             </div>
             <button id="delete-post" data-postid= ${post.id}>Delete</button>
           </div>
         </div>
       `;
+
+        // Deletes the post when clicked
         const deletePostBtn = template.querySelector('#delete-post');
         deletePostBtn.addEventListener('click', () => {
           deletePost(deletePostBtn.dataset.postid);
         });
 
-        const likeButton = container.querySelector('#like');
-
+        /*************** KELLY VER!!!!!*****************/
+        // Likes the post when clicked
+        const likeButton = template.querySelector('#like');
+        likeButton.addEventListener('click', () => {
+          let likes = 0;
+          likes++;
+          likePost(likeButton.dataset.postid, likes);
+        });
+        
+        // Refresh timeline
         timeline.appendChild(template);
       })
       .join('');
   };
 
   timeline.innerHTML = loadPosts(postTemplate);
-
+  
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
+    if (textPost.value === '') {
+      return;
+    }
     newPost(textPost.value);
     timeline.innerHTML = '';
     loadPosts(postTemplate);
+    resetForm.reset();
   });
 
   buttonLogout.addEventListener('click', logout);
