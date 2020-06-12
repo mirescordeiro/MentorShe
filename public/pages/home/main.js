@@ -60,7 +60,7 @@ export const home = () => {
           deletePost(deletePostBtn.dataset.postid);
         });
 
-        /*************** KELLY VER!!!!!*****************/
+/*************** KELLY VER!!!!!*****************/
         // Likes the post when clicked
         const likeButton = template.querySelector('#like');
         likeButton.addEventListener('click', () => {
@@ -68,7 +68,7 @@ export const home = () => {
           likes++;
           likePost(likeButton.dataset.postid, likes);
         });
-        
+
         // Refresh timeline
         timeline.appendChild(template);
       })
@@ -76,7 +76,7 @@ export const home = () => {
   };
 
   timeline.innerHTML = loadPosts(postTemplate);
-  
+
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
     if (textPost.value === '') {

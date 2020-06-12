@@ -333,22 +333,7 @@ nav strong /*#strong*/{
   border-radius: 15px;
   width: fit-content;
   margin-top: 5px;
-<<<<<<< HEAD
-}
-
-/* .all-posts {
-  width: 25vw;
-  border-style: dotted;
-  border-color: rgb(202, 236, 9);
-  padding: 10px;
-} */
-.top {
-  font-family: 'Fira Code', monospace;
-  padding: 10px;
-}
-=======
 }*/
->>>>>>> ab6163bfed088b5555d67290740cb28e0289d4c4
 
 p {
   text-align: initial;
