@@ -11,29 +11,33 @@ export const newPost = (textareaPost) => {
       text: textareaPost,
       likes: 0,
       comments: [],
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
-    .then((docRef) => {console.log('Document written with ID: ', docRef.id);})
-    .catch((error) => {console.error('Error adding document: ', error);});
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
 };
 
 // Loads all the posts and listens to the new ones
 export const loadPosts = (callback) => {
   const load = firebase
-  .firestore()
-  .collection('posts')
-  .orderBy('timestamp', 'desc');
+    .firestore()
+    .collection('posts')
+    .orderBy('timestamp', 'desc');
   // Listening realtime for new posts
   load.onSnapshot((querySnapshot) => {
-      const posts = [];
-      querySnapshot.forEach((doc) => {
-        posts.push({
-          id: doc.id,
-          ...doc.data(),
-        });
+    const posts = [];
+    querySnapshot.forEach((doc) => {
+      posts.push({
+        id: doc.id,
+        ...doc.data(),
       });
-      callback(posts);
     });
+    callback(posts);
+  });
 };
 
 // Deletes a post using its id
@@ -43,14 +47,20 @@ export const deletePost = (postId) => {
     .collection('posts')
     .doc(postId)
     .delete()
-    .then(() => {console.log('Document successfully deleted!');})
-    .catch((error) => {console.error('Error removing document: ', error);});
+    .then(() => {
+      console.log('Document successfully deleted!');
+    })
+    .catch((error) => {
+      console.error('Error removing document: ', error);
+    });
 };
 
-// Logout redirecting to the login page 
+// Logout redirecting to the login page
 export const logout = () => {
   firebase
     .auth()
     .signOut()
-    .then(() => {window.location.href = '#login';});
+    .then(() => {
+      window.location.href = '#login';
+    });
 };
