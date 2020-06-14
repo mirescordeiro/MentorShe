@@ -6,7 +6,7 @@ export const newPost = (textareaPost) => {
   // Infos added in the new post
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .add({
       text: textareaPost,
       likes: 0,
@@ -14,10 +14,10 @@ export const newPost = (textareaPost) => {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
+      console.log("Document written with ID: ", docRef.id);
     })
     .catch((error) => {
-      console.error('Error adding document: ', error);
+      console.error("Error adding document: ", error);
     });
 };
 
@@ -25,8 +25,8 @@ export const newPost = (textareaPost) => {
 export const loadPosts = (callback) => {
   const load = firebase
     .firestore()
-    .collection('posts')
-    .orderBy('timestamp', 'desc');
+    .collection("posts")
+    .orderBy("timestamp", "desc");
   // Listening realtime for new posts
   load.onSnapshot((querySnapshot) => {
     const posts = [];
@@ -44,32 +44,35 @@ export const loadPosts = (callback) => {
 export const deletePost = (postId) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .doc(postId)
     .delete()
     .then(() => {
-      console.log('Document successfully deleted!');
+      console.log("Document successfully deleted!");
     })
     .catch((error) => {
-      console.error('Error removing document: ', error);
+      console.error("Error removing document: ", error);
     });
 };
 
-/*************** KELLY VER!!!!!*****************/
+/*************** KELLY VER!!!!! OK, RESOLVIDO*****************/
 // Increases the number of likes in a post using its id
 export const likePost = (postId, listenClick) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .doc(postId)
-    .set({
-      likes: listenClick,
-    }),{merge:true}
+    .set(
+      {
+        likes: listenClick,
+      },
+      { merge: true }
+    ) //merge: true tinha que estar dentro do objeto, estava fora, e por isso não funcionava
     .then(() => {
-      console.log('Like successfully included!');
+      console.log("Like successfully included!");
     })
     .catch((error) => {
-      console.error('Error liking document: ', error);
+      console.error("Error liking document: ", error);
     });
 };
 
@@ -79,6 +82,6 @@ export const logout = () => {
     .auth()
     .signOut()
     .then(() => {
-      window.location.href = '#login';
+      window.location.href = "#login";
     });
 };
