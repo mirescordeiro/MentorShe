@@ -2,6 +2,7 @@ import { toggleSignIn, loginGoogle } from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
+  container.classList.add('container-login');
 
   container.innerHTML = `<section id="login" class="flex center row-desk data">
       <figure>
@@ -19,10 +20,7 @@ export const login = () => {
         <button id="login-button" type="submit">ENTRAR</button>
         <button id="google-button" type="submit">Google</button>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
-
-
         <span id=validation-login></span>
-
       </form>
     </section>
   `;

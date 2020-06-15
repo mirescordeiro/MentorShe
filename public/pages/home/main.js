@@ -6,18 +6,24 @@ import { newPost, loadPosts, deletePost, likePost, logout } from './data.js';
 //  import { likePost } from './data.js';
 
 export const home = () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
+  container.classList.add('container-home');
+
 
   container.innerHTML = ` 
-    <nav>
-    <h1 id='logo-home'>mentor<strong id="strong">she</strong></h1>
-    <button id="logout">Sair</button>    
-    </nav>
-    <section class="privacy">
-      <form id="post-form" class="post">
-        <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
-        <button id="publish" type="submit">Compartilhar</button>
-      </form>
+    <header>
+      <nav>
+        <h1 id='logo-home'>mentor<strong id="strong">she</strong></h1>
+        <button id="logout">Sair</button>    
+      </nav>
+    </header>
+    <section class="news">
+      <div class='flex'>
+        <form id="post-form" class="post">
+          <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
+          <button id="publish" type="submit">Compartilhar</button>
+        </form>
+      </div>
       <div id='timeline'></div>
     </section>
     `;
@@ -39,13 +45,19 @@ export const home = () => {
     // Template for the posts of the user
     array
       .map((post) => {
-        const template = document.createElement('div');
+        const template = document.createElement("div");
+        template.classList.add('flex');
+
         template.innerHTML = `
         <div class='all-posts'>
-          <div class='top'>Nome do usuário</div>
-          <p>${post.text}</p>
+          <div class='top'>
+            <p>publicado por <strong>Nome do usuário</strong></p>
+          </div>
+          <div class='text'>
+            <p>${post.text}</p>
+          </div>
           <div class='bottom'>
-            <div class='like'>
+            <div class='flex like'>
               <button id='like-button' data-postid= ${post.id}>Like</button> <!-- Aqui coloquei o post.id para que o btn executasse a função de listener abaixo -->
               <p id='numbers-like'>${post.likes}<p>
             </div>
@@ -60,7 +72,6 @@ export const home = () => {
           deletePost(deletePostBtn.dataset.postid);
         });
 
-        /*************** KELLY VER!!!!!OK, RESOLVIDO*****************/
         // Likes the post when clicked
         const likeButton = template.querySelector('#like-button');
         likeButton.addEventListener('click', () => {
