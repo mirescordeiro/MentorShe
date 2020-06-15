@@ -2,6 +2,7 @@ import { toggleSignIn } from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
+  container.classList.add('container-login');
 
   container.innerHTML = `<section id="login" class="flex center row-desk data">
       <figure>
@@ -18,10 +19,7 @@ export const login = () => {
         <span id="pass-alert" class="alert"></span>
         <button id="login-button" type="submit">ENTRAR</button>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
-
-
         <span id=validation-login></span>
-
       </form>
     </section>
   `;
