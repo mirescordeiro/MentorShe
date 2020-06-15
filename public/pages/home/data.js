@@ -53,30 +53,34 @@ export const deletePost = (postId) => {
 };
 
 // Increases the number of likes in a post using its id
-export const likePost = (postId, listenClick, userId) => {
+export const likePost = (postId, userId) => { 
   firebase
     .firestore()
     .collection("posts")
     .doc(postId)
     .get()
     .then((doc) => {
+      //Array de usuários com todos os ids de usuários que já deram like nos posts
       let userIds = doc.data().likeUsers;
-
-      if (userIds.length === 0) {
-        const userArray = new Array(userId);
-        updateLike(listenClick, userArray, postId);
+      //Quantidade de likes do post
+      let likes = doc.data().likes;
+      
+      //Verifica se o userId contem userId do usuário que está clicando no like
+      if(userIds.includes(userId)){
+        //Se contém, ele decrementa o like
+        likes--;
+        //Encontra o indice do usuário no array
+        const index = userIds.findIndex(elem => elem === userId);
+        //Remove do array o usuário que tiver no indice
+        userIds.splice(index, 1);
+      }else {
+        //Se não, incrementa a soma de like
+        likes++;
+        //Adiciona no array de usuário o id do usuário
+        userIds.push(userId);
       }
 
-      userIds.forEach((user, index, object) => {
-        if (user === userId) {
-          listenClick--;
-          object.splice(index, 1);
-          updateLike(listenClick, object, postId);
-        } else {
-          object.push(userId);
-          updateLike(listenClick, object, postId);
-        }
-      });
+      updateLike(likes, userIds, postId);
     })
     .catch((error) => {
       console.log("error");
