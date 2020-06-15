@@ -1,7 +1,3 @@
-// incluir futuramente id e imagens
-// incluir where de público e privado
-
-// Saves a new post in the Database
 export const newPost = (textareaPost) => {
   // Infos added in the new post
   firebase
@@ -10,6 +6,7 @@ export const newPost = (textareaPost) => {
     .add({
       text: textareaPost,
       likes: 0,
+      likeUsers: [],
       comments: [],
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
@@ -55,19 +52,46 @@ export const deletePost = (postId) => {
     });
 };
 
-/*************** KELLY VER!!!!! OK, RESOLVIDO*****************/
 // Increases the number of likes in a post using its id
-export const likePost = (postId, listenClick) => {
+export const likePost = (postId, listenClick, userId) => {
   firebase
     .firestore()
     .collection("posts")
     .doc(postId)
-    .set(
-      {
-        likes: listenClick,
-      },
-      { merge: true }
-    ) //merge: true tinha que estar dentro do objeto, estava fora, e por isso não funcionava
+    .get()
+    .then((doc) => {
+      let userIds = doc.data().likeUsers;
+
+      if (userIds.length === 0) {
+        const userArray = new Array(userId);
+        updateLike(listenClick, userArray, postId);
+      }
+
+      userIds.forEach((user, index, object) => {
+        if (user === userId) {
+          listenClick--;
+          object.splice(index, 1);
+          updateLike(listenClick, object, postId);
+        } else {
+          object.push(userId);
+          updateLike(listenClick, object, postId);
+        }
+      });
+    })
+    .catch((error) => {
+      console.log("error");
+    });
+};
+
+const updateLike = (countLike, userArray, postId) => {
+  firebase
+    .firestore()
+    .collection("posts")
+    .doc(postId)
+    .update({
+      likes: countLike,
+      likeUsers: userArray,
+    })
     .then(() => {
       console.log("Like successfully included!");
     })
