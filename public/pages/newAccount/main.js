@@ -3,11 +3,11 @@ import { handleSignUp } from './data.js';
 export const newAccount = () => {
   const container = document.createElement('div');
 
-  container.innerHTML = `<form id="new-account" class="flex center row-desk form">
+  container.innerHTML = `<form id="new-account" class="flex center row-desk data">
     <figure>
       <img src="./img/register.svg" alt="Ilustração de monitor e dois usuários" class="desktop">
     </figure>
-    <div class="flex center column form">
+    <div class="flex center column data">
       <h2>Criar uma nova conta</h2>
       <form class="flex column register">
         <label for="email">Email</label>
