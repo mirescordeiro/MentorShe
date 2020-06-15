@@ -25,7 +25,6 @@ body {
 
 .center {
   align-items: center;
-  height: 100%;
 }
 
 .row-desk {
@@ -34,6 +33,21 @@ body {
 
 .column {
   flex-direction: column;
+}
+
+.container-login {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-home {
+  background-color: rgb(194, 133, 255, 0.30);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 /*------------*/
 
@@ -77,11 +91,11 @@ body {
   margin-bottom: 3px;
 }
 
-.form img {
+.data img {
   width: 100%;
 }
 
-.form h2 {
+.data h2 {
   color: #3f1583;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.5em;
@@ -90,7 +104,7 @@ body {
   text-align: center;
 }
 
-.form label {
+.data label {
   align-self: start;
   margin-bottom: 3px;
   font-family: 'Source Sans Pro', sans-serif;
@@ -100,7 +114,7 @@ body {
   text-align: initial;
 }
 
-.form input,
+.data input,
 .login input {
   border-radius: 20px;
   border: 2px solid black;
@@ -119,7 +133,7 @@ body {
   border-color: #3f1583;
 }
 
-.form button,
+.data button,
 .login button {
   border-radius: 20px;
   border-color: #3f1583;
@@ -135,11 +149,11 @@ body {
   height: 35px;
 }
 
-.form button:hover {
+.data button:hover {
   background-color: #c285ff;
 }
 
-.form a,
+.data a,
 .login a {
   color: #3f1583;
 }
@@ -167,191 +181,177 @@ body {
   display: flex;
   justify-content: space-around;
 }
+/*------------*/
 
-/*------------------------------------------------------*/
+/* HOME */
+
+/*nav*/
+nav {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  height: 65px;
+  padding: 0 25px; 
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+nav h1 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.85em;
+  font-style: normal;
+  font-weight: 400;
+  flex-grow: 1;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+nav strong {
+  color: #3f1583;
+}
+
+nav button { 
+  background-color: #3f1583;
+  border-radius: 5px;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  font-family: 'Fire Code', monospace;
+  flex-direction: row-reverse;
+  height: 20px;
+  padding: 0 10px;
+}
+/*------------*/
+
+/*posts*/
+.news { /*mudei a ordem pois a primeira coisa da página deve estar no topo*/
+  display: flex; /*mudei de initial para flex*/
+  justify-content: center; /*inseri para centralizar tudo*/
+  flex-direction: column;
+  padding-top: 90px;
+}
+
 .post {
-  width: 50vh;
-  height: 11em;/*175px*/
-  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background: #ffffff;
   border: 3px solid #3f1583;
-  box-sizing: border-box;
   border-radius: 10px;
-  margin: 27px;
-  width: 279.15px;
+  box-sizing: border-box;
+  height: 175px;/*11em em medidas de objetos é ok deixar o px eme é mais para fontes*/
+  /*width: 50vh; width repitido, e usando também o vh que é para altura*/
+  /*margin: 27px; desabilitei pois não precisa de margens agora com o flex global*/
+  width: 279px;
+}
+
+.post textarea {/*#post-text ao invés de privacy usei o post pois é o pai mais próximo*/
+  /*margin: 9px; com o flexbox não precisa mais de margem*/
+  box-sizing: border-box;
+  border: 3px solid #c285ff;
+  border-radius: 10px;
+  background-color: rgba(255, 149, 147, 0.15);
+  color: #4F4F4F;;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em; /*17px*/
+  font-weight: 600;
+  height: 108px;
+  text-align: left;
+  padding: 8px 12px 10px;/*achei que estava muito longe da margem, diminuí um pouco*/
+  resize: none;
+  width: 250px;
+}
+
+.post button { /*uni o botão do publish com o privacy, usar o post que é o pai mais próximo*/
+  align-self: flex-end;
+  background: #3f1583;
+  border: 0 none;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75em; /*10px*/
+  font-weight: 600;/*deixei no peso bold*/
+  padding: 5px 15px;
+  letter-spacing: 0.03em;
+  margin: 10px 12px 0; /*por causa do aling self tive que dar um espaço a direita*/
+  text-align: center;/*webkit é usado só para navegador específicos*/
+  width: fit-content;
 }
 
 .all-posts {
-  margin: 27px;
-  width: 279.15px;
-  background: #ffffff;
-  border: 3px solid #3f1583;
+  border: 2px solid #3f1583;
   border-radius: 10px;
+  margin-top: 20px;
+  width: 279px;
+  background: #ffffff;
 }
 
 .top {
-  padding: 10px;
   background: #3f1583;
-  color: white;
   border-radius: 5px 5px 0px 0px;
+  padding: 15px;
+}
+
+.top p {
+  color: white;
   font-family: 'Fira Code', monospace;
+  font-size: 0.65em;
+  font-weight: 500;
+}
+
+.top strong {/*criei um stron pro nome do usuário*/
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.text p { /*coloquei o p com seu pai mais próximo*/
+  font-family: 'Source Sans Pro';
+  font-size: 0.85em;
+  padding: 15px;
+  line-height: 1.4em;
+  overflow-wrap: break-word;
+  text-align: left; /*troquei para left ao invés de initial*/
 }
 
 .bottom {
   font-family: 'Source Sans Pro', sans-serif; 
   display: flex;
   justify-content: space-between;
-  padding: 2px
+  padding: 0 15px 10px;
 }
 
-.like {
-  display: flex;
-}
-
-.like button /*#like-button*/{
+.bottom button { /*usei um botão pros dois*/
   background: #3f1583;
   border: 0 none;
-  border-color: rgb(255, 20, 20);
   border-radius: 15px;
   border-style: dotted;
   color: white;
   cursor: pointer;
   font-family: 'Fira Code', monospace;
+  font-size: 0.75em;
+  font-weight: 600;
   height: fit-content;
   padding: 5px 15px;
 }
 
-.numbers-like {
-  border-color: rgb(96, 192, 41);
-  border-style: dotted;
-  padding: 10px;
-}
-
-.bottom button /*#delete-button*/{
-  padding: 5px 15px;
-  background: #3f1583;
-  color: white;
-  font-family: 'Fira Code', monospace;
-  border: 0 none;
-  cursor: pointer;
-  border-radius: 15px;
-  height: fit-content;
-}
-
-nav button /*#logout*/ { /*mudar o hash*/
-  width: 45px;
-  height: 20px;
-  padding: 5px, 10px;
-  background-color: #3f1583;
-  border-radius: 5px;
-  border-style: none;
-  color: white;
-  padding: 5px 0px 20px 0px;
-  font-family: 'Fire Code', monospace;
-  cursor: pointer;
-  flex-direction: row-reverse;
-}
-
-.privacy button { /*uni o botão do publish com o privacy*/
-  padding: 5px 15px;
-  background: #3f1583;
-  color: white;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.65em; /*10px*/
-  border: 0 none;
-  cursor: pointer;
-  border-radius: 15px;
-  width: fit-content;
-  margin-top: 5px;
-  text-align: -webkit-center;
-}
-
-#timeline {
-  position: absolute;
-}
-
-nav {
-  background-color: white;
-  position: fixed;
-  display: flex;
-  right: 0;
-  top: 0;
-  width: 100vw;
-  height: 65px;
-  padding: 0 20px; /* esse aqui pra não ficar global primeiro tem alto e baixo e depois lados*/
+.like p {
   align-items: center;
-  /*justify-content: space-between;*/
-  z-index: 1;
-}
-
-nav h1 /*#logo-home*/{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.84em; /*29.5318px*/
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  height: 37.05px;
-  text-align: center; /* pra alinhar dentro do div */
-  flex-grow: 1;
-  /*  left: 91.37px;*/
-  line-height: 37px;
-  /*margin: auto;*/
-  /*position: absolute;*/
-  /*padding: 5px;*/
-  /*top: 5.06px;*/
-  /*width: 137.27px;*/
-}
-
-nav strong /*#strong*/{
-  color: #3f1583;
-}
-
-.privacy textarea /*#post-text*/{
-  margin: 9px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 3px solid #c285ff;
-  border-radius: 10px;
-  background-color: rgba(255, 149, 147, 0.15);
-  resize: none;
-  font-family: 'Source Sans Pro', sans-serif;
-  width: 258px;
-  height: 110px;
-  font-size: 1.06em; /*17px*/
-  text-align: left;
-}
-
-/*#publish inseri na class privacy{
-  padding: 5px 15px;
-  background: #3f1583;
-  color: white;
+  color: #3F1583;
+  display: flex;
   font-family: 'Fira Code', monospace;
-  font-size: 10px;
-  width: 95px;
-  border: 0 none;
-  cursor: pointer;
-  border-radius: 15px;
-  width: fit-content;
-  margin-top: 5px;
-}*/
-
-p {
-  text-align: initial;
-  font-family: 'Source Sans Pro';
-  padding: 5px;
-  overflow-wrap: break-word;
+  font-size: 0.75em;
+  font-weight: 600;
+  padding-left: 10px;
 }
 
-.numbers-like {
-  border-style: dotted;
-  border-color: rgb(96, 192, 41);
-  padding: 10px;
-}
-
-.privacy {
-  display: initial;
-  width: 100vw;
-}
 
 ::-webkit-scrollbar-track {
   background-color: #3f1583;
@@ -384,15 +384,12 @@ p {
     font-size: 1em;
   }
 
-  figure {
-    width: 50vw;
+  .data figure {
+    width: 45vw;
+    margin: 0 5vw;
   }
 
-  .form img {
-    width: 43vw;
-  }
-
-  .form input,
+  .data input,
   .login input {
     width: 25vw;
   }
