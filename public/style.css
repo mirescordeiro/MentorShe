@@ -264,8 +264,8 @@ nav button /*#logout*/ { /*mudar o hash*/
   width: fit-content;
   margin-top: 5px;
   text-align: -webkit-center;
-  position: fixed;
-  left: 56%;
+  /*position: absolute;
+  left: 56%;*/
 }
 
 #timeline {
