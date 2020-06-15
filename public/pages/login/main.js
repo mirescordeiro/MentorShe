@@ -3,7 +3,7 @@ import { toggleSignIn } from './data.js';
 export const login = () => {
   const container = document.createElement('div');
 
-  container.innerHTML = `<section id="login" class="flex center row-desk form">
+  container.innerHTML = `<section id="login" class="flex center row-desk data">
       <figure>
         <img src="./img/login_mobile.svg" alt="Ilustração de dois navegadores abertos, no primeiro há uma seta grande que clica no segundo, no segundo há uma ovelha com uma mensagem de emoticon de coração" class="mobile">
         <img src="./img/login_desktop.svg" alt="Ilustração de três navegadores abertos, no primeiro há um coração, no segundo uma seta de correto, no terceiro uma emoticon sorrindo. No centro entre eles temos uma ovelha" class="desktop">
