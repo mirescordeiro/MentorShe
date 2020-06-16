@@ -49,6 +49,15 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
+.google-github{
+  display: flex;
+}
+
+.google-github p{
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+}
 /*------------*/
 
 /*login*/
