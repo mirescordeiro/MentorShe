@@ -54,10 +54,10 @@ export const home = () => {
           </div>
           <div class='bottom'>
             <div class='flex like'>
-              <button id='like-button' data-postid= ${post.id}>Like</button> <!-- Aqui coloquei o post.id para que o btn executasse a função de listener abaixo -->
+              <button id='like-button' data-postid= ${post.id}><span class='icon-like'></span></button>
               <p id='numbers-like'>${post.likes}<p>
             </div>
-            <button id="delete-post" data-postid= ${post.id}>Delete</button>
+            <button id="delete-post" class="delete" data-postid= ${post.id}><span class='icon-delete'></span></button>
           </div>
         </div>
       `;

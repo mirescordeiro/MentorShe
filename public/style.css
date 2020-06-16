@@ -11,11 +11,44 @@ body {
   height: 100vh;
 }
 
-/* body #home {
-  background-color: #c285ff;
-  opacity: 0.3;
-  display: flexbox;
-} */
+/* FONTS */
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?87ue3z');
+  src:  url('fonts/icomoon.eot?87ue3z#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?87ue3z') format('truetype'),
+    url('fonts/icomoon.woff?87ue3z') format('woff'),
+    url('fonts/icomoon.svg?87ue3z#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-comment:before {content: "\e900";}
+.icon-delete:before {content: "\e901";}
+.icon-facebook:before {content: "\e902";}
+.icon-github:before {content: "\e903";}
+.icon-google:before {content: "\e904";}
+.icon-image:before {content: "\e905";}
+.icon-like:before {content: "\e906";}
+/*------------*/
+
 
 /* containers */
 .flex {
@@ -267,7 +300,7 @@ nav button {
   background-color: rgba(255, 149, 147, 0.15);
   color: #4F4F4F;;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1em; /*17px*/
+  font-size: 0.9em; /*17px*/
   font-weight: 600;
   height: 108px;
   text-align: left;
@@ -284,7 +317,7 @@ nav button {
   color: white;
   cursor: pointer;
   font-family: 'Fira Code', monospace;
-  font-size: 0.75em; /*10px*/
+  font-size: 0.7em; /*10px*/
   font-weight: 600;/*deixei no peso bold*/
   padding: 5px 15px;
   letter-spacing: 0.03em;
@@ -324,7 +357,7 @@ nav button {
 .text p { /*coloquei o p com seu pai mais próximo*/
   font-family: 'Source Sans Pro';
   font-size: 0.85em;
-  padding: 15px;
+  padding: 15px 15px 10px;
   line-height: 1.4em;
   overflow-wrap: break-word;
   text-align: left; /*troquei para left ao invés de initial*/
@@ -334,21 +367,16 @@ nav button {
   font-family: 'Source Sans Pro', sans-serif; 
   display: flex;
   justify-content: space-between;
-  padding: 0 15px 10px;
+  padding: 0 5px 8px;
 }
 
-.bottom button { /*usei um botão pros dois*/
-  background: #3f1583;
+.like button{
+  background-color: white;
   border: 0 none;
-  border-radius: 15px;
-  border-style: dotted;
-  color: white;
+  font-size: 1.3em;
+  color: black;
   cursor: pointer;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.75em;
-  font-weight: 600;
-  height: fit-content;
-  padding: 5px 15px;
+  padding: 5px 5px 0 10px;
 }
 
 .like p {
@@ -358,8 +386,22 @@ nav button {
   font-family: 'Fira Code', monospace;
   font-size: 0.75em;
   font-weight: 600;
-  padding-left: 10px;
 }
+
+.delete {
+  background-color: white;
+  border: 0 none;
+  font-size: 1.15em;
+  color: black;
+  cursor: pointer;
+  padding: 5px 10px 0;
+}
+
+.like button:hover, .delete:hover {
+  color: #3F1583;
+}
+
+
 
 
 ::-webkit-scrollbar-track {
