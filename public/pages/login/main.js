@@ -1,4 +1,4 @@
-import { toggleSignIn, loginGoogle } from './data.js';
+import { toggleSignIn, loginGoogle, loginGithub } from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
@@ -18,7 +18,11 @@ export const login = () => {
         <input id="user-pass" type="password" placeholder="Senha" required>
         <span id="pass-alert" class="alert"></span>
         <button id="login-button" type="submit">ENTRAR</button>
-        <button id="google-button" type="submit">Google</button>
+        <div class"google-github">
+          <p>Ou entre com</p>
+          <button id="google-button" type="submit">GOOGLE</button>
+          <button id="github-button" type="submit">GITHUB</button>
+        </div>
         <p class="footer">Não possui uma conta? <a href="#newAccount">Crie uma conta</a></p>
         <span id=validation-login></span>
       </form>
@@ -32,10 +36,16 @@ export const login = () => {
   const validationMailLogin = container.querySelector('#email-alert');
   const validationLogin = container.querySelector('#validation-login');
   const googleButton = container.querySelector('#google-button');
+  const githubButton = container.querySelector('#github-button');
 
   googleButton.addEventListener('click', (event) => {
     event.preventDefault();
     loginGoogle();
+  });
+
+  githubButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    loginGithub();
   });
 
   loginButton.addEventListener('click', (event) => {
