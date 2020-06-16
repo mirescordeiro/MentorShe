@@ -1,11 +1,11 @@
 const getUserName = () => { //não exportei esta função pois ela será utilizada apenas neste escopo.
-  firebase
+  return firebase //Esqueci de dar o carai do return antes do Firebase
   .auth()
   .currentUser.displayName;
 }
 
 const getUrlPhoto = () => { //não exportei esta função pois ela será utilizada apenas neste escopo.
-  firebase.auth().currentUser.photoURL;
+  return firebase.auth().currentUser.photoURL; //Esqueci de dar o carai do return antes do Firebase
 }
 
 export const newPost = (textareaPost) => {
