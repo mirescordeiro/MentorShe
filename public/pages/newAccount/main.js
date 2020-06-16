@@ -11,6 +11,8 @@ export const newAccount = () => {
     <div class="flex center column data">
       <h2>Criar uma nova conta</h2>
       <form class="flex column register">
+        <label for="name">Nome</label>
+        <input id="user-name" type="text" placeholder="Maria Carneiro" required>
         <label for="email">Email</label>
         <input id="account-user" type="email" placeholder="email@host.com.br" required>
         <span id="email-alert" class="alert"></span>
@@ -48,6 +50,7 @@ export const newAccount = () => {
 
     const email = document.querySelector('#account-user').value;
     const password = document.querySelector('#account-pass').value;
+    const name = document.querySelector('#user-name').value;
 
     if (!mailformat.test(email)) {
       invalidEmail.push('Email inválido');
@@ -60,7 +63,7 @@ export const newAccount = () => {
       validationPass.innerHTML = invalidPass.join('');
       validationMail.innerHTML = invalidEmail.join('');
     } else {
-      handleSignUp({ email, password }, errorFirebase);
+      handleSignUp({ email, password, name }, errorFirebase);
     }
   });
 
