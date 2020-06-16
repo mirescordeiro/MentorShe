@@ -1,7 +1,3 @@
-// incluir futuramente id e imagens
-// incluir where de público e privado
-
-// Saves a new post in the Database
 export const newPost = (textareaPost) => {
   // Infos added in the new post
   firebase
@@ -10,6 +6,7 @@ export const newPost = (textareaPost) => {
     .add({
       text: textareaPost,
       likes: 0,
+      likeUsers: [],
       comments: [],
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
@@ -55,19 +52,50 @@ export const deletePost = (postId) => {
     });
 };
 
-/*************** KELLY VER!!!!! OK, RESOLVIDO*****************/
 // Increases the number of likes in a post using its id
-export const likePost = (postId, listenClick) => {
+export const likePost = (postId, userId) => { 
   firebase
     .firestore()
     .collection("posts")
     .doc(postId)
-    .set(
-      {
-        likes: listenClick,
-      },
-      { merge: true }
-    ) //merge: true tinha que estar dentro do objeto, estava fora, e por isso não funcionava
+    .get()
+    .then((doc) => {
+      //Array de usuários com todos os ids de usuários que já deram like nos posts
+      let userIds = doc.data().likeUsers;
+      //Quantidade de likes do post
+      let likes = doc.data().likes;
+      
+      //Verifica se o userId contem userId do usuário que está clicando no like
+      if(userIds.includes(userId)){
+        //Se contém, ele decrementa o like
+        likes--;
+        //Encontra o indice do usuário no array
+        const index = userIds.findIndex(elem => elem === userId);
+        //Remove do array o usuário que tiver no indice
+        userIds.splice(index, 1);
+      }else {
+        //Se não, incrementa a soma de like
+        likes++;
+        //Adiciona no array de usuário o id do usuário
+        userIds.push(userId);
+      }
+
+      updateLike(likes, userIds, postId);
+    })
+    .catch((error) => {
+      console.log("error");
+    });
+};
+
+const updateLike = (countLike, userArray, postId) => {
+  firebase
+    .firestore()
+    .collection("posts")
+    .doc(postId)
+    .update({
+      likes: countLike,
+      likeUsers: userArray,
+    })
     .then(() => {
       console.log("Like successfully included!");
     })
