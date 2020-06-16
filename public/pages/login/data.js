@@ -27,6 +27,7 @@ export const loginGoogle = () => {
 // Função para logar com a conta Github
 export const loginGithub = () => {
   const provider = new firebase.auth.GithubAuthProvider();
+  provider.addScope('photoURL');
   firebase
     .auth()
     .signInWithPopup(provider)
