@@ -1,4 +1,4 @@
-import { toggleSignIn, loginGoogle, loginGithub, loginFacebook } from './data.js';
+import { toggleSignIn, loginGoogle, loginGithub, loginFacebook, ResetEmail } from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
@@ -18,7 +18,7 @@ export const login = () => {
         <input id="user-pass" type="password" placeholder="Senha" required>
         <span id="pass-alert" class="alert"></span>
         <button id="login-button" type="submit">ENTRAR</button>
-        <div class"google-github">
+        <div class="google-github">
           <p>Ou entre com</p>
           <button id="google-button" type="submit">GOOGLE</button>
           <button id="github-button" type="submit">GITHUB</button>

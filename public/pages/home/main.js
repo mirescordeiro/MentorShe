@@ -3,8 +3,7 @@ import { newPost, loadPosts, deletePost, likePost, logout } from "./data.js";
 
 export const home = () => {
   const container = document.createElement("div");
-  container.classList.add('container-home');
-
+  container.classList.add("container-home");
 
   container.innerHTML = ` 
     <header>
@@ -24,25 +23,24 @@ export const home = () => {
     </section>
     `;
 
-  const resetForm = container.querySelector('#post-form');
-  const textPost = container.querySelector('#post-text');
-  const postButton = container.querySelector('#publish');
-  const editButton = container.querySelector('#edit-button');
-  const cancelEditBtn = container.querySelector('#cancel-edit');
-  const postPublic = container.querySelector('#public');
-  const postPrivate = container.querySelector('#privacy');
-  const addImage = container.querySelector('#image');
-  const timeline = container.querySelector('#timeline');
-  const buttonLogout = container.querySelector('#logout');
+  const resetForm = container.querySelector("#post-form");
+  const textPost = container.querySelector("#post-text");
+  const postButton = container.querySelector("#publish");
+  const editButton = container.querySelector("#edit-button");
+  const cancelEditBtn = container.querySelector("#cancel-edit");
+  const postPublic = container.querySelector("#public");
+  const postPrivate = container.querySelector("#privacy");
+  const addImage = container.querySelector("#image");
+  const timeline = container.querySelector("#timeline");
+  const buttonLogout = container.querySelector("#logout");
 
   const postTemplate = (array) => {
-    timeline.innerHTML = '';
+    timeline.innerHTML = "";
 
-    // Template for the posts of the user
     array
       .map((post) => {
         const template = document.createElement("div");
-        template.classList.add('flex');
+        template.classList.add("flex");
 
         template.innerHTML = `
         <div class='all-posts'>
@@ -63,40 +61,37 @@ export const home = () => {
       `;
 
         // Deletes the post when clicked
-        const deletePostBtn = template.querySelector('#delete-post');
-        deletePostBtn.addEventListener('click', () => {
+        const deletePostBtn = template.querySelector("#delete-post");
+        deletePostBtn.addEventListener("click", () => {
           deletePost(deletePostBtn.dataset.postid);
         });
 
         // Likes the post when clicked
         const likeButton = template.querySelector("#like-button");
         likeButton.addEventListener("click", () => {
-
-          likePost(
-            likeButton.dataset.postid,
-            firebase.auth().currentUser.uid
-          );
+          likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
         });
 
         // Refresh timeline
         timeline.appendChild(template);
       })
-      .join('');
+      .join("");
   };
 
   timeline.innerHTML = loadPosts(postTemplate);
 
-  postButton.addEventListener('click', (event) => {
+  postButton.addEventListener("click", (event) => {
     event.preventDefault();
-    if (textPost.value === '') {
+    if (textPost.value === "") {
       return;
     }
     newPost(textPost.value);
-    timeline.innerHTML = '';
+    timeline.innerHTML = "";
     loadPosts(postTemplate);
     resetForm.reset();
   });
 
-  buttonLogout.addEventListener('click', logout);
+  buttonLogout.addEventListener("click", logout);
   return container;
 };
+
