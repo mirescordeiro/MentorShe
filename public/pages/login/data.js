@@ -37,6 +37,19 @@ export const loginGithub = () => {
     });
 };
 
+// Função para logar com a conta Facebook
+export const loginFacebook = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then(() => {
+      window.location.hash = 'home';
+      // const token = result.credential.accessToken;
+      // const user = result.user;
+    });
+};
+
 // CATCH LOGIN COM GITHUB
     /*
     .catch(function (error) {
