@@ -1,9 +1,21 @@
+const getUserName = () => { //não exportei esta função pois ela será utilizada apenas neste escopo.
+  firebase
+  .auth()
+  .currentUser.displayName;
+}
+
+const getUrlPhoto = () => { //não exportei esta função pois ela será utilizada apenas neste escopo.
+  firebase.auth().currentUser.photoURL;
+}
+
 export const newPost = (textareaPost) => {
   // Infos added in the new post
   firebase
     .firestore()
     .collection('posts')
     .add({
+      userName: getUserName(),
+      photoURL: getUrlPhoto(),
       text: textareaPost,
       likes: 0,
       likeUsers: [],

@@ -47,7 +47,7 @@ export const home = () => {
         template.innerHTML = `
         <div class='all-posts'>
           <div class='top'>
-            <p>publicado por <strong>Nome do usuário</strong></p>
+            <p>publicado por <strong>${post.userName}</strong></p>
           </div>
           <div class='text'>
             <p>${post.text}</p>
