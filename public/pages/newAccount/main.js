@@ -28,7 +28,7 @@ export const newAccount = () => {
   </section>`;
 
   const mailformat = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/;
-  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/;
+  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-6]))|((?=.*[A-Z])(?=.*[0-6])))(?=.{6,})/;
   const nameFormat = /^[a-zA-Z]+(?:-[a-zA-Z]+)*$/;
   const createButton = container.querySelector('#create-count');
   const validationPass = container.querySelector('#pass-alert');
@@ -61,10 +61,10 @@ export const newAccount = () => {
       invalidName.push('Preencha seu nome');
     }
     if (!mailformat.test(email)) {
-      invalidEmail.push('Email inválido');
+      invalidEmail.push('Email inválido! Verifique se o mesmo foi digitado corretamente.');
     }
     if (!strongPass.test(password)) {
-      invalidPass.push('Senha inválida');
+      invalidPass.push('Sua senha deve conter no mínimo 6 caracteres, 1 número, 1 letra maíuscula e 1 carácter especial!');      
     }
 
     if (invalidPass.length > 0 || invalidEmail.length > 0) {
