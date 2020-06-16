@@ -2,7 +2,7 @@ export const newPost = (textareaPost) => {
   // Infos added in the new post
   firebase
     .firestore()
-    .collection("posts")
+    .collection('posts')
     .add({
       text: textareaPost,
       likes: 0,
@@ -11,10 +11,10 @@ export const newPost = (textareaPost) => {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
+      console.log('Document written with ID: ', docRef.id);
     })
     .catch((error) => {
-      console.error("Error adding document: ", error);
+      console.error('Error adding document: ', error);
     });
 };
 
@@ -22,8 +22,8 @@ export const newPost = (textareaPost) => {
 export const loadPosts = (callback) => {
   const load = firebase
     .firestore()
-    .collection("posts")
-    .orderBy("timestamp", "desc");
+    .collection('posts')
+    .orderBy('timestamp', 'desc');
   // Listening realtime for new posts
   load.onSnapshot((querySnapshot) => {
     const posts = [];
@@ -41,66 +41,66 @@ export const loadPosts = (callback) => {
 export const deletePost = (postId) => {
   firebase
     .firestore()
-    .collection("posts")
+    .collection('posts')
     .doc(postId)
     .delete()
     .then(() => {
-      console.log("Document successfully deleted!");
+      console.log('Document successfully deleted!');
     })
     .catch((error) => {
-      console.error("Error removing document: ", error);
+      console.error('Error removing document: ', error);
     });
 };
 
 // Increases the number of likes in a post using its id
-export const likePost = (postId, userId) => { 
+export const likePost = (postId, userId) => {
   firebase
     .firestore()
-    .collection("posts")
+    .collection('posts')
     .doc(postId)
     .get()
     .then((doc) => {
-      //Array de usuários com todos os ids de usuários que já deram like nos posts
-      let userIds = doc.data().likeUsers;
-      //Quantidade de likes do post
+      //  Array de usuários com todos os ids de usuários que já deram like nos posts
+      const userIds = doc.data().likeUsers;
+      //  Quantidade de likes do post
       let likes = doc.data().likes;
-      
-      //Verifica se o userId contem userId do usuário que está clicando no like
-      if(userIds.includes(userId)){
-        //Se contém, ele decrementa o like
+
+      //  Verifica se o userId contem userId do usuário que está clicando no like
+      if (userIds.includes(userId)) {
+        //  Se contém, ele decrementa o like
         likes--;
-        //Encontra o indice do usuário no array
+        //  Encontra o indice do usuário no array
         const index = userIds.findIndex(elem => elem === userId);
-        //Remove do array o usuário que tiver no indice
+        // Remove do array o usuário que tiver no indice
         userIds.splice(index, 1);
-      }else {
-        //Se não, incrementa a soma de like
+      } else {
+        //  Se não, incrementa a soma de like
         likes++;
-        //Adiciona no array de usuário o id do usuário
+        //  Adiciona no array de usuário o id do usuário
         userIds.push(userId);
       }
 
-      updateLike(likes, userIds, postId);
+      updateLike(likes, userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
     })
     .catch((error) => {
-      console.log("error");
+      console.log('error');
     });
 };
 
 const updateLike = (countLike, userArray, postId) => {
   firebase
     .firestore()
-    .collection("posts")
+    .collection('posts')
     .doc(postId)
     .update({
       likes: countLike,
       likeUsers: userArray,
     })
     .then(() => {
-      console.log("Like successfully included!");
+      console.log('Like successfully included!');
     })
     .catch((error) => {
-      console.error("Error liking document: ", error);
+      console.error('Error liking document: ', error);
     });
 };
 
@@ -110,6 +110,6 @@ export const logout = () => {
     .auth()
     .signOut()
     .then(() => {
-      window.location.href = "#login";
+      window.location.href = '#login';
     });
 };
