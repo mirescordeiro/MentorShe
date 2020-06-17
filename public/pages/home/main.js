@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts, deletePost, likePost, logout } from './data.js';
+import { newPost, loadPosts, deletePost, likePost, logout, updateEdit} from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -48,37 +48,22 @@ export const home = () => {
             <p>publicado por <strong>${post.userName}</strong></p>
             <button id='edit-button' type='submit'>Editar</button>
             <button id='cancel-edit' type='submit'>Cancelar</button> 
-            <button id='save-edit' type='submit'>Salvar</button>
+            <button id='save-edit' type='submit' data-postid=${post.id}>Salvar</button>
           </div>
           <div class='text'>
-            <textarea id='edit-text-area' wrap='soft' disabled='disabled'>${post.text}</textarea>
+            <textarea id='edit-text-area' disabled='disabled' rows='1'>${post.text}</textarea>
           </div>
           <div class='bottom'>
             <div class='flex like'>
-              <button id='like-button' data-postid= ${post.id}><span class='icon-like'></span></button>
+              <button id='like-button' data-postid=${post.id}><span class='icon-like'></span></button>
               <p id='numbers-like'>${post.likes}<p>
             </div>
-            <button id='delete-post' class='delete' data-postid= ${post.id}><span class='icon-delete'></span></button>
+            <button id='delete-post' class='delete' data-postid=${post.id}><span class='icon-delete'></span></button>
           </div>
         </form>
       `;
 
-        // Likes the post when clicked
-        const likeButton = template.querySelector('#like-button');
-        likeButton.addEventListener('click', () => {
-          likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
-        });
-
-        // Deletes the post when clicked
-        const deletePostBtn = template.querySelector('#delete-post');
-        deletePostBtn.setAttribute('hidden', 'true');
-        deletePostBtn.addEventListener('click', () => {
-          event.preventDefault();
-          deletePost(deletePostBtn.dataset.postid);
-        });
-
-        // Opens a textarea to edit the post
-        const editTextArea = template.querySelector('#edit-text-area');
+        // Enables the textarea to edit the post
         const editButton = template.querySelector('#edit-button');
         editButton.setAttribute('hidden', 'true');
         editButton.addEventListener('click', () => {
@@ -89,7 +74,7 @@ export const home = () => {
           editTextArea.disabled = false;
         });
 
-        // Cancels the editing and returns data
+        // Cancels the editing and resets text
         const resetFormTemplate = template.querySelector('#template-form');
         const cancelEditBtn = template.querySelector('#cancel-edit'); 
         cancelEditBtn.setAttribute('hidden', 'true');     
@@ -105,10 +90,30 @@ export const home = () => {
         const saveEditBtn = template.querySelector('#save-edit');
         saveEditBtn.setAttribute('hidden', 'true');
         saveEditBtn.addEventListener('click', () => {
-          event.preventDefault();
+          event.preventDefault();          
           editButton.removeAttribute('hidden');
           cancelEditBtn.setAttribute('hidden', 'true');
           saveEditBtn.setAttribute('hidden', 'true');
+          updateEdit(saveEditBtn.dataset.postid, editTextArea.value);
+          resetForm.reset();
+        });
+
+        // Autoresizes the textarea
+        const editTextArea = template.querySelector('#edit-text-area');
+
+
+        // Likes the post when clicked
+        const likeButton = template.querySelector('#like-button');
+        likeButton.addEventListener('click', () => {
+          likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
+        });
+
+        // Deletes the post when clicked
+        const deletePostBtn = template.querySelector('#delete-post');
+        deletePostBtn.setAttribute('hidden', 'true');
+        deletePostBtn.addEventListener('click', () => {
+          event.preventDefault();
+          deletePost(deletePostBtn.dataset.postid);
         });
 
         // Identifies if the currentUser has editing privileges 
@@ -130,6 +135,10 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
+    if (postPrivate.checked){
+      
+      console.log('Post publicado como privado')
+    }
     if (textPost.value === '') {
       return;
     }
