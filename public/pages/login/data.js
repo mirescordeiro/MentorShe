@@ -28,6 +28,9 @@ export const loginGoogle = () => {
 export const loginGithub = () => {
   const provider = new firebase.auth.GithubAuthProvider();
   provider.addScope('user');
+  provider.setCustomParameters({
+    'b': 'displayName'
+  });
   firebase
     .auth()
     .signInWithPopup(provider)
