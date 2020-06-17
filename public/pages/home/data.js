@@ -1,14 +1,14 @@
 export const getUserName = () => {
   return firebase
-  .auth()
-  .currentUser != null ? firebase
-  .auth()
-  .currentUser.displayName : "";
-}
+    .auth()
+    .currentUser != null ? firebase
+      .auth()
+      .currentUser.displayName : '';
+};
 
 export const getUrlPhoto = () => {
-  return firebase.auth().currentUser != null ? firebase.auth().currentUser.photoURL : "./public/img/logo_icon.png";
-}
+  return firebase.auth().currentUser != null ? firebase.auth().currentUser.photoURL : './public/img/logo_icon.png';
+};
 
 export const newPost = (textareaPost) => {
   // Infos added in the new post
@@ -96,7 +96,7 @@ export const likePost = (postId, userId) => {
       }
 
       updateLike(likes, userIds, postId);
-      updateEdit(userIds, postId) // Deu que o "updateLike" foi usado antes de ser declarado
+      updateEdit(userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
     })
     .catch((error) => {
       console.log('error');
@@ -123,18 +123,18 @@ const updateLike = (countLike, userArray, postId) => {
 // Updates the text from a post using its id
 export const updateEdit = (postId, textareaPost) => {
   firebase
-  .firestore()
-  .collection('posts')
-  .doc(postId)
-  .update({
-    text: textareaPost,
-  })
-  .then(() => {
-    console.log('Edit post successfully!')
-  })
-  .catch(() => {
-    console.error('You cannot cancel this edit!')
-  });
+    .firestore()
+    .collection('posts')
+    .doc(postId)
+    .update({
+      text: textareaPost,
+    })
+    .then(() => {
+      console.log('Edit post successfully!');
+    })
+    .catch(() => {
+      console.error('You cannot cancel this edit!');
+    });
 };
 
 // Logout redirecting to the #login page
@@ -146,4 +146,3 @@ export const logout = () => {
       window.location.href = '#login';
     });
 };
-
