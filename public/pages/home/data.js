@@ -120,13 +120,14 @@ const updateLike = (countLike, userArray, postId) => {
     });
 };
 
-const updateEdit = (postId, editComment) => {
+// Updates the text from a post using its id
+export const updateEdit = (postId, textareaPost) => {
   firebase
   .firestore()
   .collection('posts')
   .doc(postId)
   .update({
-    textareaPost: editComment,
+    text: textareaPost,
   })
   .then(() => {
     console.log('Edit post successfully!')
@@ -136,7 +137,7 @@ const updateEdit = (postId, editComment) => {
   });
 };
 
-// Logout redirecting to the login page
+// Logout redirecting to the #login page
 export const logout = () => {
   firebase
     .auth()

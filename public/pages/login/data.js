@@ -24,6 +24,19 @@ export const loginGoogle = () => {
     });
 };
 
+export const loginGithub = () => {
+  const provider = new firebase.auth.GithubAuthProvider();
+  provider.addScope('user');
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then(() => {
+      window.location.hash = 'home';
+      // const token = result.credential.accessToken;
+      // const user = result.user;
+    });
+};
+
 /* CATCH LOGIN COM GOOGLE
 .catch(function (error) {
 // Handle Errors here.

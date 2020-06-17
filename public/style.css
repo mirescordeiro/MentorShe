@@ -223,7 +223,7 @@ body {
   margin-top: 10px;
 }
 
-.google-github button:hover {
+.google button:hover {
   background-color: white;
   color: #c285ff;
 }
