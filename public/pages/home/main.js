@@ -1,5 +1,7 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts, deletePost, likePost, logout, updateEdit} from './data.js';
+import {
+  newPost, loadPosts, deletePost, likePost, logout, updateEdit
+} from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -65,8 +67,11 @@ export const home = () => {
 
         // Enables the textarea to edit the post
         const editButton = template.querySelector('#edit-button');
+        const cancelEditBtn = template.querySelector('#cancel-edit');
+        const saveEditBtn = template.querySelector('#save-edit');
+        const editTextArea = template.querySelector('#edit-text-area');
         editButton.setAttribute('hidden', 'true');
-        editButton.addEventListener('click', () => {
+        editButton.addEventListener('click', (event) => {
           event.preventDefault();
           editButton.setAttribute('hidden', 'true');
           cancelEditBtn.removeAttribute('hidden');
@@ -76,9 +81,8 @@ export const home = () => {
 
         // Cancels the editing and resets text
         const resetFormTemplate = template.querySelector('#template-form');
-        const cancelEditBtn = template.querySelector('#cancel-edit'); 
-        cancelEditBtn.setAttribute('hidden', 'true');     
-        cancelEditBtn.addEventListener('click', () => {
+        cancelEditBtn.setAttribute('hidden', 'true');
+        cancelEditBtn.addEventListener('click', (event) => {
           event.preventDefault();
           editButton.removeAttribute('hidden');
           cancelEditBtn.setAttribute('hidden', 'true');
@@ -87,10 +91,9 @@ export const home = () => {
         });
 
         // Saves editing changes to the database
-        const saveEditBtn = template.querySelector('#save-edit');
         saveEditBtn.setAttribute('hidden', 'true');
-        saveEditBtn.addEventListener('click', () => {
-          event.preventDefault();          
+        saveEditBtn.addEventListener('click', (event) => {
+          event.preventDefault();
           editButton.removeAttribute('hidden');
           cancelEditBtn.setAttribute('hidden', 'true');
           saveEditBtn.setAttribute('hidden', 'true');
@@ -99,7 +102,7 @@ export const home = () => {
         });
 
         // Autoresizes the textarea
-        const editTextArea = template.querySelector('#edit-text-area');
+        //  const editTextArea = template.querySelector('#edit-text-area');
 
 
         // Likes the post when clicked
@@ -112,18 +115,18 @@ export const home = () => {
         // Deletes the post when clicked
         const deletePostBtn = template.querySelector('#delete-post');
         deletePostBtn.setAttribute('hidden', 'true');
-        deletePostBtn.addEventListener('click', () => {
+        deletePostBtn.addEventListener('click', (event) => {
           event.preventDefault();
           deletePost(deletePostBtn.dataset.postid);
         });
 
-        // Identifies if the currentUser has editing privileges 
+        // Identifies if the currentUser has editing privileges
         function loggedUser() {
-          if(firebase.auth().currentUser.uid === post.user){
+          if (firebase.auth().currentUser.uid === post.user) {
             editButton.removeAttribute('hidden');
             deletePostBtn.removeAttribute('hidden');
-          };
-        };
+          }
+        }
         loggedUser();
 
         // Refresh timeline
@@ -142,18 +145,18 @@ export const home = () => {
     loadPosts(postTemplate);
     resetForm.reset();
   });
-  
+
   // Logout when clicked
-  const buttonLogout = container.querySelector("#logout");
-  buttonLogout.addEventListener("click", logout);
+  const buttonLogout = container.querySelector('#logout');
+  buttonLogout.addEventListener('click', logout);
 
   return container;
 };
 
-//const showCancel = cancelEditBtn.removeAttribute('hidden');
-//const hideCancel = cancelEditBtn.setAttribute('hidden', 'true');
-//const showSave = saveEditBtn.removeAttribute('hidden');
-//const hideSave = saveEditBtn.setAttribute('hidden', 'true');
+//  const showCancel = cancelEditBtn.removeAttribute('hidden');
+//  const hideCancel = cancelEditBtn.setAttribute('hidden', 'true');
+//  const showSave = saveEditBtn.removeAttribute('hidden');
+//  const hideSave = saveEditBtn.setAttribute('hidden', 'true');
 
 /*
 <div id="profile">
