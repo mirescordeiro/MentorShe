@@ -332,7 +332,7 @@ nav button {
   border: 2px solid #3f1583;
   border-radius: 10px;
   margin-top: 20px;
-  width: 279px;
+  width: 280px;
   background: #ffffff;
 }
 
@@ -356,13 +356,21 @@ nav button {
   letter-spacing: 0.03em;
 }
 
-.text p { 
+.text p,
+.text textarea { 
+  border: 0 none;
   font-family: 'Source Sans Pro';
   font-size: 0.85em;
   padding: 15px 15px 10px;
   line-height: 1.4em;
   overflow-wrap: break-word;
+  resize: none;
   text-align: left; 
+  width: 280px;
+}
+
+.text textarea:focus {
+  outline: 0 none;
 }
 
 .bottom {
