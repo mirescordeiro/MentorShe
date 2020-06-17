@@ -5,7 +5,7 @@ export const handleSignUp = ({ email, password, name }, callback) => {
     .then((user) => {
       // apos criar usuario ja envia o email de verificacao da conta
       firebase.auth().currentUser.sendEmailVerification();
-      firebase.auth().currentUser.updateProfile({ displayName: name }); //Estava chamando o callback depois desta linha sendo que estou tratando ele no catch
+      firebase.auth().currentUser.updateProfile({ displayName: name }); //  Estava chamando o callback depois desta linha sendo que estou tratando ele no catch
     })
     .catch((error) => {
       const errorCode = error.code;

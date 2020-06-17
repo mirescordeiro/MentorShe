@@ -18,6 +18,7 @@ export const newPost = (textareaPost) => {
     .add({
       userName: getUserName(),
       photoURL: getUrlPhoto(),
+      user: firebase.auth().currentUser.uid,
       text: textareaPost,
       likes: 0,
       likeUsers: [],
