@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts, deletePost, likePost, logout } from "./data.js";
+import { newPost, loadPosts, deletePost, likePost, logout, getUrlPhoto, getUserName } from "./data.js";
 
 export const home = () => {
   const container = document.createElement("div");
@@ -14,9 +14,12 @@ export const home = () => {
     </header>
     <section class="news">
       <div class='flex'>
+      <div id="profile"></div>
+      <img src="${getUrlPhoto()}" class="pic-user">
         <form id="post-form" class="post">
           <textarea name="post" id="post-text" placeholder="Compartilhe Conhecimento!"></textarea>
           <button id="publish" type="submit">Compartilhar</button>
+          <input type="checkbox" class="private-post" id="privacy">Privado</input>
         </form>
       </div>
       <div id='timeline'></div>
@@ -25,24 +28,20 @@ export const home = () => {
 
   const resetForm = container.querySelector("#post-form");
   const textPost = container.querySelector("#post-text");
-  const postButton = container.querySelector("#publish");
-  const editButton = container.querySelector("#edit-button");
   const cancelEditBtn = container.querySelector("#cancel-edit");
-  const postPublic = container.querySelector("#public");
   const postPrivate = container.querySelector("#privacy");
   const addImage = container.querySelector("#image");
   const timeline = container.querySelector("#timeline");
-  const buttonLogout = container.querySelector("#logout");
 
   const postTemplate = (array) => {
     timeline.innerHTML = "";
 
     array
-      .map((post) => {
+      .map((post) => {  
         const template = document.createElement("div");
         template.classList.add("flex");
 
-        template.innerHTML = `
+        template.innerHTML = `        
         <div class='all-posts'>
           <div class='top'>
             <p>publicado por <strong>${post.userName}</strong></p>
@@ -56,9 +55,16 @@ export const home = () => {
               <p id='numbers-like'>${post.likes}<p>
             </div>
             <button id="delete-post" class="delete" data-postid= ${post.id}><span class='icon-delete'></span></button>
+            <button id="edit-button">Editar</button>
           </div>
         </div>
       `;
+
+        //Edit post when clicked
+        const editPost = template.querySelector("#edit-button");
+        editPost.addEventListener("click", () => {
+          home(editPost.dataset.postid);
+        });
 
         // Deletes the post when clicked
         const deletePostBtn = template.querySelector("#delete-post");
@@ -80,6 +86,8 @@ export const home = () => {
 
   timeline.innerHTML = loadPosts(postTemplate);
 
+  
+  const postButton = container.querySelector("#publish");
   postButton.addEventListener("click", (event) => {
     event.preventDefault();
     if (textPost.value === "") {
@@ -91,7 +99,29 @@ export const home = () => {
     resetForm.reset();
   });
 
+  const buttonLogout = container.querySelector("#logout");
   buttonLogout.addEventListener("click", logout);
+
+  const profileSection = container.querySelector("#profile");
+  const profile = () => {
+    profileSection.classList.add("container-profile");
+  
+    profileSection.innerHTML = ` 
+      <div class="image-profile">
+        <img class="image" src"">
+        <button id="change-image">Mudar foto de perfil</button>
+      </div>  
+      <div class="profile-details">
+          <h1>
+            <p>${getUserName()}</p>         
+        </h1>
+          <p class="profile-description"></p>
+      </div>
+      `;
+  }
+
+  profile();
+
   return container;
 };
 

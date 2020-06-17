@@ -328,6 +328,11 @@ nav button {
   width: fit-content;
 }
 
+/* .private-post {
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-size: 1.3em;
+} */
+
 .all-posts {
   border: 2px solid #3f1583;
   border-radius: 10px;
