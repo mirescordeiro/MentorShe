@@ -1,4 +1,4 @@
-import { toggleSignIn, loginGoogle, loginGithub, loginFacebook, ResetEmail } from './data.js';
+import { toggleSignIn, loginGoogle, ResetEmail } from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
@@ -20,10 +20,9 @@ export const login = () => {
           <span id='pass-alert' class='alert'></span>
           <button id='login-button' type='submit'>ENTRAR</button>
         </form>
-        <div class='google-github'>
+        <div class='google'>
           <p>Ou entre com</p>
           <button id='google-button' type='submit'><span class='icon-google'></span></button>
-          <button id='github-button' type='submit'><span class='icon-github'></span></button>
         </div>
         <p class='footer'>Não possui uma conta? <a href='#newAccount'>Crie uma conta</a></p>
         <span id=validation-login></span>
@@ -38,17 +37,11 @@ export const login = () => {
   const validationMailLogin = container.querySelector('#email-alert');
   const validationLogin = container.querySelector('#validation-login');
   const googleButton = container.querySelector('#google-button');
-  const githubButton = container.querySelector('#github-button');
   const facebookButton = container.querySelector('#facebook-button');
 
   googleButton.addEventListener('click', (event) => {
     event.preventDefault();
     loginGoogle();
-  });
-
-  githubButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    loginGithub();
   });
 
   loginButton.addEventListener('click', (event) => {
@@ -88,11 +81,3 @@ export const login = () => {
   });
   return container;
 };
-
-/* 
-<button id='facebook-button' type='submit'>FACEBOOK</button>
-facebookButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    loginFacebook();
-  });
-*/

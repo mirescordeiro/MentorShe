@@ -1,4 +1,4 @@
-export const getUserName = () => { //não exportei esta função pois ela será utilizada apenas neste escopo.
+export const getUserName = () => {
   return firebase
   .auth()
   .currentUser != null ? firebase
@@ -6,8 +6,8 @@ export const getUserName = () => { //não exportei esta função pois ela será 
   .currentUser.displayName : "";
 }
 
-export const getUrlPhoto = () => { //não exportei esta função pois ela será utilizada apenas neste escopo.
-  return firebase.auth().currentUser != null ? firebase.auth().currentUser.photoURL : "./public/img/logo_icon.png"; //Esqueci de dar o carai do return antes do Firebase
+export const getUrlPhoto = () => {
+  return firebase.auth().currentUser != null ? firebase.auth().currentUser.photoURL : "./public/img/logo_icon.png";
 }
 
 export const newPost = (textareaPost) => {
@@ -95,7 +95,8 @@ export const likePost = (postId, userId) => {
         userIds.push(userId);
       }
 
-      updateLike(likes, userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
+      updateLike(likes, userIds, postId);
+      updateEdit(userIds, postId) // Deu que o "updateLike" foi usado antes de ser declarado
     })
     .catch((error) => {
       console.log('error');
@@ -117,6 +118,22 @@ const updateLike = (countLike, userArray, postId) => {
     .catch((error) => {
       console.error('Error liking document: ', error);
     });
+};
+
+const updateEdit = (postId, editComment) => {
+  firebase
+  .firestore()
+  .collection('posts')
+  .doc(postId)
+  .update({
+    textareaPost: editComment,
+  })
+  .then(() => {
+    console.log('Edit post successfully!')
+  })
+  .catch(() => {
+    console.error('You cannot cancel this edit!')
+  });
 };
 
 // Logout redirecting to the login page

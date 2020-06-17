@@ -202,18 +202,18 @@ body {
   text-align: center;
 }
 
-.google-github {
+.google {
   text-align: center;
 }
 
-.google-github p {
+.google p {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   font-size: 0.85em;
   margin-top: 5px;
 }
 
-.google-github button {
+.google button {
   background-color: white;
   border: 0 none;
   font-size: 2em;
@@ -280,6 +280,25 @@ nav button {
   justify-content: center; 
   flex-direction: column;
   padding-top: 90px;
+}
+
+.post-options{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.post-options input{
+  margin-top: 15px;
+}
+
+.post-options p{
+  margin-top: 13px;
+  margin-right: 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8em; 
+  font-weight: 600;
 }
 
 .post {
@@ -361,7 +380,6 @@ nav button {
   letter-spacing: 0.03em;
 }
 
-.text p,
 .text textarea { 
   border: 0 none;
   font-family: 'Source Sans Pro';
@@ -369,6 +387,7 @@ nav button {
   padding: 15px 15px 10px;
   line-height: 1.4em;
   overflow-wrap: break-word;
+  word-wrap: break-word;
   resize: none;
   text-align: left; 
   width: 280px;
@@ -481,7 +500,8 @@ nav button {
   }
 
   .post,
-  .all-posts {
+  .all-posts,
+  .post textarea {
     width: 26vw;
   }
 
