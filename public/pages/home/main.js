@@ -105,6 +105,7 @@ export const home = () => {
         // Likes the post when clicked
         const likeButton = template.querySelector('#like-button');
         likeButton.addEventListener('click', () => {
+          event.preventDefault();
           likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
         });
 
@@ -135,14 +136,8 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
-    if (postPrivate.checked){
-      
-      console.log('Post publicado como privado')
-    }
-    if (textPost.value === '') {
-      return;
-    }
-    newPost(textPost.value);
+    newPost(textPost.value, postPrivate.value); //Passei ele como parametro aqui também.
+    textPost.value = '';
     timeline.innerHTML = '';
     loadPosts(postTemplate);
     resetForm.reset();
