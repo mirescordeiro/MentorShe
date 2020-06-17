@@ -57,14 +57,14 @@ export const newAccount = () => {
     const password = document.querySelector('#account-pass').value;
     const name = document.querySelector('#user-name').value;
 
-    if(!nameFormat.test(name)) {
+    if (!nameFormat.test(name)) {
       invalidName.push('Preencha seu nome');
     }
     if (!mailformat.test(email)) {
       invalidEmail.push('Email inválido! Verifique se o mesmo foi digitado corretamente.');
     }
     if (!strongPass.test(password)) {
-      invalidPass.push('Sua senha deve conter no mínimo 6 caracteres, 1 número, 1 letra maíuscula e 1 carácter especial!');      
+      invalidPass.push('Sua senha deve conter no mínimo 6 caracteres, 1 número, 1 letra maíuscula e 1 carácter especial!');
     }
 
     if (invalidPass.length > 0 || invalidEmail.length > 0) {
