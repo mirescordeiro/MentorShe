@@ -1,4 +1,4 @@
-import { toggleSignIn, loginGoogle, loginGithub, loginFacebook, ResetEmail } from './data.js';
+import { toggleSignIn, loginGoogle, loginGithub, ResetEmail } from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
@@ -20,7 +20,7 @@ export const login = () => {
           <span id='pass-alert' class='alert'></span>
           <button id='login-button' type='submit'>ENTRAR</button>
         </form>
-        <div class='google-github'>
+        <div class='google'>
           <p>Ou entre com</p>
           <button id='google-button' type='submit'><span class='icon-google'></span></button>
           <button id='github-button' type='submit'><span class='icon-github'></span></button>
@@ -88,11 +88,3 @@ export const login = () => {
   });
   return container;
 };
-
-/* 
-<button id='facebook-button' type='submit'>FACEBOOK</button>
-facebookButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    loginFacebook();
-  });
-*/

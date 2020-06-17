@@ -1,4 +1,4 @@
-// Este é o ponto de entrada de sua aplicação
+  // Este é o ponto de entrada de sua aplicação
 import routes from "./routes.js";
 
 const main = document.querySelector("#root");

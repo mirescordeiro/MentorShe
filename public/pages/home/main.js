@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts, deletePost, likePost, logout } from './data.js';
+import { newPost, loadPosts, deletePost, likePost, logout, updateEdit} from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -16,7 +16,10 @@ export const home = () => {
       <div class='flex'>
         <form id='post-form' class='post'>
           <textarea name='post' id='post-text' placeholder='Compartilhe Conhecimento!'></textarea>
-          <button id='publish' type='submit'>Compartilhar</button>
+          <div class='post-options'>
+            <button id='publish' type='submit'>Compartilhar</button>
+            <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
+          </div>
         </form>
       </div>
       <div id='timeline'></div>
@@ -30,7 +33,6 @@ export const home = () => {
   const postPrivate = container.querySelector('#privacy');
   const addImage = container.querySelector('#image');
   const timeline = container.querySelector('#timeline');
-  const buttonLogout = container.querySelector('#logout');
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';
@@ -40,26 +42,65 @@ export const home = () => {
         const template = document.createElement('div');
         template.classList.add('flex');
 
-        template.innerHTML = `
-        <div class='all-posts'>
+        template.innerHTML = `        
+        <form id='template-form' class='all-posts'>
           <div class='top'>
             <p>publicado por <strong>${post.userName}</strong></p>
-            <button id='edit-button'>Editar</button>
-            <button id='cancel-edit'>Cancelar</button> 
-            <button id='save-edit'>Salvar</button>
+            <button id='edit-button' type='submit'>Editar</button>
+            <button id='cancel-edit' type='submit'>Cancelar</button> 
+            <button id='save-edit' type='submit' data-postid=${post.id}>Salvar</button>
           </div>
-          <div class='flex text'>
-            <p>${post.text}</p>
+          <div class='text'>
+            <textarea id='edit-text-area' disabled='disabled' rows='1'>${post.text}</textarea>
           </div>
           <div class='bottom'>
             <div class='flex like'>
-              <button id='like-button' data-postid= ${post.id}><span class='icon-like'></span></button>
+              <button id='like-button' data-postid=${post.id}><span class='icon-like'></span></button>
               <p id='numbers-like'>${post.likes}<p>
             </div>
-            <button id='delete-post' class='delete' data-postid= ${post.id}><span class='icon-delete'></span></button>
+            <button id='delete-post' class='delete' data-postid=${post.id}><span class='icon-delete'></span></button>
           </div>
-        </div>
+        </form>
       `;
+
+        // Enables the textarea to edit the post
+        const editButton = template.querySelector('#edit-button');
+        editButton.setAttribute('hidden', 'true');
+        editButton.addEventListener('click', () => {
+          event.preventDefault();
+          editButton.setAttribute('hidden', 'true');
+          cancelEditBtn.removeAttribute('hidden');
+          saveEditBtn.removeAttribute('hidden');
+          editTextArea.disabled = false;
+        });
+
+        // Cancels the editing and resets text
+        const resetFormTemplate = template.querySelector('#template-form');
+        const cancelEditBtn = template.querySelector('#cancel-edit'); 
+        cancelEditBtn.setAttribute('hidden', 'true');     
+        cancelEditBtn.addEventListener('click', () => {
+          event.preventDefault();
+          editButton.removeAttribute('hidden');
+          cancelEditBtn.setAttribute('hidden', 'true');
+          saveEditBtn.setAttribute('hidden', 'true');
+          resetFormTemplate.reset();
+        });
+
+        // Saves editing changes to the database
+        const saveEditBtn = template.querySelector('#save-edit');
+        saveEditBtn.setAttribute('hidden', 'true');
+        saveEditBtn.addEventListener('click', () => {
+          event.preventDefault();          
+          editButton.removeAttribute('hidden');
+          cancelEditBtn.setAttribute('hidden', 'true');
+          saveEditBtn.setAttribute('hidden', 'true');
+          updateEdit(saveEditBtn.dataset.postid, editTextArea.value);
+          resetForm.reset();
+        });
+
+        // Autoresizes the textarea
+        const editTextArea = template.querySelector('#edit-text-area');
+
 
         // Likes the post when clicked
         const likeButton = template.querySelector('#like-button');
@@ -71,34 +112,8 @@ export const home = () => {
         const deletePostBtn = template.querySelector('#delete-post');
         deletePostBtn.setAttribute('hidden', 'true');
         deletePostBtn.addEventListener('click', () => {
+          event.preventDefault();
           deletePost(deletePostBtn.dataset.postid);
-        });
-
-        // Opens a textarea to edit the post
-        const editButton = template.querySelector('#edit-button');
-        editButton.setAttribute('hidden', 'true');
-        editButton.addEventListener('click', () => {
-          editButton.setAttribute('hidden', 'true');
-          cancelEditBtn.removeAttribute('hidden');
-          saveEditBtn.removeAttribute('hidden');
-        });
-
-        // Cancels the editing and returns data
-        const cancelEditBtn = template.querySelector('#cancel-edit'); 
-        cancelEditBtn.setAttribute('hidden', 'true');     
-        cancelEditBtn.addEventListener('click', () => {
-          editButton.removeAttribute('hidden');
-          cancelEditBtn.setAttribute('hidden', 'true');
-          saveEditBtn.setAttribute('hidden', 'true');
-        });
-
-        // Saves editing changes to the database
-        const saveEditBtn = template.querySelector('#save-edit');
-        saveEditBtn.setAttribute('hidden', 'true');
-        saveEditBtn.addEventListener('click', () => {
-          editButton.removeAttribute('hidden');
-          cancelEditBtn.setAttribute('hidden', 'true');
-          saveEditBtn.setAttribute('hidden', 'true');
         });
 
         // Identifies if the currentUser has editing privileges 
@@ -120,6 +135,10 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
+    if (postPrivate.checked){
+      
+      console.log('Post publicado como privado')
+    }
     if (textPost.value === '') {
       return;
     }
@@ -128,8 +147,11 @@ export const home = () => {
     loadPosts(postTemplate);
     resetForm.reset();
   });
+  
+  // Logout when clicked
+  const buttonLogout = container.querySelector("#logout");
+  buttonLogout.addEventListener("click", logout);
 
-  buttonLogout.addEventListener('click', logout);
   return container;
 };
 
@@ -137,3 +159,9 @@ export const home = () => {
 //const hideCancel = cancelEditBtn.setAttribute('hidden', 'true');
 //const showSave = saveEditBtn.removeAttribute('hidden');
 //const hideSave = saveEditBtn.setAttribute('hidden', 'true');
+
+/*
+<div id="profile">
+  <img src="${post.photoURL}" class="pic-user">
+</div>
+*/
