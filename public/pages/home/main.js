@@ -28,6 +28,7 @@ export const home = () => {
     </section>
     `;
 
+  // Container variables
   const resetForm = container.querySelector('#post-form');
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#publish');
@@ -47,13 +48,18 @@ export const home = () => {
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
           <div class='top'>
-            <p>publicado por <strong>${post.userName}</strong></p>
-            <button id='edit-button' type='submit'>Editar</button>
-            <button id='cancel-edit' type='submit'>Cancelar</button> 
-            <button id='save-edit' type='submit' data-postid=${post.id}>Salvar</button>
+            <figure>
+              <img src="${post.photoURL}" alt="Foto da usuária">
+              <figcaption>${post.userName}</figcaption>
+            </figure>
+            <div class='edit'>
+              <button id='edit-button' type='submit'>EDITAR</button>
+              <button id='cancel-edit' type='submit'>CANCELAR</button> 
+              <button id='save-edit' type='submit' data-postid=${post.id}>SALVAR</button>
+            </div>
           </div>
           <div class='text'>
-            <textarea id='edit-text-area' disabled='disabled' rows='1'>${post.text}</textarea>
+            <textarea id='edit-text-area' disabled='disabled'>${post.text}</textarea>
           </div>
           <div class='bottom'>
             <div class='flex like'>
@@ -65,11 +71,16 @@ export const home = () => {
         </form>
       `;
 
-        // Enables the textarea to edit the post
+        // Template variables
+        const resetFormTemplate = template.querySelector('#template-form');
         const editButton = template.querySelector('#edit-button');
         const cancelEditBtn = template.querySelector('#cancel-edit');
         const saveEditBtn = template.querySelector('#save-edit');
         const editTextArea = template.querySelector('#edit-text-area');
+        const likeButton = template.querySelector('#like-button');
+        const deletePostBtn = template.querySelector('#delete-post');
+
+        // Enables the textarea to edit the post
         editButton.setAttribute('hidden', 'true');
         editButton.addEventListener('click', (event) => {
           event.preventDefault();
@@ -80,13 +91,13 @@ export const home = () => {
         });
 
         // Cancels the editing and resets text
-        const resetFormTemplate = template.querySelector('#template-form');
         cancelEditBtn.setAttribute('hidden', 'true');
         cancelEditBtn.addEventListener('click', (event) => {
           event.preventDefault();
           editButton.removeAttribute('hidden');
           cancelEditBtn.setAttribute('hidden', 'true');
           saveEditBtn.setAttribute('hidden', 'true');
+          editTextArea.disabled= true;
           resetFormTemplate.reset();
         });
 
@@ -102,18 +113,19 @@ export const home = () => {
         });
 
         // Autoresizes the textarea
-        //  const editTextArea = template.querySelector('#edit-text-area');
+        function resizeTextArea() {
+          editTextArea.style.height = 'auto';
+          editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px'; //HELP!!! NUM SEI MAIS O QUE FAZER
+        }
+        resizeTextArea();
 
-
-        // Likes the post when clicked
-        const likeButton = template.querySelector('#like-button');
+        // Likes the post and deslikes on second click
         likeButton.addEventListener('click', () => {
           event.preventDefault();
           likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
         });
 
         // Deletes the post when clicked
-        const deletePostBtn = template.querySelector('#delete-post');
         deletePostBtn.setAttribute('hidden', 'true');
         deletePostBtn.addEventListener('click', (event) => {
           event.preventDefault();
@@ -152,14 +164,3 @@ export const home = () => {
 
   return container;
 };
-
-//  const showCancel = cancelEditBtn.removeAttribute('hidden');
-//  const hideCancel = cancelEditBtn.setAttribute('hidden', 'true');
-//  const showSave = saveEditBtn.removeAttribute('hidden');
-//  const hideSave = saveEditBtn.setAttribute('hidden', 'true');
-
-/*
-<div id="profile">
-  <img src="${post.photoURL}" class="pic-user">
-</div>
-*/

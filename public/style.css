@@ -361,36 +361,74 @@ nav button {
 }
 
 .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
   background: #3f1583;
   border-radius: 5px 5px 0px 0px;
   padding: 15px;
 }
 
-.top p {
-  color: white;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.65em;
-  font-weight: 500;
+.top figure{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.top strong {
+.top img{
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.top figcaption {
+  color: white;
   font-family: 'Source Sans Pro', sans-serif; 
-  font-size: 1.3em;
+  font-size: 0.8em;
   font-weight: 600;
   letter-spacing: 0.03em;
 }
 
-.text textarea { 
+.edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
+
+.edit button {
+  background: #3f1583;
   border: 0 none;
+  color: white;
+  cursor: pointer;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 2.5px;
+  text-align: right;
+}
+
+.edit button:hover {
+  color: #c285ff;
+}
+
+.text textarea { 
+  background-color: white;
+  border: 0 none ;
+  padding: 0;
+  outline: none;
   font-family: 'Source Sans Pro';
   font-size: 0.85em;
   padding: 15px 15px 10px;
   line-height: 1.4em;
   overflow-wrap: break-word;
-  word-wrap: break-word;
+  overflow-y: hidden;
   resize: none;
   text-align: left; 
-  width: 280px;
+  width: 276px;
+  word-wrap: break-word;
 }
 
 .text textarea:focus {
@@ -400,6 +438,7 @@ nav button {
 .bottom {
   font-family: 'Source Sans Pro', sans-serif; 
   display: flex;
+  align-content: center;
   justify-content: space-between;
   padding: 0 5px 8px;
 }
@@ -425,7 +464,7 @@ nav button {
 .delete {
   background-color: white;
   border: 0 none;
-  font-size: 1.15em;
+  font-size: 1.1em;
   color: black;
   cursor: pointer;
   padding: 5px 10px 0;
@@ -500,11 +539,13 @@ nav button {
   }
 
   .post,
-  .all-posts,
-  .post textarea {
+  .all-posts {
     width: 26vw;
   }
 
+  .text textarea {
+    width: 25.5vw;
+  }
   .post textarea {
     width: 24vw;
   }
