@@ -1,11 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-<<<<<<< HEAD
 import { newPost, loadPosts, deletePost, likePost, logout, updateEdit, orderBy} from './data.js';
-=======
-import {
-  newPost, loadPosts, deletePost, likePost, logout, updateEdit
-} from './data.js';
->>>>>>> ce306116185c201aeae1d1b921d46964ee654837
 
 export const home = () => {
   const container = document.createElement('div');
