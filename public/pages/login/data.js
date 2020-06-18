@@ -20,7 +20,9 @@ export const loginGoogle = () => {
     .then(() => {
       window.location.hash = 'home';
     })
-    .catch(function(error) { handleError(error); });
+    .catch((error) => {
+      handleError(error);
+    });
 };
 
 // Login with GitHub account
@@ -33,7 +35,9 @@ export const loginGithub = () => {
     .then(() => {
       window.location.hash = 'home';
     })
-    .catch(function(error) { handleError(error); });
+    .catch((error) => {
+      handleError(error);
+    });
 };
 
 /*

@@ -1,4 +1,4 @@
-import { toggleSignIn, loginGoogle, loginGithub} from './data.js';
+import { toggleSignIn, loginGoogle, loginGithub } from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
