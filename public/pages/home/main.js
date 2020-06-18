@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts, deletePost, likePost, logout, updateEdit} from './data.js';
+import { newPost, loadPosts, deletePost, likePost, logout, updateEdit, orderBy} from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -19,6 +19,8 @@ export const home = () => {
           <div class='post-options'>
             <button id='publish' type='submit'>Compartilhar</button>
             <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
+            <button id='order-asc' type="submit">asc-posts</button>
+            <button id='order-desc' type="submit">desc-posts</button> 
           </div>
         </form>
       </div>
@@ -29,10 +31,18 @@ export const home = () => {
   const resetForm = container.querySelector('#post-form');
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#publish');
-  const postPublic = container.querySelector('#public');
   const postPrivate = container.querySelector('#privacy');
-  const addImage = container.querySelector('#image');
   const timeline = container.querySelector('#timeline');
+
+  const orderAcs = container.querySelector("#order-asc");
+  orderAcs.addEventListener('click', () => {          
+    timeline.innerHTML = orderBy(true, postTemplate);
+  });
+
+  const orderDesc = container.querySelector('#order-desc');
+  orderDesc.addEventListener('click', () => {
+    timeline.innerHTML = orderBy(false, postTemplate);
+  });
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';
@@ -47,7 +57,7 @@ export const home = () => {
           <div class='top'>
             <p>publicado por <strong>${post.userName}</strong></p>
             <button id='edit-button' type='submit'>Editar</button>
-            <button id='cancel-edit' type='submit'>Cancelar</button> 
+            <button id='cancel-edit' type='submit'>Cancelar</button>                       
             <button id='save-edit' type='submit' data-postid=${post.id}>Salvar</button>
           </div>
           <div class='text'>
