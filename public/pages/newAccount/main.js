@@ -4,26 +4,26 @@ export const newAccount = () => {
   const container = document.createElement('div');
   container.classList.add('container-login');
 
-  container.innerHTML = `<section id="new-account" class="flex center row-desk data">
+  container.innerHTML = `<section id='new-account' class='flex center row-desk data'>
     <figure>
-      <img src="./img/register.svg" alt="Ilustração de monitor e dois usuários" class="desktop">
+      <img src='./img/register.svg' alt='Ilustração de monitor e dois usuários' class='desktop'>
     </figure>
-    <div class="flex center column data">
+    <div class='flex center column data'>
       <h2>Criar uma nova conta</h2>
-      <form class="flex column register">
-        <label for="name">Nome</label>
-        <input id="user-name" type="text" placeholder="Nome Sobrenome" required>
-        <span id="name-alert" class="alert"></span>
-        <label for="email">Email</label>
-        <input id="account-user" type="email" placeholder="seuemail@exemplo.com.br" required>
-        <span id="email-alert" class="alert"></span>
-        <label for="password">Senha</label>
-        <input id="account-pass" type="password" placeholder="mínimo 8 caracteres" required>
-        <span id="pass-alert" class="alert"></span>
-        <span id="validation"></span>
-        <button id="create-count" type="submit">CADASTRE-SE</button>
+      <form class='flex column register'>
+        <label for='name'>Nome</label>
+        <input id='user-name' type='text' placeholder='Nome Sobrenome' required>
+        <span id='name-alert' class='alert'></span>
+        <label for='email'>Email</label>
+        <input id='account-user' type='email' placeholder='seuemail@exemplo.com.br' required>
+        <span id='email-alert' class='alert'></span>
+        <label for='password'>Senha</label>
+        <input id='account-pass' type='password' placeholder='mínimo 8 caracteres' required>
+        <span id='pass-alert' class='alert'></span>
+        <span id='validation'></span>
+        <button id='create-count' type='submit'>CADASTRE-SE</button>
       </form>
-      <p class="footer">Já tem uma conta? <a href="#login">Acesse agora</a></p>
+      <p class='footer'>Já tem uma conta? <a href='#login'>Acesse agora</a></p>
     </div>
   </section>`;
 

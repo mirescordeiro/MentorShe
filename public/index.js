@@ -1,33 +1,32 @@
-  // Este é o ponto de entrada de sua aplicação
-import routes from "./routes.js";
+import routes from './routes.js';
 
-const main = document.querySelector("#root");
+const main = document.querySelector('#root');
 
-const validateHash = (hash) => (hash === "" ? "login" : hash.replace("#", ""));
+const validateHash = (hash) => (hash === '' ? 'login' : hash.replace('#', ''));
 
 const renderPage = () => {
   const page = validateHash(window.location.hash);
-  main.innerHTML = "";
+  main.innerHTML = '';
 
-  firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {    
     if (user) {
       main.appendChild(routes[page]);
     } else {
       switch (true) {
-        case page !== "home":
+        case page !== 'home':
           main.appendChild(routes[page]);
           break;
         default:
-          main.appendChild(routes["login"]);
+          main.appendChild(routes['login']);
           break;
       }
     }
   });
 };
 
-const init = () => window.addEventListener("hashchange", renderPage);
+const init = () => window.addEventListener('hashchange', renderPage);
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   renderPage();
   init();
 });

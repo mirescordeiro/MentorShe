@@ -2,19 +2,25 @@ export const handleSignUp = ({ email, password, name }, callback) => {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      // apos criar usuario ja envia o email de verificacao da conta
+    .then(() => {
+      // After creating the user sends an email to verify adress
       firebase.auth().currentUser.sendEmailVerification();
-      firebase.auth().currentUser.updateProfile({ displayName: name }); //  Estava chamando o callback depois desta linha sendo que estou tratando ele no catch
+      firebase.auth().currentUser.updateProfile({ displayName: name });
     })
     .catch((error) => {
       const errorCode = error.code;
+      callback(error.message);
       if (errorCode === 'auth/weak-password') {
         callback('Senha inválida');
       }
       if (errorCode === 'auth/invalid-email') {
-        callback('Email inválido');
+        callback('E-mail inválido');
       }
-      callback(error.message);
+      if (errorCode === 'auth/email-already-in-use') {
+        callback('Este e-mail já está sendo utilizado');
+      }
+      if (errorCode === 'auth/operation-not-allowed') {
+        callback('Este e-mail/senha não está ativo');
+      }
     });
 };

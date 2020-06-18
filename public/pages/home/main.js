@@ -1,4 +1,6 @@
-import { newPost, loadPosts, deletePost, likePost, logout, updateEdit, orderBy} from './data.js';
+import {
+  newPost, loadPosts, deletePost, likePost, logout, updateEdit
+} from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -54,11 +56,6 @@ export const home = () => {
 
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
-          <div class='top'>
-            <p>publicado por <strong>${post.userName}</strong></p>
-            <button id='edit-button' type='submit'>Editar</button>
-            <button id='cancel-edit' type='submit'>Cancelar</button>                       
-            <button id='save-edit' type='submit' data-postid=${post.id}>Salvar</button>
             <figure>
               <img src="${post.photoURL}" alt="Foto da usuária">
               <figcaption>${post.userName}</figcaption>
