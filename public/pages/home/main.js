@@ -19,9 +19,9 @@ export const home = () => {
           <textarea name='post' id='post-text' placeholder='Compartilhe Conhecimento!'></textarea>
           <div class='post-options'>
             <button id='publish' type='submit'>Compartilhar</button>
-            <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
+            <!-- <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
             <button id='order-asc' type="submit">asc-posts</button>
-            <button id='order-desc' type="submit">desc-posts</button> 
+            <button id='order-desc' type="submit">desc-posts</button> -->
           </div>
         </form>
       </div>
@@ -33,10 +33,10 @@ export const home = () => {
   const resetForm = container.querySelector('#post-form');
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#publish');
-  const postPrivate = container.querySelector('#privacy');
+  //  const postPrivate = container.querySelector('#privacy');
   const timeline = container.querySelector('#timeline');
 
-  const orderAcs = container.querySelector('#order-asc');
+  /*  const orderAcs = container.querySelector("#order-asc");
   orderAcs.addEventListener('click', () => {
     timeline.innerHTML = orderBy(true, postTemplate);
   });
@@ -44,7 +44,7 @@ export const home = () => {
   const orderDesc = container.querySelector('#order-desc');
   orderDesc.addEventListener('click', () => {
     timeline.innerHTML = orderBy(false, postTemplate);
-  });
+  }); */
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';
@@ -56,7 +56,7 @@ export const home = () => {
 
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
-        <div class='top'>
+          <div class='top'>
             <figure>
               <img src="${post.photoURL}" alt="Foto da usuária">
               <figcaption>${post.userName}</figcaption>
@@ -118,6 +118,7 @@ export const home = () => {
           cancelEditBtn.setAttribute('hidden', 'true');
           saveEditBtn.setAttribute('hidden', 'true');
           updateEdit(saveEditBtn.dataset.postid, editTextArea.value);
+          editTextArea.disabled = true;
           resetForm.reset();
         });
 
@@ -160,7 +161,7 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
-    newPost(textPost.value, postPrivate.value); //  Passei ele como parâmetro aqui também.
+    newPost(textPost.value); // ,postPrivate.value Passei ele como parâmetro aqui também.
     textPost.value = '';
     timeline.innerHTML = '';
     loadPosts(postTemplate);

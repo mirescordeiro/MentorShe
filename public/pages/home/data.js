@@ -12,7 +12,7 @@ export const getUrlPhoto = () => {
   }
 };
 
-export const newPost = (textareaPost, postPrivate) => { //  coloquei postPrivate como parametro
+export const newPost = (textareaPost) => { //  , postPrivate coloquei postPrivate como parametro
   firebase
     .firestore()
     .collection('posts')
@@ -25,7 +25,7 @@ export const newPost = (textareaPost, postPrivate) => { //  coloquei postPrivate
       likeUsers: [],
       comments: [],
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      privacy: postPrivate, //  criei este privacy recebendo o postPrivate e declarei ele lá em cima como paramentro.
+      //privacy: postPrivate, //  criei este privacy recebendo o postPrivate e declarei ele lá em cima como paramentro.
     })
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
