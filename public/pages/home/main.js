@@ -55,11 +55,6 @@ export const home = () => {
 
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
-          <div class='top'>
-            <p>publicado por <strong>${post.userName}</strong></p>
-            <button id='edit-button' type='submit'>Editar</button>
-            <button id='cancel-edit' type='submit'>Cancelar</button>                       
-            <button id='save-edit' type='submit' data-postid=${post.id}>Salvar</button>
             <figure>
               <img src="${post.photoURL}" alt="Foto da usuária">
               <figcaption>${post.userName}</figcaption>
@@ -109,7 +104,7 @@ export const home = () => {
           editButton.removeAttribute('hidden');
           cancelEditBtn.setAttribute('hidden', 'true');
           saveEditBtn.setAttribute('hidden', 'true');
-          editTextArea.disabled= true;
+          editTextArea.disabled = true;
           resetFormTemplate.reset();
         });
 
@@ -127,12 +122,12 @@ export const home = () => {
         // Autoresizes the textarea
         function resizeTextArea() {
           editTextArea.style.height = 'auto';
-          editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px'; //HELP!!! NUM SEI MAIS O QUE FAZER
+          editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px'; // HELP!!! NUM SEI MAIS O QUE FAZER
         }
         resizeTextArea();
 
         // Likes the post and deslikes on second click
-        likeButton.addEventListener('click', () => {
+        likeButton.addEventListener('click', (event) => {
           event.preventDefault();
           likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
         });
@@ -163,7 +158,7 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
-    newPost(textPost.value, postPrivate.value); //Passei ele como parametro aqui também.
+    newPost(textPost.value, postPrivate.value); //  Passei ele como parâmetro aqui também.
     textPost.value = '';
     timeline.innerHTML = '';
     loadPosts(postTemplate);
