@@ -20,6 +20,8 @@ export const home = () => {
           <div class='post-options'>
             <button id='publish' type='submit'>Compartilhar</button>
             <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
+            <button id='order-asc' type="submit">asc-posts</button>
+            <button id='order-desc' type="submit">desc-posts</button> 
           </div>
         </form>
       </div>
@@ -31,10 +33,18 @@ export const home = () => {
   const resetForm = container.querySelector('#post-form');
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#publish');
-  const postPublic = container.querySelector('#public');
   const postPrivate = container.querySelector('#privacy');
-  const addImage = container.querySelector('#image');
   const timeline = container.querySelector('#timeline');
+
+  const orderAcs = container.querySelector("#order-asc");
+  orderAcs.addEventListener('click', () => {          
+    timeline.innerHTML = orderBy(true, postTemplate);
+  });
+
+  const orderDesc = container.querySelector('#order-desc');
+  orderDesc.addEventListener('click', () => {
+    timeline.innerHTML = orderBy(false, postTemplate);
+  });
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';
@@ -46,7 +56,6 @@ export const home = () => {
 
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
-          <div class='top'>
             <figure>
               <img src="${post.photoURL}" alt="Foto da usuária">
               <figcaption>${post.userName}</figcaption>
@@ -96,7 +105,7 @@ export const home = () => {
           editButton.removeAttribute('hidden');
           cancelEditBtn.setAttribute('hidden', 'true');
           saveEditBtn.setAttribute('hidden', 'true');
-          editTextArea.disabled= true;
+          editTextArea.disabled = true;
           resetFormTemplate.reset();
         });
 
@@ -114,12 +123,12 @@ export const home = () => {
         // Autoresizes the textarea
         function resizeTextArea() {
           editTextArea.style.height = 'auto';
-          editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px'; //HELP!!! NUM SEI MAIS O QUE FAZER
+          editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px'; // HELP!!! NUM SEI MAIS O QUE FAZER
         }
         resizeTextArea();
 
         // Likes the post and deslikes on second click
-        likeButton.addEventListener('click', () => {
+        likeButton.addEventListener('click', (event) => {
           event.preventDefault();
           likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
         });
@@ -150,7 +159,7 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
-    newPost(textPost.value, postPrivate.value); //Passei ele como parametro aqui também.
+    newPost(textPost.value, postPrivate.value); //  Passei ele como parâmetro aqui também.
     textPost.value = '';
     timeline.innerHTML = '';
     loadPosts(postTemplate);
