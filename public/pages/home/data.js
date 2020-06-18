@@ -115,13 +115,8 @@ export const likePost = (postId, userId) => {
         userIds.push(userId);
       }
 
-<<<<<<< HEAD
-      updateLike(likes, userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
-      updateEdit(userIds, postId) 
-=======
       updateLike(likes, userIds, postId);
       updateEdit(userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
->>>>>>> ce306116185c201aeae1d1b921d46964ee654837
     })
     .catch((error) => {
       console.log('error');

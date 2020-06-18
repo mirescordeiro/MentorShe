@@ -35,7 +35,7 @@ export const home = () => {
   const timeline = container.querySelector('#timeline');
 
   const orderAcs = container.querySelector("#order-asc");
-  orderAcs.addEventListener('click', () => {          
+  orderAcs.addEventListener('click', () => {
     timeline.innerHTML = orderBy(true, postTemplate);
   });
 
