@@ -7,8 +7,8 @@ export const getUserName = () => {
 };
 
 export const getUrlPhoto = () => {
-  if (firebase.auth().currentUser != null){
-  return firebase.auth().currentUser.photoURL || './public/img/user_avatar.png';
+  if (firebase.auth().currentUser != null) {
+    return firebase.auth().currentUser.photoURL || './public/img/user_avatar.png';
   }
 };
 
@@ -57,10 +57,10 @@ export const loadPosts = (callback) => {
 export const orderBy = (order, callback) => {
   const ascDesc = order === true ? 'asc' : 'desc';
   const orderPost = firebase
-  .firestore()
-  .collection('posts')
-  .where('privacy', '==', 'on')
-  .orderBy('timestamp', ascDesc);
+    .firestore()
+    .collection('posts')
+    .where('privacy', '==', 'on')
+    .orderBy('timestamp', ascDesc);
 
   orderPost.onSnapshot((querySnapshot) => {
     const postOrder = [];
