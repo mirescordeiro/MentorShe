@@ -7,7 +7,9 @@ export const getUserName = () => {
 };
 
 export const getUrlPhoto = () => {
-  return firebase.auth().currentUser != null ? firebase.auth().currentUser.photoURL : './public/img/logo_icon.png';
+  if (firebase.auth().currentUser != null){
+  return firebase.auth().currentUser.photoURL || './public/img/user_avatar.png';
+  }
 };
 
 export const newPost = (textareaPost, postPrivate) => { //  coloquei postPrivate como parametro

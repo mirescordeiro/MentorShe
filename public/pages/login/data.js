@@ -1,3 +1,4 @@
+// Login with email
 export const toggleSignIn = ({ email, password }, callback) => {
   firebase
     .auth()
@@ -10,8 +11,7 @@ export const toggleSignIn = ({ email, password }, callback) => {
     });
 };
 
-// Função para logar com a conta Google.
-
+// Login with Google account
 export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase
@@ -19,11 +19,11 @@ export const loginGoogle = () => {
     .signInWithPopup(provider)
     .then(() => {
       window.location.hash = 'home';
-      // const token = result.credential.accessToken;
-      // const user = result.user;
-    });
+    })
+    .catch(function(error) { handleError(error); });
 };
 
+// Login with GitHub account
 export const loginGithub = () => {
   const provider = new firebase.auth.GithubAuthProvider();
   provider.addScope('user');
@@ -32,20 +32,11 @@ export const loginGithub = () => {
     .signInWithPopup(provider)
     .then(() => {
       window.location.hash = 'home';
-      // const token = result.credential.accessToken;
-      // const user = result.user;
-    });
+    })
+    .catch(function(error) { handleError(error); });
 };
 
-/* CATCH LOGIN COM GOOGLE
-.catch(function (error) {
-// Handle Errors here.
-const errorCode = error.code;
-const errorMessage = error.message;
-// The email of the user's account used.
-// ...
-}); */
-
+/*
 export const ResetEmail = () => {
   const auth = firebase.auth();
   auth.sendPasswordResetEmail(emailAddress)
@@ -55,3 +46,4 @@ export const ResetEmail = () => {
       emailAddress.error('Ocorreu um erro inesperado');
 });
 };
+*/

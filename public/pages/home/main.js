@@ -1,4 +1,3 @@
-// Aqui serão criados os eventos de Manipulação de DOM e templates
 import {
   newPost, loadPosts, deletePost, likePost, logout, updateEdit
 } from './data.js';
