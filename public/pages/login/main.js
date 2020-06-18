@@ -1,4 +1,4 @@
-import { toggleSignIn, loginGoogle, loginGithub, ResetEmail } from './data.js';
+import { toggleSignIn, loginGoogle, loginGithub} from './data.js';
 
 export const login = () => {
   const container = document.createElement('div');
@@ -39,7 +39,6 @@ export const login = () => {
   const validationLogin = container.querySelector('#validation-login');
   const googleButton = container.querySelector('#google-button');
   const githubButton = container.querySelector('#github-button');
-  const facebookButton = container.querySelector('#facebook-button');
 
   googleButton.addEventListener('click', (event) => {
     event.preventDefault();
