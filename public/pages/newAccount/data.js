@@ -1,4 +1,4 @@
-export const handleSignUp = ({ email, password, name }, callback) => {
+export const handleSignUp = ({ email, password }, callback) => {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
