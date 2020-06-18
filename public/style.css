@@ -550,6 +550,8 @@ nav button {
     width: 24vw;
   }
 
-
+  .edit {
+    display: block;
+  }
 }
 /*------------*/
