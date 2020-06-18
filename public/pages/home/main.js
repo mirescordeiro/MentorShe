@@ -56,6 +56,7 @@ export const home = () => {
 
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
+        <div class='top'>
             <figure>
               <img src="${post.photoURL}" alt="Foto da usuária">
               <figcaption>${post.userName}</figcaption>
