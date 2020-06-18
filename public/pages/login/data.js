@@ -43,15 +43,15 @@ export const loginGithub = () => {
 const errorCode = error.code;
 const errorMessage = error.message;
 // The email of the user's account used.
-// ... 
-});*/
+// ...
+}); */
 
 export const ResetEmail = () => {
   const auth = firebase.auth();
   auth.sendPasswordResetEmail(emailAddress)
-.then(function() {
-  emailAddress.push('verifique seu e-mail para instruções de redefinição da senha');
-}).catch(function(error) {
-  emailAddress.error('Ocorreu um erro inesperado');
+    .then(function () {
+      emailAddress.push('verifique seu e-mail para instruções de redefinição da senha');
+    }).catch(function (error) {
+      emailAddress.error('Ocorreu um erro inesperado');
 });
-}
+};
