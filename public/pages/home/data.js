@@ -108,14 +108,14 @@ export const likePost = (postId, userId) => {
       //  Verifica se o userId contem userId do usuário que está clicando no like
       if (userIds.includes(userId)) {
         //  Se contém, ele decrementa o like
-        likes--;
+        likes -= 1;
         //  Encontra o indice do usuário no array
         const index = userIds.findIndex(elem => elem === userId);
         // Remove do array o usuário que tiver no indice
         userIds.splice(index, 1);
       } else {
         //  Se não, incrementa a soma de like
-        likes++;
+        likes += 1;
         //  Adiciona no array de usuário o id do usuário
         userIds.push(userId);
       }

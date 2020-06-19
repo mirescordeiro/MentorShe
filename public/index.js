@@ -8,7 +8,7 @@ const renderPage = () => {
   const page = validateHash(window.location.hash);
   main.innerHTML = '';
 
-  firebase.auth().onAuthStateChanged((user) => {    
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       main.appendChild(routes[page]);
     } else {
