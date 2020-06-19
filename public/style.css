@@ -417,7 +417,6 @@ nav button {
 .text textarea { 
   background-color: white;
   border: 0 none ;
-  padding: 0;
   outline: none;
   font-family: 'Source Sans Pro';
   font-size: 0.85em;
@@ -550,6 +549,8 @@ nav button {
     width: 24vw;
   }
 
-
+  .edit {
+    display: block;
+  }
 }
 /*------------*/

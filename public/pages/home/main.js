@@ -1,5 +1,6 @@
-// Aqui serão criados os eventos de Manipulação de DOM e templates
-import { newPost, loadPosts, deletePost, likePost, logout, updateEdit, orderBy} from './data.js';
+import {
+  newPost, loadPosts, deletePost, likePost, logout, updateEdit,
+} from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -19,8 +20,8 @@ export const home = () => {
           <div class='post-options'>
             <button id='publish' type='submit'>Compartilhar</button>
             <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
-            <button id='order-asc' type="submit">asc-posts</button>
-            <button id='order-desc' type="submit">desc-posts</button> 
+            <!-- <button id='order-asc' type="submit">asc-posts</button>
+            <button id='order-desc' type="submit">desc-posts</button> -->
           </div>
         </form>
       </div>
@@ -35,15 +36,15 @@ export const home = () => {
   const postPrivate = container.querySelector('#privacy');
   const timeline = container.querySelector('#timeline');
 
-  const orderAcs = container.querySelector("#order-asc");
-  orderAcs.addEventListener('click', () => {          
+  /*  const orderAcs = container.querySelector("#order-asc");
+  orderAcs.addEventListener('click', () => {
     timeline.innerHTML = orderBy(true, postTemplate);
   });
 
   const orderDesc = container.querySelector('#order-desc');
   orderDesc.addEventListener('click', () => {
     timeline.innerHTML = orderBy(false, postTemplate);
-  });
+  }); */
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';
@@ -55,7 +56,7 @@ export const home = () => {
 
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
-        <div class='top'>
+          <div class='top'>
             <figure>
               <img src="${post.photoURL}" alt="Foto da usuária">
               <figcaption>${post.userName}</figcaption>
@@ -117,15 +118,20 @@ export const home = () => {
           cancelEditBtn.setAttribute('hidden', 'true');
           saveEditBtn.setAttribute('hidden', 'true');
           updateEdit(saveEditBtn.dataset.postid, editTextArea.value);
+          editTextArea.disabled = true;
           resetForm.reset();
         });
 
         // Autoresizes the textarea
         function resizeTextArea() {
-          editTextArea.style.height = 'auto';
-          editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px'; // HELP!!! NUM SEI MAIS O QUE FAZER
+          // editTextArea.style.height = 'auto';
+          // editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px';
+          editTextArea.addEventListener('keydown', () => {
+            while (editTextArea.scrollHeight > editTextArea.offsetHeight) {
+              editTextArea.rows += 1;
+            }
+          });
         }
-        resizeTextArea();
 
         // Likes the post and deslikes on second click
         likeButton.addEventListener('click', (event) => {
@@ -142,13 +148,18 @@ export const home = () => {
 
         // Identifies if the currentUser has editing privileges
         function loggedUser() {
-          if (firebase.auth().currentUser.uid === post.user) {
-            editButton.removeAttribute('hidden');
-            deletePostBtn.removeAttribute('hidden');
-          }
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              if (user.uid === post.user) {
+                editButton.removeAttribute('hidden');
+                deletePostBtn.removeAttribute('hidden');
+              }
+            }
+          });
         }
-        loggedUser();
 
+        loggedUser();
+        resizeTextArea();
         // Refresh timeline
         timeline.appendChild(template);
       })
@@ -159,7 +170,7 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
-    newPost(textPost.value, postPrivate.value); //  Passei ele como parâmetro aqui também.
+    newPost(textPost.value, postPrivate.checked); //  Passei ele como parâmetro aqui também.
     textPost.value = '';
     timeline.innerHTML = '';
     loadPosts(postTemplate);

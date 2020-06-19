@@ -7,12 +7,13 @@ export const getUserName = () => {
 };
 
 export const getUrlPhoto = () => {
-  if (firebase.auth().currentUser != null){
-  return firebase.auth().currentUser.photoURL || './public/img/user_avatar.png';
+  if (firebase.auth().currentUser != null) {
+    return firebase.auth().currentUser.photoURL || './public/img/user_avatar.png';
   }
 };
 
-export const newPost = (textareaPost, postPrivate) => { //  coloquei postPrivate como parametro
+export const newPost = (textareaPost, postPrivate) => {
+  //  , postPrivate coloquei postPrivate como parametro
   firebase
     .firestore()
     .collection('posts')
@@ -25,7 +26,7 @@ export const newPost = (textareaPost, postPrivate) => { //  coloquei postPrivate
       likeUsers: [],
       comments: [],
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      privacy: postPrivate, //  criei este privacy recebendo o postPrivate e declarei ele lá em cima como paramentro.
+      privacy: postPrivate,
     })
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
@@ -45,10 +46,12 @@ export const loadPosts = (callback) => {
   load.onSnapshot((querySnapshot) => {
     const posts = [];
     querySnapshot.forEach((doc) => {
-      posts.push({
-        id: doc.id,
-        ...doc.data(),
-      });
+      if (!doc.data().privacy || doc.data().user === firebase.auth().currentUser.uid) {
+        posts.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      }
     });
     callback(posts);
   });
@@ -57,10 +60,10 @@ export const loadPosts = (callback) => {
 export const orderBy = (order, callback) => {
   const ascDesc = order === true ? 'asc' : 'desc';
   const orderPost = firebase
-  .firestore()
-  .collection('posts')
-  .where('privacy', '==', 'on')
-  .orderBy('timestamp', ascDesc);
+    .firestore()
+    .collection('posts')
+    .where('privacy', '==', 'on')
+    .orderBy('timestamp', ascDesc);
 
   orderPost.onSnapshot((querySnapshot) => {
     const postOrder = [];
@@ -117,8 +120,8 @@ export const likePost = (postId, userId) => {
         userIds.push(userId);
       }
 
-      updateLike(likes, userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
-      updateEdit(userIds, postId) 
+      updateLike(likes, userIds, postId);
+      updateEdit(userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
     })
     .catch((error) => {
       console.log('error');
