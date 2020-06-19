@@ -47,11 +47,11 @@ export const loadPosts = (callback) => {
     const posts = [];
     querySnapshot.forEach((doc) => {
       if (!doc.data().privacy || doc.data().user === firebase.auth().currentUser.uid) {
-      posts.push({
-        id: doc.id,
-        ...doc.data(),
-      });
-    }
+        posts.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      }
     });
     callback(posts);
   });

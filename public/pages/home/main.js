@@ -1,5 +1,5 @@
 import {
-  newPost, loadPosts, deletePost, likePost, logout, updateEdit
+  newPost, loadPosts, deletePost, likePost, logout, updateEdit,
 } from './data.js';
 
 export const home = () => {
@@ -155,7 +155,7 @@ export const home = () => {
                 deletePostBtn.removeAttribute('hidden');
               }
             }
-        });
+          });
         }
 
         loggedUser();
