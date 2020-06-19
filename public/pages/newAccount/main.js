@@ -36,7 +36,8 @@ export const newAccount = () => {
   const validation = container.querySelector('#validation');
   const validationName = container.querySelector('#name-alert');
 
-  createButton.addEventListener('click', () => {
+  createButton.addEventListener('click', (event) => {
+    event.preventDefault();
     const invalidName = [];
     const invalidPass = [];
     const invalidEmail = [];
@@ -53,9 +54,9 @@ export const newAccount = () => {
       }
     };
 
-    const email = document.querySelector('#account-user').value;
-    const password = document.querySelector('#account-pass').value;
-    const name = document.querySelector('#user-name').value;
+    const email = container.querySelector('#account-user').value;
+    const password = container.querySelector('#account-pass').value;
+    const name = container.querySelector('#user-name').value;
 
     if (!nameFormat.test(name)) {
       invalidName.push('Preencha seu nome');
@@ -72,7 +73,7 @@ export const newAccount = () => {
       validationMail.innerHTML = invalidEmail.join('');
       validationName.innerHTML = invalidName.join('');
     } else {
-      handleSignUp({ email, password, name }, errorFirebase);
+      handleSignUp({ email, password }, errorFirebase, name);
     }
   });
 
