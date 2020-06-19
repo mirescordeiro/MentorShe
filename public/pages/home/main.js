@@ -19,8 +19,8 @@ export const home = () => {
           <textarea name='post' id='post-text' placeholder='Compartilhe Conhecimento!'></textarea>
           <div class='post-options'>
             <button id='publish' type='submit'>Compartilhar</button>
-            <!-- <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
-            <button id='order-asc' type="submit">asc-posts</button>
+            <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
+            <!-- <button id='order-asc' type="submit">asc-posts</button>
             <button id='order-desc' type="submit">desc-posts</button> -->
           </div>
         </form>
@@ -33,7 +33,7 @@ export const home = () => {
   const resetForm = container.querySelector('#post-form');
   const textPost = container.querySelector('#post-text');
   const postButton = container.querySelector('#publish');
-  //  const postPrivate = container.querySelector('#privacy');
+  const postPrivate = container.querySelector('#privacy');
   const timeline = container.querySelector('#timeline');
 
   /*  const orderAcs = container.querySelector("#order-asc");
@@ -124,10 +124,14 @@ export const home = () => {
 
         // Autoresizes the textarea
         function resizeTextArea() {
-          editTextArea.style.height = 'auto';
-          editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px'; // HELP!!! NUM SEI MAIS O QUE FAZER
+          // editTextArea.style.height = 'auto';
+          // editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px';
+          editTextArea.addEventListener('keydown', () => {
+            while (editTextArea.scrollHeight > editTextArea.offsetHeight) {
+              editTextArea.rows += 1;
+            }
+          });
         }
-        resizeTextArea();
 
         // Likes the post and deslikes on second click
         likeButton.addEventListener('click', (event) => {
@@ -144,13 +148,18 @@ export const home = () => {
 
         // Identifies if the currentUser has editing privileges
         function loggedUser() {
-          if (firebase.auth().currentUser.uid === post.user) {
-            editButton.removeAttribute('hidden');
-            deletePostBtn.removeAttribute('hidden');
-          }
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              if (user.uid === post.user) {
+                editButton.removeAttribute('hidden');
+                deletePostBtn.removeAttribute('hidden');
+              }
+            }
+        });
         }
-        loggedUser();
 
+        loggedUser();
+        resizeTextArea();
         // Refresh timeline
         timeline.appendChild(template);
       })
@@ -161,7 +170,7 @@ export const home = () => {
 
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
-    newPost(textPost.value); // ,postPrivate.value Passei ele como parâmetro aqui também.
+    newPost(textPost.value, postPrivate.checked); //  Passei ele como parâmetro aqui também.
     textPost.value = '';
     timeline.innerHTML = '';
     loadPosts(postTemplate);
