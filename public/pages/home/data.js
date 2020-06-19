@@ -8,8 +8,8 @@ export const getUserName = () => {
 
 export const getUrlPhoto = () => {
   if (firebase.auth().currentUser != null) {
-    return firebase.auth().currentUser.photoURL || './public/img/user_avatar.png';
-  }
+    return firebase.auth().currentUser.photoURL
+  } 
 };
 
 export const newPost = (textareaPost, postPrivate) => {
