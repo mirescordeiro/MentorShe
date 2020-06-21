@@ -1,4 +1,4 @@
-export const getUserName = () => {
+const getUserName = () => {
   return firebase
     .auth()
     .currentUser != null ? firebase
@@ -6,14 +6,13 @@ export const getUserName = () => {
       .currentUser.displayName : '';
 };
 
-export const getUrlPhoto = () => {
+const getUrlPhoto = () => {
   if (firebase.auth().currentUser != null) {
     return firebase.auth().currentUser.photoURL
   } 
 };
 
 export const newPost = (textareaPost, postPrivate) => {
-  //  , postPrivate coloquei postPrivate como parametro
   firebase
     .firestore()
     .collection('posts')
@@ -57,26 +56,6 @@ export const loadPosts = (callback) => {
   });
 };
 
-export const orderBy = (order, callback) => {
-  const ascDesc = order === true ? 'asc' : 'desc';
-  const orderPost = firebase
-    .firestore()
-    .collection('posts')
-    .where('privacy', '==', 'on')
-    .orderBy('timestamp', ascDesc);
-
-  orderPost.onSnapshot((querySnapshot) => {
-    const postOrder = [];
-    querySnapshot.forEach((doc) => {
-      postOrder.push({
-        id: doc.id,
-        ...doc.data(),
-      });
-    });
-    callback(postOrder);
-  });
-};
-
 // Deletes a post using its id
 export const deletePost = (postId) => {
   firebase
@@ -100,34 +79,27 @@ export const likePost = (postId, userId) => {
     .doc(postId)
     .get()
     .then((doc) => {
-      //  Array de usuários com todos os ids de usuários que já deram like nos posts
       const userIds = doc.data().likeUsers;
-      //  Quantidade de likes do post
       let likes = doc.data().likes;
 
-      //  Verifica se o userId contem userId do usuário que está clicando no like
       if (userIds.includes(userId)) {
-        //  Se contém, ele decrementa o like
         likes -= 1;
-        //  Encontra o indice do usuário no array
         const index = userIds.findIndex(elem => elem === userId);
-        // Remove do array o usuário que tiver no indice
         userIds.splice(index, 1);
       } else {
-        //  Se não, incrementa a soma de like
         likes += 1;
-        //  Adiciona no array de usuário o id do usuário
         userIds.push(userId);
       }
 
       updateLike(likes, userIds, postId);
-      updateEdit(userIds, postId); // Deu que o "updateLike" foi usado antes de ser declarado
+      updateEdit(userIds, postId); 
     })
     .catch((error) => {
       console.log('error');
     });
 };
 
+// Updates the number of likes based on users and post id
 const updateLike = (countLike, userArray, postId) => {
   firebase
     .firestore()
@@ -144,6 +116,8 @@ const updateLike = (countLike, userArray, postId) => {
       console.error('Error liking document: ', error);
     });
 };
+
+
 
 // Updates the text from a post using its id
 export const updateEdit = (postId, textareaPost) => {

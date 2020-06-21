@@ -32,7 +32,7 @@ export const login = () => {
   `;
 
   const mailformat = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/;
-  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/;
+  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-6]))|((?=.*[A-Z])(?=.*[0-6])))(?=.{6,})/;
   const loginButton = container.querySelector('#login-button');
   const validationPassLogin = container.querySelector('#pass-alert');
   const validationMailLogin = container.querySelector('#email-alert');
