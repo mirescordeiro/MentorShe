@@ -4,7 +4,7 @@ export const handleSignUp = (document, callback, name) => {
     .createUserWithEmailAndPassword(document.email, document.password)
     .then((cred) => {    
       cred.user.updateProfile({ displayName: name})
-      cred.user.updateProfile({ photoURL: 'https://conteudo.imguol.com.br/c/entretenimento/dd/2019/04/05/gatos-sao-capazes-de-responder-aos-seus-proprios-nomes-1554503168561_v2_1920x1282.jpg'});
+      cred.user.updateProfile({ photoURL: 'https://firebasestorage.googleapis.com/v0/b/social-network-2b0a2.appspot.com/o/avatar.png?alt=media&token=f90343ed-a939-45fe-9155-d65f90cae71f'});
     })
     .catch((error) => {
       const errorCode = error.code;

@@ -10,23 +10,43 @@ export const home = () => {
     <header>
       <nav>
         <h1 id='logo-home'>mentor<strong id='strong'>she</strong></h1>
-        <button id='logout'>Sair</button>
+        <label>
+          <img src='./img/logout.svg' alt="Ícone de uma porta aberta">
+          <button id='logout'>Sair</button>
+        </label>
       </nav>
     </header>
-    <section class='news'>
-      <div class='flex'>
-        <form id='post-form' class='post'>
-          <textarea name='post' id='post-text' placeholder='Compartilhe Conhecimento!'></textarea>
-          <div class='post-options'>
-            <button id='publish' type='submit'>Compartilhar</button>
-            <input type="checkbox" class="private-post" id="privacy"><p>Privado</p></input>
-            <!-- <button id='order-asc' type="submit">asc-posts</button>
-            <button id='order-desc' type="submit">desc-posts</button> -->
-          </div>
-        </form>
-      </div>
-      <div id='timeline'></div>
-    </section>
+    <div class='flex row-desk'>
+      <!--<section class='profile'>
+        <figure>
+          <img src='./public/img/user_profile.png' alt="Foto do perfil">
+        </figure>
+        <div>
+          <figure>
+            <img src='' alt='Foto da usuária'>
+            <figcaption></figcaption>
+          </figure>
+        </div>
+      </section>-->
+      <section class='news'>
+        <div class='flex'>
+          <form id='post-form' class='post'>
+            <textarea name='post' id='post-text' placeholder='Compartilhe Conhecimento!'></textarea>
+            <div class='post-options'>
+              <div class='privacy'>
+                <label>PRIVADO</label>
+                <label class="switch">
+                  <input type="checkbox" id="privacy">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <button id='publish' type='submit'>Compartilhar</button>
+            </div>
+          </form>
+        </div>
+        <section id='timeline'></section>
+      </section>
+    </div>
     `;
 
   // Container variables
@@ -35,16 +55,6 @@ export const home = () => {
   const postButton = container.querySelector('#publish');
   const postPrivate = container.querySelector('#privacy');
   const timeline = container.querySelector('#timeline');
-
-  /*  const orderAcs = container.querySelector("#order-asc");
-  orderAcs.addEventListener('click', () => {
-    timeline.innerHTML = orderBy(true, postTemplate);
-  });
-
-  const orderDesc = container.querySelector('#order-desc');
-  orderDesc.addEventListener('click', () => {
-    timeline.innerHTML = orderBy(false, postTemplate);
-  }); */
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';
@@ -68,20 +78,30 @@ export const home = () => {
             </div>
           </div>
           <div class='text'>
-            <textarea id='edit-text-area' disabled='disabled'>${post.text}</textarea>
+            <textarea id='edit-text-area' disabled='disabled' rows='1'>${post.text}</textarea>
           </div>
           <div class='bottom'>
             <div class='flex like'>
               <button id='like-button' data-postid=${post.id}><span class='icon-like'></span></button>
               <p id='numbers-like'>${post.likes}<p>
             </div>
-            <button id='delete-post' class='delete' data-postid=${post.id}><span class='icon-delete'></span></button>
+            <div id='private' class='private'>
+              <div class='privacy'>
+                <label>PRIVADO</label>
+                <label class="switch">
+                  <input type="checkbox" data-private=${post.privacy} id="editPrivacy">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <button id='delete-post' class='delete' data-postid=${post.id}><span class='icon-delete'></span></button>
+            </div>
           </div>
         </form>
       `;
 
         // Template variables
         const resetFormTemplate = template.querySelector('#template-form');
+        const privateBtns = template.querySelector('#private');
         const editButton = template.querySelector('#edit-button');
         const cancelEditBtn = template.querySelector('#cancel-edit');
         const saveEditBtn = template.querySelector('#save-edit');
@@ -89,49 +109,54 @@ export const home = () => {
         const likeButton = template.querySelector('#like-button');
         const deletePostBtn = template.querySelector('#delete-post');
 
+        // Identifies if the currentUser has editing privileges
+        function loggedUser() {
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              if (user.uid === post.user) {
+                editButton.hidden = false;
+                cancelEditBtn.hidden = true;
+                saveEditBtn.hidden = true;
+                privateBtns.style.visibility='visible';
+              } else {
+                editButton.hidden = true;
+                cancelEditBtn.hidden = true;
+                saveEditBtn.hidden = true;
+                privateBtns.style.visibility='hidden';
+              }
+            }
+          });
+        }
+
         // Enables the textarea to edit the post
-        editButton.setAttribute('hidden', 'true');
         editButton.addEventListener('click', (event) => {
           event.preventDefault();
-          editButton.setAttribute('hidden', 'true');
-          cancelEditBtn.removeAttribute('hidden');
-          saveEditBtn.removeAttribute('hidden');
+          editButton.hidden = true;
+          cancelEditBtn.hidden = false;
+          saveEditBtn.hidden = false;
           editTextArea.disabled = false;
         });
 
         // Cancels the editing and resets text
-        cancelEditBtn.setAttribute('hidden', 'true');
         cancelEditBtn.addEventListener('click', (event) => {
           event.preventDefault();
-          editButton.removeAttribute('hidden');
-          cancelEditBtn.setAttribute('hidden', 'true');
-          saveEditBtn.setAttribute('hidden', 'true');
+          editButton.hidden = false;
+          cancelEditBtn.hidden = true;
+          saveEditBtn.hidden = true;
           editTextArea.disabled = true;
           resetFormTemplate.reset();
         });
 
         // Saves editing changes to the database
-        saveEditBtn.setAttribute('hidden', 'true');
         saveEditBtn.addEventListener('click', (event) => {
           event.preventDefault();
-          editButton.removeAttribute('hidden');
-          cancelEditBtn.setAttribute('hidden', 'true');
-          saveEditBtn.setAttribute('hidden', 'true');
+          editButton.hidden = false;
+          cancelEditBtn.hidden = true;
+          saveEditBtn.hidden = true;
           updateEdit(saveEditBtn.dataset.postid, editTextArea.value);
           editTextArea.disabled = true;
           resetForm.reset();
         });
-
-        // Autoresizes the textarea
-        function resizeTextArea() {
-          // editTextArea.style.height = 'auto';
-          // editTextArea.style.height = editTextArea.scrollHeight + 50 + 'px';
-          editTextArea.addEventListener('keydown', () => {
-            while (editTextArea.scrollHeight > editTextArea.offsetHeight) {
-              editTextArea.rows += 1;
-            }
-          });
-        }
 
         // Likes the post and deslikes on second click
         likeButton.addEventListener('click', (event) => {
@@ -140,37 +165,35 @@ export const home = () => {
         });
 
         // Deletes the post when clicked
-        deletePostBtn.setAttribute('hidden', 'true');
         deletePostBtn.addEventListener('click', (event) => {
           event.preventDefault();
           deletePost(deletePostBtn.dataset.postid);
         });
 
-        // Identifies if the currentUser has editing privileges
-        function loggedUser() {
-          firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              if (user.uid === post.user) {
-                editButton.removeAttribute('hidden');
-                deletePostBtn.removeAttribute('hidden');
-              }
-            }
+        // Autoresizes the textarea
+        function resizeTextArea() {
+          timeline.querySelectorAll('textarea').forEach((text) => {
+            text.style.height = 'auto';
+            text.style.height = text.scrollHeight + 'px';
           });
-        }
+        };
 
         loggedUser();
         resizeTextArea();
-        // Refresh timeline
+
+        // Push into the timeline
         timeline.appendChild(template);
       })
       .join('');
   };
 
+  // Refresh timeline
   timeline.innerHTML = loadPosts(postTemplate);
 
+  // Generates new post when clicked
   postButton.addEventListener('click', (event) => {
     event.preventDefault();
-    newPost(textPost.value, postPrivate.checked); //  Passei ele como parâmetro aqui também.
+    newPost(textPost.value, postPrivate.checked);
     textPost.value = '';
     timeline.innerHTML = '';
     loadPosts(postTemplate);
