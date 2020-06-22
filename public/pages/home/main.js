@@ -61,6 +61,7 @@ export const home = () => {
 
     array
       .map((post) => {
+        console.log('egua', post)
         const template = document.createElement('div');
         template.classList.add('flex');
 
@@ -188,7 +189,7 @@ export const home = () => {
   };
 
   // Refresh timeline
-  timeline.innerHTML = loadPosts(postTemplate);
+  setTimeout(() => { timeline.innerHtml = loadPosts(postTemplate) }, 100);
 
   // Generates new post when clicked
   postButton.addEventListener('click', (event) => {

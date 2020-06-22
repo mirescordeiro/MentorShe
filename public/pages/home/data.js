@@ -41,11 +41,14 @@ export const loadPosts = (callback) => {
     .firestore()
     .collection('posts')
     .orderBy('timestamp', 'desc');
+    console.log('deu ruim', load)
   // Listening realtime for new posts
   load.onSnapshot((querySnapshot) => {
     const posts = [];
     querySnapshot.forEach((doc) => {
-      if (!doc.data().privacy || doc.data().user === firebase.auth().currentUser.uid) {
+      console.log('foi mal', doc)
+      if (!doc.data().privacy || doc.data().user === firebase.auth().uid) {
+        console.log('cacete', doc)
         posts.push({
           id: doc.id,
           ...doc.data(),
