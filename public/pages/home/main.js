@@ -1,5 +1,5 @@
 import {
-  newPost, loadPosts, deletePost, likePost, logout, updateEdit,
+  newPost, loadPosts, deletePost, likePost, logout, updateEdit, updatePrivacy
 } from './data.js';
 
 export const home = () => {
@@ -31,9 +31,9 @@ export const home = () => {
       </nav>
     </header>
     <div class='flex row-desk'>
-      <!--<section class='profile'>
+      <section class='profile'>
         <figure>
-          <img src='./public/img/user_profile.png' alt="Foto do perfil">
+          <img src='' alt="Foto do perfil">
         </figure>
         <div>
           <figure>
@@ -41,7 +41,7 @@ export const home = () => {
             <figcaption></figcaption>
           </figure>
         </div>
-      </section>-->
+      </section>
       <section class='news'>
         <div class='flex'>
           <form id='post-form' class='post'>
@@ -114,7 +114,7 @@ export const home = () => {
               <div class='privacy'>
                 <label>PRIVADO</label>
                 <label class="switch">
-                  <input type="checkbox" data-private=${post.privacy} id="editPrivacy">
+                  <input type="checkbox" id="editPrivacy" data-postid=${post.id}>
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -133,6 +133,7 @@ export const home = () => {
         const editTextArea = template.querySelector('#edit-text-area');
         const likeButton = template.querySelector('#like-button');
         const deletePostBtn = template.querySelector('#delete-post');
+        const editPrivacy = template.querySelector('#editPrivacy');
 
         // Identifies if the currentUser has editing privileges
         function loggedUser() {
@@ -195,6 +196,19 @@ export const home = () => {
           deletePost(deletePostBtn.dataset.postid);
         });
 
+        // Verifies privacy and updates its status
+        function privacyChecked() {
+          if (post.privacy != true){
+            editPrivacy.checked = false;
+          } else {
+            editPrivacy.checked = true;
+          }
+        };
+        editPrivacy.addEventListener('change', (event) => {
+          event.preventDefault();
+          updatePrivacy(editPrivacy.dataset.postid, editPrivacy.checked);
+        })
+
         // Autoresizes the textarea
         function resizeTextArea() {
           timeline.querySelectorAll('textarea').forEach((text) => {
@@ -205,6 +219,7 @@ export const home = () => {
 
         loggedUser();
         resizeTextArea();
+        privacyChecked();
 
         // Push into the timeline
         timeline.appendChild(template);
