@@ -71,6 +71,23 @@ export const deletePost = (postId) => {
     });
 };
 
+// Updates the privacy status
+export const updatePrivacy = (postId, editPrivacy) => {
+  firebase
+    .firestore()
+    .collection('posts')
+    .doc(postId)
+    .update({
+      privacy: editPrivacy,
+    })
+    .then(() => {
+      console.log('Privacy settings successfully changed!');
+    })
+    .catch((error) => {
+      console.error('Error changing privacy status: ', error);
+    });
+};
+
 // Increases the number of likes in a post using its id
 export const likePost = (postId, userId) => {
   firebase
