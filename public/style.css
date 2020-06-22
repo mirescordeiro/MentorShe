@@ -291,12 +291,10 @@ header #bar3{
 }
 .menu-bg{
   z-index: 2;
-  /*width: 0;
-  height: 0;*/
   margin: 30px 0 20px 20px;
   background-color: #C285FF;
   border-radius: 50%;
-  transition: 0.3s ease;
+  transition: 0.5s ease;
 }
 header #menu-bar{
   z-index: 3;
