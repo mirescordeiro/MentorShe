@@ -16,8 +16,8 @@ export const home = () => {
         <div id="bar3" class="bar"></div>
       </div>
       <ul class="nav-home" id="nav-home">
-        <li id="li-feed"><a href="#home">Feed</a></li>
-        <li id="li-profile"><a href="#">Perfil</a></li>
+        <li id="li-logout"><a href="#login">Logout</a></li>
+        <li id="li-profile"><a href="#profile">Perfil</a></li>
       </ul>
     </div>
     <div class="menu-bg" id="menu-bg"></div>
@@ -65,7 +65,7 @@ export const home = () => {
 
   // Menu Hambúrguer
   const menu = container.querySelector('#menu');
-  menu.addEventListener('click', showMenu());
+  menu.addEventListener('click', showMenu);
 
   function showMenu(){
     container.querySelector('#menu').classList.toggle('change');
