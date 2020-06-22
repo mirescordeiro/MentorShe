@@ -8,6 +8,20 @@ export const home = () => {
 
   container.innerHTML = ` 
     <header>
+
+    <div id="menu-bar">
+      <div id="menu">
+        <div id="bar1" class="bar"></div>
+        <div id="bar2" class="bar"></div>
+        <div id="bar3" class="bar"></div>
+      </div>
+      <ul class="nav-home" id="nav-home">
+        <li id="li-feed"><a href="#home">Feed</a></li>
+        <li id="li-profile"><a href="#">Perfil</a></li>
+      </ul>
+    </div>
+    <div class="menu-bg" id="menu-bg"></div>
+
       <nav>
         <h1 id='logo-home'>mentor<strong id='strong'>she</strong></h1>
         <label>
@@ -48,6 +62,16 @@ export const home = () => {
       </section>
     </div>
     `;
+
+  // Menu Hambúrguer
+  const menu = container.querySelector('#menu');
+  menu.addEventListener('click', showMenu());
+
+  function showMenu(){
+    container.querySelector('#menu').classList.toggle('change');
+    container.querySelector('#nav-home').classList.toggle('change');
+    container.querySelector('#menu-bg').classList.toggle('change-bg');
+  };
 
   // Container variables
   const resetForm = container.querySelector('#post-form');
