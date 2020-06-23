@@ -80,21 +80,30 @@ Pensando na disposição de botões em telas reduzidas estudamos o uso de ícone
 
 Acesse o protótipo de baixa fidelidade clicando nas imagens abaixo:
 
-![Cadastro Mobile](https://www.figma.com/proto/cqh8Fdqm5mrRzQQSgvoJrj/Untitled?node-id=1%3A7&scaling=scale-down)
+* Versão Mobile
 
-![Login Mobile](https://www.figma.com/proto/xJ3es1te8OgNYk94B4fsrg/Untitled?node-id=1%3A7&scaling=scale-down)
+![casastro](https://www.figma.com/proto/cqh8Fdqm5mrRzQQSgvoJrj/Untitled?node-id=1%3A7&scaling=scale-down)
 
-![Feed Mobile](https://www.figma.com/proto/VB9muwmi0cjd0e0sIs4y1N/Untitled?node-id=1%3A7&scaling=scale-down)
+![login](https://www.figma.com/proto/xJ3es1te8OgNYk94B4fsrg/Untitled?node-id=1%3A7&scaling=scale-down)
 
-![Login Desktop](https://www.figma.com/proto/PiTCXf7jiutzZ6baYbEqAX/Login-Desktop?node-id=1%3A7&scaling=scale-down)
+![feed](https://www.figma.com/proto/VB9muwmi0cjd0e0sIs4y1N/Untitled?node-id=1%3A7&scaling=scale-down)
 
-![Feed Desktop]()
+* Versão Desktop
 
-![Cadastro Desktop](https://www.figma.com/proto/42VDCGKILtszSpnmWOkdac/Cadastro-Mobile?node-id=1%3A7&scaling=scale-down)
+![login](https://www.figma.com/proto/PiTCXf7jiutzZ6baYbEqAX/Login-Desktop?node-id=1%3A7&scaling=scale-down)
+
+![feed]()
+
+![cadastro](https://www.figma.com/proto/42VDCGKILtszSpnmWOkdac/Cadastro-Mobile?node-id=1%3A7&scaling=scale-down)
 
 ## 6. UI
 
-### Mobile first
+Tendo validado nosso protótipo e reunido referências visuais, só nos restava aplicar estes conceitos nas escolhas do design de interface.
+
+Seguindo noções de material e flat design projetamos a interface com alguns aspectos em mente:
+
+CORES: Utilizamos uma paleta de cores que remetesse a feminilidade e a criatividade. As cores que escolhemos de acordo com a psicologia das cores remetem a criatividade, motivção, pureza e fé.
+TIPOGRAFIA: Buscando harmonia com as cores e estilos próprios, optamos por usar uma tipografia que remete ao mundo da programação.
 
 ## 7. Tecnologias utilizadas
 
@@ -106,6 +115,14 @@ Acesse o protótipo de baixa fidelidade clicando nas imagens abaixo:
 
 ## 8. Autores
 
-![Larissa Miyagi](https://github.com/larissamiyaji)
-![Kelly Alves](https://github.com/kellyalves87)
-![Tamires Cordeiro](https://github.com/mirescordeiro)
+* Larissa Miyaji
+
+![Larissa](https://github.com/larissamiyaji)
+
+* Kelly Alves
+
+![Kelly](https://github.com/kellyalves87)
+
+* Tamires Cordeiro
+
+![Tamires](https://github.com/mirescordeiro)
