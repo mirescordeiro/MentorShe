@@ -1,9 +1,7 @@
 const getUserName = () => {
-  return firebase
-    .auth()
-    .currentUser != null ? firebase
-      .auth()
-      .currentUser.displayName : '';
+  return firebase.auth().currentUser != null
+    ? firebase.auth().currentUser.displayName
+    : "";
 };
 
 const getUrlPhoto = () => {
@@ -15,7 +13,7 @@ const getUrlPhoto = () => {
 export const newPost = (textareaPost, postPrivate) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .add({
       userName: getUserName(),
       photoURL: getUrlPhoto(),
@@ -28,27 +26,28 @@ export const newPost = (textareaPost, postPrivate) => {
       privacy: postPrivate,
     })
     .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
+      console.log("Document written with ID: ", docRef.id);
     })
     .catch((error) => {
-      console.error('Error adding document: ', error);
+      console.error("Error adding document: ", error);
     });
 };
 
 // Loads all the posts and listens to the new ones
-export const loadPosts = (callback) => {
+export const loadPosts = (user, callback) => {
   const load = firebase
     .firestore()
-    .collection('posts')
-    .orderBy('timestamp', 'desc');
-    console.log('deu ruim', load)
+    .collection("posts")
+    .orderBy("timestamp", "desc");
   // Listening realtime for new posts
   load.onSnapshot((querySnapshot) => {
     const posts = [];
     querySnapshot.forEach((doc) => {
-      console.log('foi mal', doc)
-      if (!doc.data().privacy || doc.data().user === firebase.auth().uid) {
-        console.log('cacete', doc)
+      if (
+        !doc.data().privacy ||
+        doc.data().user === user.uid ||
+        (doc.data().privacy && doc.data().user === user.uid)
+      ) {
         posts.push({
           id: doc.id,
           ...doc.data(),
@@ -63,14 +62,14 @@ export const loadPosts = (callback) => {
 export const deletePost = (postId) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .doc(postId)
     .delete()
     .then(() => {
-      console.log('Document successfully deleted!');
+      console.log("Document successfully deleted!");
     })
     .catch((error) => {
-      console.error('Error removing document: ', error);
+      console.error("Error removing document: ", error);
     });
 };
 
@@ -78,16 +77,16 @@ export const deletePost = (postId) => {
 export const updatePrivacy = (postId, editPrivacy) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .doc(postId)
     .update({
       privacy: editPrivacy,
     })
     .then(() => {
-      console.log('Privacy settings successfully changed!');
+      console.log("Privacy settings successfully changed!");
     })
     .catch((error) => {
-      console.error('Error changing privacy status: ', error);
+      console.error("Error changing privacy status: ", error);
     });
 };
 
@@ -95,7 +94,7 @@ export const updatePrivacy = (postId, editPrivacy) => {
 export const likePost = (postId, userId) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .doc(postId)
     .get()
     .then((doc) => {
@@ -104,7 +103,7 @@ export const likePost = (postId, userId) => {
 
       if (userIds.includes(userId)) {
         likes -= 1;
-        const index = userIds.findIndex(elem => elem === userId);
+        const index = userIds.findIndex((elem) => elem === userId);
         userIds.splice(index, 1);
       } else {
         likes += 1;
@@ -112,10 +111,10 @@ export const likePost = (postId, userId) => {
       }
 
       updateLike(likes, userIds, postId);
-      updateEdit(userIds, postId); 
+      updateEdit(userIds, postId);
     })
     .catch((error) => {
-      console.log('error');
+      console.log("error");
     });
 };
 
@@ -123,36 +122,34 @@ export const likePost = (postId, userId) => {
 const updateLike = (countLike, userArray, postId) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .doc(postId)
     .update({
       likes: countLike,
       likeUsers: userArray,
     })
     .then(() => {
-      console.log('Like successfully included!');
+      console.log("Like successfully included!");
     })
     .catch((error) => {
-      console.error('Error liking document: ', error);
+      console.error("Error liking document: ", error);
     });
 };
-
-
 
 // Updates the text from a post using its id
 export const updateEdit = (postId, textareaPost) => {
   firebase
     .firestore()
-    .collection('posts')
+    .collection("posts")
     .doc(postId)
     .update({
       text: textareaPost,
     })
     .then(() => {
-      console.log('Edit post successfully!');
+      console.log("Edit post successfully!");
     })
     .catch(() => {
-      console.error('You cannot cancel this edit!');
+      console.error("You cannot cancel this edit!");
     });
 };
 
@@ -162,6 +159,6 @@ export const logout = () => {
     .auth()
     .signOut()
     .then(() => {
-      window.location.href = '#login';
+      window.location.href = "#login";
     });
 };
