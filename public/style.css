@@ -1,0 +1,192 @@
+/* soft reset do CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: 100vw 100vh;
+  font-size: 1em;
+  height: 100vh;
+}
+
+/* containers */
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  align-items: center;
+  height: 100%;
+}
+
+.row-desk {
+  flex-direction: column;
+}
+
+.column {
+  flex-direction: column;
+}
+/*------------*/
+
+/*login*/
+.login h1{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2.8em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login strong{
+  font-weight: 900;
+  color: #3F1583;
+}
+
+.alert {
+  color: #3F1583;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 0.7em;
+  letter-spacing: 0.01em;
+  margin: -5px 0 12px;
+  text-align: center;
+}
+
+.welcome {
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  font-size: 0.87em;
+  letter-spacing: 0.02em;
+  margin: 2.5px 0 20px;
+}
+/*------------*/
+
+/*forms*/
+.register {
+  width: 230px;
+  margin-bottom: 3px;
+}
+
+.form img{
+  width: 100%;
+}
+
+.form h2 {
+  color: #3F1583;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form label{
+  align-self: start;
+  margin-bottom: 3px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  padding-left: 12px;
+  text-align: initial;
+}
+
+.form input, .login input{
+  border-radius: 20px;
+  border: 2px solid black;
+  height: 35px;
+  width: 230px;
+  padding-left: 12px;
+  margin-bottom: 10px;
+}
+
+::placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em;
+}
+
+:focus:active{
+  border-color: #3F1583;
+}
+
+.form button, .login button {
+  border-radius: 20px;
+  border-color: #3F1583;
+  border-style: none;
+  background-color: #3F1583;
+  color: white;
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  font-size: 0.95em;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+  width: 145px;
+  height: 35px;
+}
+
+.form button:hover {
+  background-color: #C285FF;
+}
+
+.form a, .login a {
+  color: #3F1583;
+}
+
+.remember, .psw, .footer {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 0.85em;
+  margin-top: 12px;
+}
+/*------------*/
+
+/* mobile e desktop*/
+.mobile {
+  display: block;
+}
+
+.desktop {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .mobile {
+    display: none;
+  }
+  
+  .desktop {
+    display: block;
+  }
+
+  .row-desk {
+    flex-direction: row;
+  }
+
+  .login h1 {
+    font-size: 3.3em;
+  }
+
+  .welcome {
+    font-size: 1em;
+  }
+
+  figure {
+    width: 50vw;
+  }
+
+  .form img{
+    width: 43vw;
+  }
+
+  .form input, .login input{
+    width: 25vw;
+  }
+
+  .register {
+    width: 25vw;
+  }
+}
+/*------------*/
