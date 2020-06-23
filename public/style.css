@@ -243,10 +243,10 @@ header #menu{
 .bar{
   height: 5px;
   width: 100%;
-  background-color: black;
   display: block;
   border-radius: 5px;
   transition: 0.3s ease;
+  background-color: black;
 }
 header #bar1{
   transform: translateY(-4px);
@@ -274,7 +274,7 @@ header #bar3{
   font-size: 18px;
   font-style: normal;
 }
-.nav-home #li-feed{
+.nav-home #li-logout{
   background-color: #3F1583;
 }
 .nav-home #li-profile{
@@ -293,12 +293,10 @@ header #bar3{
 }
 .menu-bg{
   z-index: 2;
-  width: 0;
-  height: 0;
   margin: 30px 0 20px 20px;
   background-color: #C285FF;
   border-radius: 50%;
-  transition: 0.3 ease;
+  transition: 0.5s ease;
 }
 header #menu-bar{
   z-index: 3;
@@ -323,7 +321,6 @@ header #menu-bar{
 .change{
   display: block;
 }
-
 
 /*nav*/
 nav {

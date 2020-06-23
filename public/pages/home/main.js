@@ -1,27 +1,31 @@
 import {
-  newPost, loadPosts, deletePost, likePost, logout, updateEdit, updatePrivacy, getUrlPhoto, getUserName
-} from './data.js';
+  newPost,
+  loadPosts,
+  deletePost,
+  likePost,
+  logout,
+  updateEdit,
+  updatePrivacy,
+} from "./data.js";
 
-export const home = () => {
-  const container = document.createElement('div');
-  container.classList.add('container-home');
+export const home = (user) => {
+  const container = document.createElement("div");
+  container.classList.add("container-home");
 
   container.innerHTML = ` 
     <header>
-
-    <!--<div id="menu-bar">
+    <div id="menu-bar">
       <div id="menu">
         <div id="bar1" class="bar"></div>
         <div id="bar2" class="bar"></div>
         <div id="bar3" class="bar"></div>
       </div>
       <ul class="nav-home" id="nav-home">
-        <li id="li-feed"><a href="#home">Feed</a></li>
-        <li id="li-profile"><a href="#">Perfil</a></li>
+        <li id="li-logout"><a href="">Logout</a></li>
+        <li id="li-profile"><a href="#profile">Perfil</a></li>
       </ul>
     </div>
-    <div class="menu-bg" id="menu-bg"></div>-->
-
+    <div class="menu-bg" id="menu-bg"></div>
       <nav>
         <h1 id='logo-home'>mentor<strong id='strong'>she</strong></h1>
         <label>
@@ -65,33 +69,32 @@ export const home = () => {
     </div>
     `;
 
-  /* Menu Hambúrguer
-  const menu = container.querySelector('#menu');
-  menu.addEventListener('click', showMenu());
+  // Menu Hambúrguer
+  const menu = container.querySelector("#menu");
+  const menuLogout = container.querySelector('#li-logout');
+  menu.addEventListener("click", showMenu);
+  menuLogout.addEventListener("click", logout);
 
-  function showMenu(){
-    container.querySelector('#menu').classList.toggle('change');
-    container.querySelector('#nav-home').classList.toggle('change');
-    container.querySelector('#menu-bg').classList.toggle('change-bg');
-  };*/
+  function showMenu() {
+    container.querySelector("#menu").classList.toggle("change");
+    container.querySelector("#nav-home").classList.toggle("change");
+    container.querySelector("#menu-bg").classList.toggle("change-bg");
+  }
 
   // Container variables
-  const resetForm = container.querySelector('#post-form');
-  const textPost = container.querySelector('#post-text');
-  const postButton = container.querySelector('#publish');
-  const postPrivate = container.querySelector('#privacy');
-  const timeline = container.querySelector('#timeline');
-  //const userPhoto = getUrlPhoto();
-  //const userName = getUserName();
+  const resetForm = container.querySelector("#post-form");
+  const textPost = container.querySelector("#post-text");
+  const postButton = container.querySelector("#publish");
+  const postPrivate = container.querySelector("#privacy");
+  const timeline = container.querySelector("#timeline");
 
   const postTemplate = (array) => {
-    timeline.innerHTML = '';
+    timeline.innerHTML = "";
 
     array
       .map((post) => {
-        console.log('egua', post)
-        const template = document.createElement('div');
-        template.classList.add('flex');
+        const template = document.createElement("div");
+        template.classList.add("flex");
 
         template.innerHTML = `        
         <form id='template-form' class='all-posts'>
@@ -125,19 +128,21 @@ export const home = () => {
               <button id='delete-post' class='delete' data-postid=${post.id}><span class='icon-delete'></span></button>
             </div>
           </div>
-        </form>
-      `;
-
+        </div>
+      </form>
+        `;
+        
         // Template variables
-        const resetFormTemplate = template.querySelector('#template-form');
-        const privateBtns = template.querySelector('#private');
-        const editButton = template.querySelector('#edit-button');
-        const cancelEditBtn = template.querySelector('#cancel-edit');
-        const saveEditBtn = template.querySelector('#save-edit');
-        const editTextArea = template.querySelector('#edit-text-area');
-        const likeButton = template.querySelector('#like-button');
-        const deletePostBtn = template.querySelector('#delete-post');
-        const editPrivacy = template.querySelector('#editPrivacy');
+        const resetFormTemplate = template.querySelector("#template-form");
+        const privateBtns = template.querySelector("#private");
+        const editButton = template.querySelector("#edit-button");
+        const cancelEditBtn = template.querySelector("#cancel-edit");
+        const saveEditBtn = template.querySelector("#save-edit");
+        const editTextArea = template.querySelector("#edit-text-area");
+        const likeButton = template.querySelector("#like-button");
+        const deletePostBtn = template.querySelector("#delete-post");
+        const editPrivacy = template.querySelector("#editPrivacy");      
+       
 
         // Identifies if the currentUser has editing privileges
         function loggedUser() {
@@ -147,19 +152,19 @@ export const home = () => {
                 editButton.hidden = false;
                 cancelEditBtn.hidden = true;
                 saveEditBtn.hidden = true;
-                privateBtns.style.visibility='visible';
+                privateBtns.style.visibility = "visible";
               } else {
                 editButton.hidden = true;
                 cancelEditBtn.hidden = true;
                 saveEditBtn.hidden = true;
-                privateBtns.style.visibility='hidden';
+                privateBtns.style.visibility = "hidden";
               }
             }
           });
         }
 
         // Enables the textarea to edit the post
-        editButton.addEventListener('click', (event) => {
+        editButton.addEventListener("click", (event) => {
           event.preventDefault();
           editButton.hidden = true;
           cancelEditBtn.hidden = false;
@@ -168,7 +173,7 @@ export const home = () => {
         });
 
         // Cancels the editing and resets text
-        cancelEditBtn.addEventListener('click', (event) => {
+        cancelEditBtn.addEventListener("click", (event) => {
           event.preventDefault();
           editButton.hidden = false;
           cancelEditBtn.hidden = true;
@@ -178,7 +183,7 @@ export const home = () => {
         });
 
         // Saves editing changes to the database
-        saveEditBtn.addEventListener('click', (event) => {
+        saveEditBtn.addEventListener("click", (event) => {
           event.preventDefault();
           editButton.hidden = false;
           cancelEditBtn.hidden = true;
@@ -189,37 +194,40 @@ export const home = () => {
         });
 
         // Likes the post and deslikes on second click
-        likeButton.addEventListener('click', (event) => {
+        likeButton.addEventListener("click", (event) => {
           event.preventDefault();
           likePost(likeButton.dataset.postid, firebase.auth().currentUser.uid);
         });
 
         // Deletes the post when clicked
-        deletePostBtn.addEventListener('click', (event) => {
+        deletePostBtn.addEventListener("click", (event) => {
           event.preventDefault();
           deletePost(deletePostBtn.dataset.postid);
         });
 
         // Verifies privacy and updates its status
-        function privacyChecked() {
-          if (post.privacy != true){
+        const privacyChecked = () => {
+          if (post.privacy != true) {
             editPrivacy.checked = false;
           } else {
             editPrivacy.checked = true;
           }
         };
-        editPrivacy.addEventListener('change', (event) => {
+
+        }
+
+        editPrivacy.addEventListener("change", (event) => {
           event.preventDefault();
           updatePrivacy(editPrivacy.dataset.postid, editPrivacy.checked);
-        })
+        });
 
         // Autoresizes the textarea
         function resizeTextArea() {
-          timeline.querySelectorAll('textarea').forEach((text) => {
-            text.style.height = 'auto';
-            text.style.height = text.scrollHeight + 'px';
+          timeline.querySelectorAll("textarea").forEach((text) => {
+            text.style.height = "auto";
+            text.style.height = text.scrollHeight + "px";
           });
-        };
+        }
 
         loggedUser();
         resizeTextArea();
@@ -228,25 +236,27 @@ export const home = () => {
         // Push into the timeline
         timeline.appendChild(template);
       })
-      .join('');
+      .join("");
   };
 
   // Refresh timeline
-  setTimeout(() => { timeline.innerHtml = loadPosts(postTemplate) }, 100);
+  setTimeout(() => { timeline.innerHtml = loadPosts(user, postTemplate); }, 100);
 
   // Generates new post when clicked
-  postButton.addEventListener('click', (event) => {
+  postButton.addEventListener("click", (event) => {
     event.preventDefault();
+    if (textPost.value === "") return;
     newPost(textPost.value, postPrivate.checked);
-    textPost.value = '';
-    timeline.innerHTML = '';
-    loadPosts(postTemplate);
+    textPost.value = "";
+    timeline.innerHTML = "";
+    loadPosts(user, postTemplate);
     resetForm.reset();
   });
 
+
   // Logout when clicked
-  const buttonLogout = container.querySelector('#logout');
-  buttonLogout.addEventListener('click', logout);
+  const buttonLogout = container.querySelector("#logout");
+  buttonLogout.addEventListener("click", logout);
 
   return container;
 };
