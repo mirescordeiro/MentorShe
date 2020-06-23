@@ -16,7 +16,7 @@ export const profile = (user) => {
           <h2>Perfil</h2>
           <form class='flex column register'>
             <label for='name'>Nome</label>
-            <textarea id='user-name' disabled='disabled' required>${user.displayName}</textarea>
+            <textarea id='user-name' disabled='disabled' required>${users.userName}</textarea> Tamires Cordeiro
             <label for='email'>Email</label>
             <textarea id='user-mail' disabled='disabled' required>${user.email}</textarea>
             <label for='password'>Nova senha</label>
@@ -42,6 +42,8 @@ export const profile = (user) => {
   const saveProfile = container.querySelector('#save-profile');
   const resetUserPassword = container.querySelector('#reset-password');
   const resetUserEmail = container.querySelector('#reset-email');
+
+
 
   /*  editPhoto.addEventListener('click', (event) => {
     event.preventDefault();

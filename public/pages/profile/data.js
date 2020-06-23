@@ -1,15 +1,18 @@
-export const updateProfile = (user, newName) => {
+export const updateProfileName = (user, newName) => {
   firebase
     .auth()
-    .user.updateProfile({
-      displayName: newName,
-    })
-    .then(() => {
-      console.log(user.displayName);
-      updatePostsUser(user.uid, user.displayName, callback);
+    .then((user) => {
+      user.updateProfile({displayName: newName,})    
     });
 };
 
+/*
+.update({
+  userName: updateProfileName(newName),
+  user: user.uid,
+  mentor: false,
+  languages: [],
+})*/
 
 
 /*
