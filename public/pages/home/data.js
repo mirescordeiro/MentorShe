@@ -1,10 +1,12 @@
-const getUserName = () => {
-  return firebase.auth().currentUser != null
-    ? firebase.auth().currentUser.displayName
-    : "";
+export const getUserName = () => {
+  return firebase
+    .auth()
+    .currentUser != null ? firebase
+      .auth()
+      .currentUser.displayName : '';
 };
 
-const getUrlPhoto = () => {
+export const getUrlPhoto = () => {
   if (firebase.auth().currentUser != null) {
     return firebase.auth().currentUser.photoURL;
   }

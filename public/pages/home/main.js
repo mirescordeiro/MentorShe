@@ -34,20 +34,22 @@ export const home = (user) => {
         </label>
       </nav>
     </header>
-    <div class='flex row-desk'>
-      <section class='profile'>
-        <figure>
-          <img src='' alt="Foto do perfil">
-        </figure>
-        <div>
+    <div class='flex space row-desk'>
+      <div class='flex'>
+        <section class='profile'>
           <figure>
-            <img src='' alt='Foto da usuária'>
-            <figcaption></figcaption>
+            <img src='' alt="Foto do perfil">
           </figure>
-        </div>
-      </section>
-      <section class='news'>
-        <div class='flex'>
+          <div>
+            <figure>
+              <img src='' alt='Foto da usuária'>
+              <figcaption></figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
+      <div class='flex'>
+        <section class='news'>
           <form id='post-form' class='post'>
             <textarea name='post' id='post-text' placeholder='Compartilhe Conhecimento!'></textarea>
             <div class='post-options'>
@@ -61,9 +63,9 @@ export const home = (user) => {
               <button id='publish' type='submit'>Compartilhar</button>
             </div>
           </form>
-        </div>
-        <section id='timeline'></section>
-      </section>
+          <section id='timeline'></section>
+        </section>
+      </div>
     </div>
     `;
 

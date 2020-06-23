@@ -82,6 +82,9 @@ body {
   justify-content: center;
 }
 
+.space {
+  margin-top: 90px;
+}
 /*------------*/
 
 /*login*/
@@ -227,7 +230,6 @@ body {
   background-color: white;
   color: #c285ff;
 }
-
 /*------------*/
 
 /* HOME */
@@ -370,16 +372,15 @@ nav button {
   flex-direction: row-reverse;
   padding: 10px 6px;
 }
-
-
 /*------------*/
 
 /*posts*/
+
 .news { 
   display: flex; 
   justify-content: center; 
   flex-direction: column;
-  padding-top: 90px;
+  margin: 20px 0 0 0;
 }
 
 .post-options{
@@ -672,11 +673,6 @@ input:checked + .slider:before {
 
 .desktop {
   display: none;
-}
-
-.profile {
-  display: flex;
-  justify-content: space-around;
 }
 /*------------*/
 
