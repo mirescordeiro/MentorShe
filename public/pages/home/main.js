@@ -1,5 +1,5 @@
 import {
-  newPost, loadPosts, deletePost, likePost, logout, updateEdit, updatePrivacy
+  newPost, loadPosts, deletePost, likePost, logout, updateEdit, updatePrivacy, getUrlPhoto, getUserName
 } from './data.js';
 
 export const home = () => {
@@ -9,7 +9,7 @@ export const home = () => {
   container.innerHTML = ` 
     <header>
 
-    <div id="menu-bar">
+    <!--<div id="menu-bar">
       <div id="menu">
         <div id="bar1" class="bar"></div>
         <div id="bar2" class="bar"></div>
@@ -20,7 +20,7 @@ export const home = () => {
         <li id="li-profile"><a href="#">Perfil</a></li>
       </ul>
     </div>
-    <div class="menu-bg" id="menu-bg"></div>
+    <div class="menu-bg" id="menu-bg"></div>-->
 
       <nav>
         <h1 id='logo-home'>mentor<strong id='strong'>she</strong></h1>
@@ -30,20 +30,22 @@ export const home = () => {
         </label>
       </nav>
     </header>
-    <div class='flex row-desk'>
-      <section class='profile'>
-        <figure>
-          <img src='' alt="Foto do perfil">
-        </figure>
-        <div>
+    <div class='flex space row-desk'>
+      <div class='flex'>
+        <section class='profile'>
           <figure>
-            <img src='' alt='Foto da usuária'>
-            <figcaption></figcaption>
+            <img src='' alt="Foto do perfil">
           </figure>
-        </div>
-      </section>
-      <section class='news'>
-        <div class='flex'>
+          <div>
+            <figure>
+              <img src='' alt='Foto da usuária'>
+              <figcaption></figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
+      <div class='flex'>
+        <section class='news'>
           <form id='post-form' class='post'>
             <textarea name='post' id='post-text' placeholder='Compartilhe Conhecimento!'></textarea>
             <div class='post-options'>
@@ -57,13 +59,13 @@ export const home = () => {
               <button id='publish' type='submit'>Compartilhar</button>
             </div>
           </form>
-        </div>
-        <section id='timeline'></section>
-      </section>
+          <section id='timeline'></section>
+        </section>
+      </div>
     </div>
     `;
 
-  // Menu Hambúrguer
+  /* Menu Hambúrguer
   const menu = container.querySelector('#menu');
   menu.addEventListener('click', showMenu());
 
@@ -71,7 +73,7 @@ export const home = () => {
     container.querySelector('#menu').classList.toggle('change');
     container.querySelector('#nav-home').classList.toggle('change');
     container.querySelector('#menu-bg').classList.toggle('change-bg');
-  };
+  };*/
 
   // Container variables
   const resetForm = container.querySelector('#post-form');
@@ -79,6 +81,8 @@ export const home = () => {
   const postButton = container.querySelector('#publish');
   const postPrivate = container.querySelector('#privacy');
   const timeline = container.querySelector('#timeline');
+  //const userPhoto = getUrlPhoto();
+  //const userName = getUserName();
 
   const postTemplate = (array) => {
     timeline.innerHTML = '';

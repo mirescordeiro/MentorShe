@@ -1,4 +1,4 @@
-const getUserName = () => {
+export const getUserName = () => {
   return firebase
     .auth()
     .currentUser != null ? firebase
@@ -6,7 +6,7 @@ const getUserName = () => {
       .currentUser.displayName : '';
 };
 
-const getUrlPhoto = () => {
+export const getUrlPhoto = () => {
   if (firebase.auth().currentUser != null) {
     return firebase.auth().currentUser.photoURL;
   }
