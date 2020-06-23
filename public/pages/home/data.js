@@ -112,7 +112,7 @@ export const likePost = (postId, userId) => {
       updateEdit(userIds, postId); 
     })
     .catch((error) => {
-      console.log('error');
+      //  console.log('error');
     });
 };
 
