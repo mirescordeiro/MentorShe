@@ -10,14 +10,14 @@ const renderPage = () => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      main.appendChild(routes[page]);
+      main.appendChild(routes[page](user));
     } else {
       switch (true) {
         case page !== 'home':
-          main.appendChild(routes[page]);
+          main.appendChild(routes[page]());
           break;
         default:
-          main.appendChild(routes['login']);
+          main.appendChild(routes['login']());
           break;
       }
     }

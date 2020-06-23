@@ -5,6 +5,7 @@ export const toggleSignIn = ({ email, password }, callback) => {
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
       callback(user);
+      newUser(user); // array union
     })
     .catch((error) => {
       callback(error);
@@ -40,14 +41,20 @@ export const loginGithub = () => {
     });
 };
 
-/*
-export const ResetEmail = () => {
-  const auth = firebase.auth();
-  auth.sendPasswordResetEmail(emailAddress)
-    .then(function () {
-      emailAddress.push('verifique seu e-mail para instruções de redefinição da senha');
-    }).catch(function (error) {
-      emailAddress.error('Ocorreu um erro inesperado');
-});
+export const newUser = (user) => {
+  firebase
+    .firestore()
+    .collection("users").doc(user.uid)
+    .add({
+      userName: user.displayName,
+      user: user.uid,
+      mentor: false,
+      languages: [],
+    })
+    .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });
 };
-*/
