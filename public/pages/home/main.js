@@ -14,7 +14,6 @@ export const home = (user) => {
 
   container.innerHTML = ` 
     <header>
-
     <div id="menu-bar">
       <div id="menu">
         <div id="bar1" class="bar"></div>
@@ -22,12 +21,11 @@ export const home = (user) => {
         <div id="bar3" class="bar"></div>
       </div>
       <ul class="nav-home" id="nav-home">
-        <li id="li-feed"><a href="#home">Feed</a></li>
-        <li id="li-profile"><a href="#">Perfil</a></li>
+        <li id="li-logout"><a href="">Logout</a></li>
+        <li id="li-profile"><a href="#profile">Perfil</a></li>
       </ul>
     </div>
     <div class="menu-bg" id="menu-bg"></div>
-
       <nav>
         <h1 id='logo-home'>mentor<strong id='strong'>she</strong></h1>
         <label>
@@ -71,7 +69,9 @@ export const home = (user) => {
 
   // Menu Hambúrguer
   const menu = container.querySelector("#menu");
-  menu.addEventListener("click", showMenu());
+  const menuLogout = container.querySelector('#li-logout');
+  menu.addEventListener("click", showMenu);
+  menuLogout.addEventListener("click", logout);
 
   function showMenu() {
     container.querySelector("#menu").classList.toggle("change");
@@ -140,7 +140,7 @@ export const home = (user) => {
         const likeButton = template.querySelector("#like-button");
         const deletePostBtn = template.querySelector("#delete-post");
         const editPrivacy = template.querySelector("#editPrivacy");      
-        
+       
 
         // Identifies if the currentUser has editing privileges
         function loggedUser() {
@@ -212,6 +212,8 @@ export const home = (user) => {
           }
         };
 
+        }
+
         editPrivacy.addEventListener("change", (event) => {
           event.preventDefault();
           updatePrivacy(editPrivacy.dataset.postid, editPrivacy.checked);
@@ -236,9 +238,7 @@ export const home = (user) => {
   };
 
   // Refresh timeline
-  setTimeout(() => {
-    timeline.innerHtml = loadPosts(user, postTemplate);
-  }, 100);
+  setTimeout(() => { timeline.innerHtml = loadPosts(user, postTemplate); }, 100);
 
   // Generates new post when clicked
   postButton.addEventListener("click", (event) => {

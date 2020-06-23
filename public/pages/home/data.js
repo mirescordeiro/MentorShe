@@ -37,8 +37,8 @@ export const newPost = (textareaPost, postPrivate) => {
 export const loadPosts = (user, callback) => {
   const load = firebase
     .firestore()
-    .collection("posts")
-    .orderBy("timestamp", "desc");
+    .collection('posts')
+    .orderBy('timestamp', 'desc');
   // Listening realtime for new posts
   load.onSnapshot((querySnapshot) => {
     const posts = [];
