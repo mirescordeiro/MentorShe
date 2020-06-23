@@ -40,14 +40,3 @@ export const loginGithub = () => {
     });
 };
 
-/*
-export const ResetEmail = () => {
-  const auth = firebase.auth();
-  auth.sendPasswordResetEmail(emailAddress)
-    .then(function () {
-      emailAddress.push('verifique seu e-mail para instruções de redefinição da senha');
-    }).catch(function (error) {
-      emailAddress.error('Ocorreu um erro inesperado');
-});
-};
-*/

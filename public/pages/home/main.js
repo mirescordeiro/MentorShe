@@ -1,8 +1,14 @@
 import {
-  newPost, loadPosts, deletePost, likePost, logout, updateEdit, updatePrivacy,
+  newPost,
+  loadPosts,
+  deletePost,
+  likePost,
+  logout,
+  updateEdit,
+  updatePrivacy,
 } from "./data.js";
 
-export const home = () => {
+export const home = (user) => {
   const container = document.createElement("div");
   container.classList.add("container-home");
 
@@ -120,9 +126,10 @@ export const home = () => {
               <button id='delete-post' class='delete' data-postid=${post.id}><span class='icon-delete'></span></button>
             </div>
           </div>
-        </form>
-      `;
-
+        </div>
+      </form>
+        `;
+        
         // Template variables
         const resetFormTemplate = template.querySelector("#template-form");
         const privateBtns = template.querySelector("#private");
@@ -132,7 +139,8 @@ export const home = () => {
         const editTextArea = template.querySelector("#edit-text-area");
         const likeButton = template.querySelector("#like-button");
         const deletePostBtn = template.querySelector("#delete-post");
-        const editPrivacy = template.querySelector("#editPrivacy");
+        const editPrivacy = template.querySelector("#editPrivacy");      
+       
 
         // Identifies if the currentUser has editing privileges
         function loggedUser() {
@@ -196,13 +204,16 @@ export const home = () => {
         });
 
         // Verifies privacy and updates its status
-        function privacyChecked() {
+        const privacyChecked = () => {
           if (post.privacy != true) {
             editPrivacy.checked = false;
           } else {
             editPrivacy.checked = true;
           }
+        };
+
         }
+
         editPrivacy.addEventListener("change", (event) => {
           event.preventDefault();
           updatePrivacy(editPrivacy.dataset.postid, editPrivacy.checked);
@@ -227,19 +238,19 @@ export const home = () => {
   };
 
   // Refresh timeline
-  setTimeout(() => {
-    timeline.innerHtml = loadPosts(postTemplate);
-  }, 100);
+  setTimeout(() => { timeline.innerHtml = loadPosts(user, postTemplate); }, 100);
 
   // Generates new post when clicked
   postButton.addEventListener("click", (event) => {
     event.preventDefault();
+    if (textPost.value === "") return;
     newPost(textPost.value, postPrivate.checked);
     textPost.value = "";
     timeline.innerHTML = "";
-    loadPosts(postTemplate);
+    loadPosts(user, postTemplate);
     resetForm.reset();
   });
+
 
   // Logout when clicked
   const buttonLogout = container.querySelector("#logout");
