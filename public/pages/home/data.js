@@ -31,10 +31,7 @@ export const loadPosts = (user, callback) => {
   load.onSnapshot((querySnapshot) => {
     const posts = [];
     querySnapshot.forEach((doc) => {
-      if (
-        !doc.data().privacy ||
-        doc.data().user === user.uid
-      ) {
+      if (!doc.data().privacy || doc.data().user === user.uid) {
         posts.push({
           id: doc.id,
           ...doc.data(),

@@ -18,7 +18,7 @@ export const profile = (user) => {
             <label for='name'>Nome</label>
             <textarea id='user-name' disabled='disabled' required>${user.displayName}</textarea>
             <label for='email'>Email</label>
-            <textarea id='user-mail' disabled='disabled' required>${userMail}</textarea>
+            <textarea id='user-mail' disabled='disabled' required>${user.email}</textarea>
             <label for='password'>Nova senha</label>
             <input id='account-pass' type='password' placeholder='mínimo 6 caracteres. Ex: S&nha1' required>
             <span id='pass-alert' class='alert'></span>
@@ -30,7 +30,7 @@ export const profile = (user) => {
       </section>
     `;
 
-  const newName = 
+  //  const newName = 
 
   const photoProfile = container.querySelector('#photo-profile');
   const updateNameProfile = container.querySelector('#new-name');
@@ -43,12 +43,12 @@ export const profile = (user) => {
   const resetUserPassword = container.querySelector('#reset-password');
   const resetUserEmail = container.querySelector('#reset-email');
 
-  editPhoto.addEventListener('click', (event) => {
+  /*  editPhoto.addEventListener('click', (event) => {
     event.preventDefault();
     fileProfile();
-  });
+  }); */
 
-  cancelEditProfile.addEventListener('click', (event) => {
+  /*  cancelEditProfile.addEventListener('click', (event) => {
     event.preventDefault();
   });
 
@@ -65,7 +65,7 @@ export const profile = (user) => {
   resetUserEmail.addEventListener('click', (event) => {
     event.preventDefault();
     resetEmail();
-  });
+  }); */
 
 return container;
 };

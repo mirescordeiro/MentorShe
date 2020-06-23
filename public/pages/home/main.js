@@ -222,7 +222,7 @@ export const home = (user) => {
             text.style.height = "auto";
             text.style.height = text.scrollHeight + "px";
           });
-        }
+        };
 
         loggedUser();
         resizeTextArea();
@@ -235,7 +235,7 @@ export const home = (user) => {
   };
 
   // Refresh timeline
-  setTimeout(() => { timeline.innerHtml = loadPosts(user, postTemplate); }, 100);
+  loadPosts(user, postTemplate);
 
   // Generates new post when clicked
   postButton.addEventListener("click", (event) => {
