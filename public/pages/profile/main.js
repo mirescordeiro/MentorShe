@@ -1,5 +1,5 @@
 import {
-  updateProfile
+  updateProfile, logout
 } from "./data.js";
 
 export const profile = (user) => {
@@ -7,6 +7,30 @@ export const profile = (user) => {
   container.classList.add("profile-feed");
 
     container.innerHTML = `
+    <header>
+      <nav>
+        <div id="menu-bar" class='menu-bar'>
+          <div id="menu" class='menu'>
+            <div id="bar1" class="bar"></div>
+            <div id="bar2" class="bar"></div>
+            <div id="bar3" class="bar"></div>
+          </div>
+          <ul class="nav-home" id="nav-home">
+            <li id="li-profile"><a href="#home">Feed</a></li>
+            <li id="li-logout"><a href="">Sair</a></li>
+          </ul>
+        </div>
+        <div class="menu-bg" id="menu-bg"></div>
+        <div class='menu-desk'>
+          ${user.displayName} <a href='#home'><span class='icon-profile'></span></a>
+        </div>
+        <h1 id='logo-home'>mentor<strong id='strong'>she</strong></h1>
+        <label>
+          <img src='./img/logout.svg' alt="Ícone de uma porta aberta">
+          <button id='logout'>Sair</button>
+        </label>
+      </nav>
+    </header>
       <section id='user-profile' class='flex center row-desk data'>
         <figure class="photo-profile">
           <img src='${user.photoURL}' alt="Foto do perfil">
@@ -18,11 +42,7 @@ export const profile = (user) => {
             <textarea id='new-name' disabled='disabled' required>${user.displayName}</textarea>
 
             <label for='name'>Você gostaria de ser mentora ou aluna?</label>
-            <select name='mentorship' id='mentor-student' disabled>
-              <option value=''>Escolha uma opção</option>
-              <option id='mentor' value='Mentora'>Mentora</option>
-              <option id='student' value='Aluna'>Aluna</option>
-            </select>
+            <textarea id='mentor-student' disabled='disabled' placeholder=' ' required></textarea>
 
             <label for='languages'>Linguagens</label>
             <textarea id='languages' disabled='disabled' placeholder='Qual sua linguagem favorita?' required></textarea>
@@ -40,12 +60,22 @@ export const profile = (user) => {
     .doc(user.uid)
     .onSnapshot((doc) => {
       container.querySelector('#languages').value = doc.data().languages;
-      if(doc.data().mentorship == 'Mentora'){
-        mentorship.setAttribute('selected')
-      }
-        
+      container.querySelector('#mentor-student').value = doc.data().mentorship;  
     });
-    
+  
+  const logoutButton = container.querySelector("#logout");
+  const menu = container.querySelector("#menu");
+  const menuLogout = container.querySelector('#li-logout');
+  menu.addEventListener("click", showMenu);
+  menuLogout.addEventListener("click", logout);
+  logoutButton.addEventListener('click', logout);
+
+  function showMenu() {
+    container.querySelector("#menu").classList.toggle("change");
+    container.querySelector("#nav-home").classList.toggle("change");
+    container.querySelector("#menu-bg").classList.toggle("change-bg");
+  }
+
   const newName = container.querySelector('#new-name');
   const mentorship = container.querySelector('#mentor-student');
   const languages = container.querySelector('#languages');
@@ -90,5 +120,4 @@ export const profile = (user) => {
     resetForm.reset();
   });
   
-  return container;
 };

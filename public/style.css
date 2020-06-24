@@ -28,7 +28,6 @@ body {
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
-  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -299,12 +298,15 @@ header #bar3 {
   font-size: 14px;
 }
 
+.nav-home #li-profile,
+.nav-home #li-home,
 .nav-home #li-logout {
   background-color: #3f1583;
 }
 
-.nav-home #li-profile,
-.nav-home #li-home {
+.nav-home #li-profile:hover,
+.nav-home #li-home:hover,
+.nav-home #li-logout:hover {
   background-color: #ff9593;
 }
 
@@ -323,11 +325,11 @@ header #bar3 {
 }
 .menu-bg {
   z-index: 2;
-  top: -160%;
-  left: -95%;
+  top: -75px;
+  left: -300px;
   background-color: #c285ff;
   border-radius: 50%;
-  transition: 0.2s ease;
+  transition: 0.3s ease;
 }
 header #menu-bar {
   z-index: 3;
@@ -436,6 +438,13 @@ nav button {
   font-size: 1.2em;
   letter-spacing: 0.02em;
 
+}
+
+.mentor {
+  font-family: "Fira Code", monospace;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #3F1583;
 }
 
 .news {
@@ -725,7 +734,6 @@ input:checked + .slider:before {
   background: #8a15ff;
 }
 /*------------*/
-
 /* mobile e desktop*/
 .mobile {
   display: block;
@@ -793,6 +801,7 @@ input:checked + .slider:before {
     text-decoration: none;
     font-size: 1.4em;
     margin-left: 5px;
+    color: #3f1583;
   }
 
   .menu-desk a:hover{

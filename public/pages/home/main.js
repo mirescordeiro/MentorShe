@@ -49,8 +49,13 @@ export const home = (user) => {
             <figure>
               <img src='${user.photoURL}' alt='Foto da usuária'>
               <figcaption>${user.displayName}</figcaption>
+              <div class='flex column'>
+                <figcaption>${user.displayName}</figcaption>
+                <p id='mentorship' class='mentor'></p>
+              </div>
             </figure>
           </div>
+          <div id='languages'></div>
         </section>
       </div>
       <div class='flex'>
@@ -72,9 +77,8 @@ export const home = (user) => {
         </section>
       </div>
     </div>
-    `;
+    `; 
 
-  // Menu Hambúrguer
   const menu = container.querySelector("#menu");
   const menuLogout = container.querySelector('#li-logout');
   menu.addEventListener("click", showMenu);
@@ -91,6 +95,23 @@ export const home = (user) => {
   const postButton = container.querySelector("#publish");
   const postPrivate = container.querySelector("#privacy");
   const timeline = container.querySelector("#timeline");
+
+  firebase
+    .firestore()
+    .collection('users')
+    .doc(user.uid)
+    .onSnapshot((doc) => {
+      if(languages === ''){
+        return;
+      }
+      container.querySelector('#languages').innerHTML = `
+        <div class='languages'>
+          <h3>Linguagens</h3>
+          <p>${doc.data().languages}</p>
+        </div>
+      `;
+      container.querySelector('#mentorship').innerHTML = doc.data().mentorship;  
+    });
 
   const postTemplate = (array) => {
     timeline.innerHTML = "";
