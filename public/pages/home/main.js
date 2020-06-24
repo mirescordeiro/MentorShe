@@ -15,18 +15,21 @@ export const home = (user) => {
   container.innerHTML = ` 
     <header>
       <nav>
-        <div id="menu-bar">
-        <div id="menu">
-          <div id="bar1" class="bar"></div>
-          <div id="bar2" class="bar"></div>
-          <div id="bar3" class="bar"></div>
-        </div>
-        <ul class="nav-home" id="nav-home">
-          <li id="li-profile"><a href="#profile">Perfil</a></li>
-          <li id="li-logout"><a href="">Sair</a></li>
-        </ul>
+        <div id="menu-bar" class='menu-bar'>
+          <div id="menu" class='menu'>
+            <div id="bar1" class="bar"></div>
+            <div id="bar2" class="bar"></div>
+            <div id="bar3" class="bar"></div>
+          </div>
+          <ul class="nav-home" id="nav-home">
+            <li id="li-profile"><a href="#profile">Perfil</a></li>
+            <li id="li-logout"><a href="">Sair</a></li>
+          </ul>
         </div>
         <div class="menu-bg" id="menu-bg"></div>
+        <div class='menu-desk'>
+          ${user.displayName} <a href='#profile'><span class='icon-profile'></span></a>
+        </div>
         <h1 id='logo-home'>mentor<strong id='strong'>she</strong></h1>
         <label>
           <img src='./img/logout.svg' alt="Ícone de uma porta aberta">
@@ -83,7 +86,6 @@ export const home = (user) => {
     container.querySelector("#menu-bg").classList.toggle("change-bg");
   }
 
-  // Container variables
   const resetForm = container.querySelector("#post-form");
   const textPost = container.querySelector("#post-text");
   const postButton = container.querySelector("#publish");
@@ -134,7 +136,6 @@ export const home = (user) => {
       </form>
         `;
         
-        // Template variables
         const resetFormTemplate = template.querySelector("#template-form");
         const privateBtns = template.querySelector("#private");
         const editButton = template.querySelector("#edit-button");
@@ -145,8 +146,7 @@ export const home = (user) => {
         const deletePostBtn = template.querySelector("#delete-post");
         const editPrivacy = template.querySelector("#editPrivacy");      
 
-        // Identifies if the currentUser has editing privileges
-        function loggedUser() {
+        function userCanEdit() {
           if (user.uid === post.user) {
             editButton.hidden = false;
             cancelEditBtn.hidden = true;
@@ -160,7 +160,6 @@ export const home = (user) => {
           }
         };
 
-        // Enables the textarea to edit the post
         editButton.addEventListener("click", (event) => {
           event.preventDefault();
           editButton.hidden = true;
@@ -169,7 +168,6 @@ export const home = (user) => {
           editTextArea.disabled = false;
         });
 
-        // Cancels the editing and resets text
         cancelEditBtn.addEventListener("click", (event) => {
           event.preventDefault();
           editButton.hidden = false;
@@ -179,7 +177,6 @@ export const home = (user) => {
           resetFormTemplate.reset();
         });
 
-        // Saves editing changes to the database
         saveEditBtn.addEventListener("click", (event) => {
           event.preventDefault();
           editButton.hidden = false;
@@ -190,19 +187,16 @@ export const home = (user) => {
           resetForm.reset();
         });
 
-        // Likes the post and deslikes on second click
         likeButton.addEventListener("click", (event) => {
           event.preventDefault();
           likePost(likeButton.dataset.postid, user.uid);
         });
 
-        // Deletes the post when clicked
         deletePostBtn.addEventListener("click", (event) => {
           event.preventDefault();
           deletePost(deletePostBtn.dataset.postid);
         });
 
-        // Verifies privacy and updates its status
         const privacyChecked = () => {
           if (post.privacy != true) {
             editPrivacy.checked = false;
@@ -216,7 +210,6 @@ export const home = (user) => {
           updatePrivacy(editPrivacy.dataset.postid, editPrivacy.checked);
         });
 
-        // Autoresizes the textarea
         function resizeTextArea() {
           timeline.querySelectorAll("textarea").forEach((text) => {
             text.style.height = "auto";
@@ -224,20 +217,17 @@ export const home = (user) => {
           });
         };
 
-        loggedUser();
+        userCanEdit();
         resizeTextArea();
         privacyChecked();
 
-        // Push into the timeline
         timeline.appendChild(template);
       })
       .join("");
   };
 
-  // Refresh timeline
   loadPosts(user, postTemplate);
 
-  // Generates new post when clicked
   postButton.addEventListener("click", (event) => {
     event.preventDefault();
     if (textPost.value === "") return;
@@ -248,8 +238,7 @@ export const home = (user) => {
     resetForm.reset();
   });
 
-  // Logout when clicked
-  const buttonLogout = container.querySelector("#logout");
-  buttonLogout.addEventListener("click", logout);
+  const logoutButton = container.querySelector("#logout");
+  logoutButton.addEventListener("click", logout);
   return container;
 };
