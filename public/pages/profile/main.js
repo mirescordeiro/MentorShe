@@ -20,8 +20,8 @@ export const profile = (user) => {
             <label for='name'>Você gostaria de ser mentora ou aluna?</label>
             <select name='mentorship' id='mentor-student' disabled>
               <option value=''>Escolha uma opção</option>
-              <option value='Mentora'>Mentora</option>
-              <option value='Aluna'>Aluna</option>
+              <option id='mentor' value='Mentora'>Mentora</option>
+              <option id='student' value='Aluna'>Aluna</option>
             </select>
 
             <label for='languages'>Linguagens</label>
@@ -40,6 +40,10 @@ export const profile = (user) => {
     .doc(user.uid)
     .onSnapshot((doc) => {
       container.querySelector('#languages').value = doc.data().languages;
+      if(doc.data().mentorship == 'Mentora'){
+        mentorship.setAttribute('selected')
+      }
+        
     });
     
   const newName = container.querySelector('#new-name');
