@@ -1,86 +1,29 @@
 //Update profile name
-export const updateProfileName = (user, newName) => {
+const updateProfileName = (newName) => {
   firebase
-    .auth()
-    .update({
-      userName: updateProfileName(newName),
-      user: user.uid,
-      // mentor: false,
-      // student: false,
-      languages: [],
-    })
-    .then((user) => {
-      user.updateProfile({displayName: newName,})    
-    })
+  .auth()
+  .currentUser.updateProfile({displayName: newName,})    
 };
 
 //Update profile
-export const updateProfile = (user) => {
-  firebase
-    .auth()
-    .collection('users').doc(user.uid)
-    .update({
-      userName: newName,
-      mentor: user.bio,
-      student: user.bio,
-      languages: user.languages,
-    })
-    .then((user) => {
-      updateProfile({userName: user.displayName});
-    })
-    .catch((error) => {
-      // console.error("Error to update profile: ", error);
-    });
-};
-
-export const newUser = (user) => {
+export const updateProfile = (user, newName, newMentorship, newLanguages) => {
   firebase
     .firestore()
-    .collection('users').doc(user.uid)
-    .set({
-      userName: user.displayName,
-      user: user.uid,
-      mentor: true,
-      student: true,
-      languages: [],
+    .collection('users')
+    .doc(user)
+    .update({
+      userName: newName,
+      mentorship: newMentorship,
+      languages: newLanguages,
     })
-    .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
+    .then(() => {
+      updateProfileName(newName);
+      console.log("Edited user successfully!");
     })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
+    .catch(() => {
+      console.error("You cannot cancel this edit");
     });
 };
-
-export const checkUser = (user) => {
-  console.log(user);
-  const load = firebase
-  .firestore()
-  .collection('users').doc(user.uid)
-  load.get().then((doc) => {
-    if (!doc.exists) {
-      newUser(user);
-    }
-  });
-};
-
-//Update photo user
-// export const updatePhoto = (user, callback) => {
-//   firebase
-//     .firestore()
-//     .collection("users")
-//     .add({
-//       photoURL: user.photoURL,
-//       user: user.uid,
-//     })
-//     .then(() => {
-//       updatePhotoUser(user.uid, user.photoURL, callback);
-//     })
-//     .catch((error) => {
-//       console.error("Error to update photography: ", error);
-//     })
-
-// }
 
 // Logout redirecting to the #login page
 export const logout = () => {

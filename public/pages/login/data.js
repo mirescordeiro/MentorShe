@@ -44,7 +44,7 @@ export const newUser = (user) => {
     .set({
       userName: user.displayName,
       user: user.uid,
-      mentor: false,
+      mentorship: [],
       languages: [],
     })
     .then((docRef) => {
