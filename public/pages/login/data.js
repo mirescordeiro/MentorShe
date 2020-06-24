@@ -38,7 +38,6 @@ export const loginGithub = () => {
 };
 
 export const newUser = (user) => {
-  console.log(user);
   firebase
     .firestore()
     .collection('users').doc(user.uid)
