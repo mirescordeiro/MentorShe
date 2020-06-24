@@ -82,19 +82,19 @@ Acesse o protótipo de baixa fidelidade clicando nas imagens abaixo:
 
 * Versão Mobile
 
-    ![casastro](https://www.figma.com/proto/cqh8Fdqm5mrRzQQSgvoJrj/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![casastro](./public/img/Cadastro.png)
 
-![login](https://www.figma.com/proto/xJ3es1te8OgNYk94B4fsrg/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![login](https://www.figma.com/proto/xJ3es1te8OgNYk94B4fsrg/Untitled?node-id=1%3A7&scaling=scale-down)
 
-![feed](https://www.figma.com/proto/VB9muwmi0cjd0e0sIs4y1N/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![feed](https://www.figma.com/proto/VB9muwmi0cjd0e0sIs4y1N/Untitled?node-id=1%3A7&scaling=scale-down)
 
 * Versão Desktop
 
-![login](https://www.figma.com/proto/PiTCXf7jiutzZ6baYbEqAX/Login-Desktop?node-id=1%3A7&scaling=scale-down)
+    ![login](https://www.figma.com/proto/PiTCXf7jiutzZ6baYbEqAX/Login-Desktop?node-id=1%3A7&scaling=scale-down)
 
-![feed]()
+    ![feed]()
 
-![cadastro](https://www.figma.com/proto/42VDCGKILtszSpnmWOkdac/Cadastro-Mobile?node-id=1%3A7&scaling=scale-down)
+    ![cadastro](https://www.figma.com/proto/42VDCGKILtszSpnmWOkdac/Cadastro-Mobile?node-id=1%3A7&scaling=scale-down)
 
 ## 6. UI
 
