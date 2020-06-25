@@ -15,7 +15,7 @@
 
 ## 1. Produto
 
-Desenvolvemos uma rede social de mentoria para mulheres. Nela, mentoras e mentoradas podem trocar conhecimentos e experiências sobre programação em geral em um ambiente seguro e acolhedor.
+Desenvolvemos uma rede social de mentoria para mulheres. Nela, mentoras e mentoradas podem trocar conhecimentos e experiências sobre programação em geral em um ambiente seguro e acolhedor. Acesse o site através do link: https://social-network-2b0a2.web.app/
 
 ## 2. Protopersona
 
