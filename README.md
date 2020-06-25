@@ -92,7 +92,7 @@ Acesse o protótipo de baixa fidelidade clicando nas imagens abaixo:
 
     ![login](./public/img/loginDesktop.png)
 
-    ![feed]()
+    ![feed](./public/img/feedDektop.png)
 
     ![cadastro](./public/img/newAccountDesktop.png)
 

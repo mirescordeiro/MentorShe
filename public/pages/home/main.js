@@ -101,17 +101,14 @@ export const home = (user) => {
     .collection('users')
     .doc(user.uid)
     .onSnapshot((doc) => {
-      // if(languages === ''){
-      //    return;
-      //  } else {
-      //    return container;
-      //  }
-      container.querySelector('#languages').innerHTML = `
-        <div class='languages'>
-          <h3>Linguagens</h3>
-          <p>${doc.data().languages}</p>
-        </div>
-      `;
+      if(doc.data().languages !== ''){
+        container.querySelector('#languages').innerHTML = `
+          <div class='languages'>
+            <h3>Linguagens</h3>
+            <p>${doc.data().languages}</p>
+          </div>
+        `;         
+      } 
       container.querySelector('#mentorship').innerHTML = doc.data().mentorship;  
     });
 
