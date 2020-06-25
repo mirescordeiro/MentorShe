@@ -1,16 +1,27 @@
-// Este é o ponto de entrada de sua aplicação
 import routes from './routes.js';
-import { loadFunctionBy } from './pages/utils/loadUtils.js';
 
 const main = document.querySelector('#root');
 
-const validateHash = hash => (hash === '' ? 'login' : hash.replace('#', ''));
+const validateHash = (hash) => (hash === '' ? 'login' : hash.replace('#', ''));
 
 const renderPage = () => {
   const page = validateHash(window.location.hash);
   main.innerHTML = '';
-  main.appendChild(routes[page]);
-  loadFunctionBy(page);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      main.appendChild(routes[page](user));
+    } else {
+      switch (true) {
+        case page !== 'home':
+          main.appendChild(routes[page]());
+          break;
+        default:
+          main.appendChild(routes['login']());
+          break;
+      }
+    }
+  });
 };
 
 const init = () => window.addEventListener('hashchange', renderPage);

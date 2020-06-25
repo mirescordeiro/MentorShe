@@ -31,7 +31,9 @@ Para este produto criamos a Maria Carneiro, que nos orientou sobre as necessidad
 - Mora em São Paulo, Brooklin;
 - Trabalha na Faria Lima.
 
-Você pode visualizar o currículo da Maria Carneiro aqui: ![currículo](./public/img/mariacarneiro.png)
+Você pode visualizar o currículo da Maria Carneiro abaixo: 
+
+![currículo](./public/img/mariadevcarneiro.png)
 
 **Comportamento**
 
@@ -82,19 +84,19 @@ Acesse o protótipo de baixa fidelidade clicando nas imagens abaixo:
 
 * Versão Mobile
 
-![casastro](https://www.figma.com/proto/cqh8Fdqm5mrRzQQSgvoJrj/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![casastro](./public/img/Cadastro.png)
 
-![login](https://www.figma.com/proto/xJ3es1te8OgNYk94B4fsrg/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![login](./public/img/loginMobile.png)
 
-![feed](https://www.figma.com/proto/VB9muwmi0cjd0e0sIs4y1N/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![feed](./public/img/homeMobile.png)
 
 * Versão Desktop
 
-![login](https://www.figma.com/proto/PiTCXf7jiutzZ6baYbEqAX/Login-Desktop?node-id=1%3A7&scaling=scale-down)
+    ![login](./public/img/loginDesktop.png)
 
-![feed]()
+    ![feed](./public/img/feedDektop.png)
 
-![cadastro](https://www.figma.com/proto/42VDCGKILtszSpnmWOkdac/Cadastro-Mobile?node-id=1%3A7&scaling=scale-down)
+    ![cadastro](./public/img/newAccountDesktop.png)
 
 ## 6. UI
 
@@ -115,14 +117,8 @@ TIPOGRAFIA: Buscando harmonia com as cores e estilos próprios, optamos por usar
 
 ## 8. Autores
 
-* Larissa Miyaji
+* ![Larissa Miyaji](https://github.com/larissamiyaji)
 
-![Larissa](https://github.com/larissamiyaji)
+* ![Kelly Alves](https://github.com/kellyalves87)
 
-* Kelly Alves
-
-![Kelly](https://github.com/kellyalves87)
-
-* Tamires Cordeiro
-
-![Tamires](https://github.com/mirescordeiro)
+* ![Tamires Cordeiro](https://github.com/mirescordeiro)

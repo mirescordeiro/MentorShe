@@ -1,47 +1,64 @@
-export const toggleSignIn = () => {
-  const mailformat = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/;
-  const strongPass = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
-  const invalidPassLogin = [];
-  const invalidEmailLogin = [];
-  const loginButton = document.querySelector('#login-button');
-  const validationPassLogin = document.querySelector('#pass-alert');
-  const validationMailLogin = document.querySelector('#email-alert');
+export const toggleSignIn = ({ email, password }, callback) => {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((user) => {
+      callback(user);
+      checkUser(user);
+    })
+    .catch((error) => {
+      callback(error);
+    });
+};
 
-  loginButton.addEventListener('click', () => {
-    validationPassLogin.innerHTML = '';
-    validationMailLogin.innerHTML = '';
+export const loginGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((user) => {
+      window.location.hash = 'home';
+      checkUser(user.user);
+    });
+};
 
-    const email = document.querySelector('#user-email').value;
-    const password = document.querySelector('#user-pass').value;
+export const loginGithub = () => {
+  const provider = new firebase.auth.GithubAuthProvider();
+  provider.addScope('user');
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((user) => {
+      window.location.hash = 'home';
+      checkUser(user.user);
+    });
+};
 
-    if (!mailformat.test(email)) {
-      invalidEmailLogin.push('Email inválido');
+export const newUser = (user) => {
+  firebase
+    .firestore()
+    .collection('users').doc(user.uid)
+    .set({
+      userName: user.displayName,
+      user: user.uid,
+      mentorship: '',
+      languages: '',
+    })
+    .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });
+};
+
+export const checkUser = (user) => {
+  const load = firebase
+  .firestore()
+  .collection('users').doc(user.uid)
+  load.get().then((doc) => {
+    if (!doc.exists) {
+      newUser(user);
     }
-
-    if (!strongPass.test(password)) {
-      invalidPassLogin.push('Senha inválida');
-    }
-
-    if (invalidPassLogin.length > 0 || invalidEmailLogin.length > 0) {
-      validationPassLogin.innerHTML = invalidPassLogin.join('');
-      validationMailLogin.innerHTML = invalidEmailLogin.join('');
-      return;
-    }
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        if (errorCode === 'senha muito fraca') {
-          invalidPassLogin.push('senha muito fraca');
-          validationPassLogin.innerHTML = invalidPassLogin.join('');
-        } else {
-          validationPassLogin.innerHTML = errorMessage;
-          validationMailLogin.innerHTML = errorMessage;
-        }
-        return error;
-      });
   });
 };
