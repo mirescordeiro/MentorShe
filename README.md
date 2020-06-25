@@ -33,7 +33,7 @@ Para este produto criamos a Maria Carneiro, que nos orientou sobre as necessidad
 
 Você pode visualizar o currículo da Maria Carneiro abaixo: 
 
-![currículo](./public/img/mariacarneiro.png)
+![currículo](./public/img/mariadevcarneiro.png)
 
 **Comportamento**
 
