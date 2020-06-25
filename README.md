@@ -84,17 +84,17 @@ Acesse o protótipo de baixa fidelidade clicando nas imagens abaixo:
 
     ![casastro](./public/img/Cadastro.png)
 
-    ![login](./public/img/Login - Mobile.png)
+    ![login](./public/img/loginMobile.png)
 
-    ![feed](./public/img/Home - Mobile.png)
+    ![feed](./public/img/homeMobile.png)
 
 * Versão Desktop
 
-    ![login](./public/img/Login - desk.png)
+    ![login](./public/img/loginDesktop.png)
 
     ![feed]()
 
-    ![cadastro](./public/img/newAccount - desk.png)
+    ![cadastro](./public/img/newAccountDesktop.png)
 
 ## 6. UI
 
