@@ -31,7 +31,7 @@ Para este produto criamos a Maria Carneiro, que nos orientou sobre as necessidad
 - Mora em São Paulo, Brooklin;
 - Trabalha na Faria Lima.
 
-Você pode visualizar o currículo da Maria Carneiro aqui: ![currículo](./public/img/mariacarneiro.png)
+Você pode visualizar o currículo da Maria Carneiro abaixo: ![currículo](./public/img/mariacarneiro.png)
 
 **Comportamento**
 
