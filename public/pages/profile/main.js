@@ -63,61 +63,61 @@ export const profile = (user) => {
       container.querySelector('#mentor-student').value = doc.data().mentorship;  
     });
   
-  const logoutButton = container.querySelector("#logout");
-  const menu = container.querySelector("#menu");
-  const menuLogout = container.querySelector('#li-logout');
-  menu.addEventListener("click", showMenu);
-  menuLogout.addEventListener("click", logout);
-  logoutButton.addEventListener('click', logout);
+    const logoutButton = container.querySelector("#logout");
+    const menu = container.querySelector("#menu");
+    const menuLogout = container.querySelector('#li-logout');
+    menu.addEventListener("click", showMenu);
+    menuLogout.addEventListener("click", logout);
+    logoutButton.addEventListener('click', logout);
+    
+    function showMenu() {
+      container.querySelector("#menu").classList.toggle("change");
+      container.querySelector("#nav-home").classList.toggle("change");
+      container.querySelector("#menu-bg").classList.toggle("change-bg");
+    }
 
-  function showMenu() {
-    container.querySelector("#menu").classList.toggle("change");
-    container.querySelector("#nav-home").classList.toggle("change");
-    container.querySelector("#menu-bg").classList.toggle("change-bg");
-  }
+    const newName = container.querySelector('#new-name');
+    const mentorship = container.querySelector('#mentor-student');
+    const languages = container.querySelector('#languages');
+    const editProfile = container.querySelector('#edit-profile');
+    const cancelEdit = container.querySelector('#cancel');
+    const saveProfile = container.querySelector('#save-profile');
+    const resetForm = container.querySelector('#resetForm');
 
-  const newName = container.querySelector('#new-name');
-  const mentorship = container.querySelector('#mentor-student');
-  const languages = container.querySelector('#languages');
-  const editProfile = container.querySelector('#edit-profile');
-  const cancelEdit = container.querySelector('#cancel');
-  const saveProfile = container.querySelector('#save-profile');
-  const resetForm = container.querySelector('#resetForm');
-
-  editProfile.hidden = false;
-  editProfile.addEventListener('click', (event) => {
-    event.preventDefault();
-    editProfile.hidden = true;
-    cancelEdit.hidden = false;
-    saveProfile.hidden = false;
-    newName.disabled = false;
-    languages.disabled = false;
-    mentorship.disabled = false;
-
-  });
-
-  saveProfile.hidden = true;
-  saveProfile.addEventListener('click', (event) => {
-    event.preventDefault();
     editProfile.hidden = false;
-    cancelEdit.hidden = true;
+    editProfile.addEventListener('click', (event) => {
+      event.preventDefault();
+      editProfile.hidden = true;
+      cancelEdit.hidden = false;
+      saveProfile.hidden = false;
+      newName.disabled = false;
+      languages.disabled = false;
+      mentorship.disabled = false;
+
+    });
+
     saveProfile.hidden = true;
-    newName.disabled = true;
-    languages.disabled = true;
-    mentorship.disabled = true;
-    updateProfile(user.uid, newName.value, mentorship.value, languages.value ); 
-  });
-  
-  cancelEdit.hidden = true;
-  cancelEdit.addEventListener('click', (event) => {
-    event.preventDefault();
-    editProfile.hidden = false;
+    saveProfile.addEventListener('click', (event) => {
+      event.preventDefault();
+      editProfile.hidden = false;
+      cancelEdit.hidden = true;
+      saveProfile.hidden = true;
+      newName.disabled = true;
+      languages.disabled = true;
+      mentorship.disabled = true;
+      updateProfile(user.uid, newName.value, mentorship.value, languages.value ); 
+    });
+    
     cancelEdit.hidden = true;
-    saveProfile.hidden = true;
-    newName.disabled = true;
-    languages.disabled = true;
-    mentorship.disabled = true;
-    resetForm.reset();
-  });
-  
+    cancelEdit.addEventListener('click', (event) => {
+      event.preventDefault();
+      editProfile.hidden = false;
+      cancelEdit.hidden = true;
+      saveProfile.hidden = true;
+      newName.disabled = true;
+      languages.disabled = true;
+      mentorship.disabled = true;
+      resetForm.reset();
+    });
+  return container;
 };

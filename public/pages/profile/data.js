@@ -1,11 +1,9 @@
-//Update profile name
 const updateProfileName = (newName) => {
   firebase
   .auth()
   .currentUser.updateProfile({displayName: newName,})    
 };
 
-//Update profile
 export const updateProfile = (user, newName, newMentorship, newLanguages) => {
   firebase
     .firestore()
@@ -25,7 +23,6 @@ export const updateProfile = (user, newName, newMentorship, newLanguages) => {
     });
 };
 
-// Logout redirecting to the #login page
 export const logout = () => {
   firebase
     .auth()

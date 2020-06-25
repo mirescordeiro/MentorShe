@@ -48,7 +48,6 @@ export const home = (user) => {
           <div class='photo-name'>
             <figure>
               <img src='${user.photoURL}' alt='Foto da usuária'>
-              <figcaption>${user.displayName}</figcaption>
               <div class='flex column'>
                 <figcaption>${user.displayName}</figcaption>
                 <p id='mentorship' class='mentor'></p>
@@ -96,14 +95,17 @@ export const home = (user) => {
   const postPrivate = container.querySelector("#privacy");
   const timeline = container.querySelector("#timeline");
 
+  
   firebase
     .firestore()
     .collection('users')
     .doc(user.uid)
     .onSnapshot((doc) => {
-      if(languages === ''){
-        return;
-      }
+      // if(languages === ''){
+      //    return;
+      //  } else {
+      //    return container;
+      //  }
       container.querySelector('#languages').innerHTML = `
         <div class='languages'>
           <h3>Linguagens</h3>

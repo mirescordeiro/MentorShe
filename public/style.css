@@ -447,6 +447,28 @@ nav button {
   color: #3F1583;
 }
 
+.languages {
+  width: 275px;
+  border-bottom: 1.5px solid #C285FF;
+  box-sizing: border-box;
+  padding: 28px 0 10px;
+}
+
+.languages h3 {
+  font-family: "Fira Code", monospace;
+  font-size: 0.85em;
+  font-weight: 500;
+  color: #C285FF;
+}
+
+.languages p {
+  font-family: "Fira Code", monospace;
+  font-size: 0.75em;
+  font-weight: 500;
+  color: black;
+  padding-top: 3px;
+}
+
 .news {
   display: flex;
   flex-direction: column;

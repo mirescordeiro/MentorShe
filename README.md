@@ -84,17 +84,17 @@ Acesse o protótipo de baixa fidelidade clicando nas imagens abaixo:
 
     ![casastro](./public/img/Cadastro.png)
 
-    ![login](https://www.figma.com/proto/xJ3es1te8OgNYk94B4fsrg/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![login](./public/img/Login - Mobile.png)
 
-    ![feed](https://www.figma.com/proto/VB9muwmi0cjd0e0sIs4y1N/Untitled?node-id=1%3A7&scaling=scale-down)
+    ![feed](./public/img/Home - Mobile.png)
 
 * Versão Desktop
 
-    ![login](https://www.figma.com/proto/PiTCXf7jiutzZ6baYbEqAX/Login-Desktop?node-id=1%3A7&scaling=scale-down)
+    ![login](./public/img/Login - desk.png)
 
     ![feed]()
 
-    ![cadastro](https://www.figma.com/proto/42VDCGKILtszSpnmWOkdac/Cadastro-Mobile?node-id=1%3A7&scaling=scale-down)
+    ![cadastro](./public/img/newAccount - desk.png)
 
 ## 6. UI
 
