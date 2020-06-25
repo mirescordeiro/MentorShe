@@ -41,8 +41,8 @@ export const newUser = (user) => {
     .set({
       userName: user.displayName,
       user: user.uid,
-      mentorship: [],
-      languages: [],
+      mentorship: '',
+      languages: '',
     })
     .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);

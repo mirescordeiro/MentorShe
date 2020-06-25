@@ -4,7 +4,7 @@ import {
 
 export const profile = (user) => {
   const container = document.createElement("div");
-  container.classList.add("profile-feed");
+  container.classList.add("container-profile");
 
     container.innerHTML = `
     <header>
@@ -31,27 +31,28 @@ export const profile = (user) => {
         </label>
       </nav>
     </header>
-      <section id='user-profile' class='flex center row-desk data'>
+      <section id='user-profile' class='flex center column fullheight info'>
         <figure class="photo-profile">
           <img src='${user.photoURL}' alt="Foto do perfil">
         </figure>
-        <div class="user" class='flex center column data'>
-          <h2>Perfil</h2>
-          <form id='resetForm' class='flex column register'>
-            <label for='name'>Nome</label>
-            <textarea id='new-name' disabled='disabled' required>${user.displayName}</textarea>
-
-            <label for='name'>Você gostaria de ser mentora ou aluna?</label>
-            <textarea id='mentor-student' disabled='disabled' placeholder=' ' required></textarea>
-
-            <label for='languages'>Linguagens</label>
-            <textarea id='languages' disabled='disabled' placeholder='Qual sua linguagem favorita?' required></textarea>
+        <h2>Perfil</h2>
+        <form id='resetForm' class='flex column center'>
+          <label for='name'>Nome</label>
+          <textarea id='new-name' disabled='disabled' required>${user.displayName}</textarea>
+          <label for='name'>O que gostaria de ser? </label>
+          <textarea id='mentor-student' disabled='disabled' placeholder='Mentora ou Mentorada' required></textarea>
+          <label for='languages'>Linguagens</label>
+          <textarea id='languages' disabled='disabled' placeholder='Qual sua linguagem favorita?' required></textarea>
+          <div class='update'>
             <button id='edit-profile' type='submit'>Editar</button>
-            <button id='save-profile' type='submit'>Salvar</button>
             <button id='cancel' type='submit'>Cancelar</button>
-          </form>
-        </div>
+            <button id='save-profile' type='submit'>Salvar</button>
+          </div>
+        </form>
       </section>
+      <footer class='flex center nav-footer'>
+        <p>© Desenvolvido por <a href='https://github.com/larissamiyaji'>Larissa</a>, <a href='https://github.com/kellyalves87'>Kelly</a> e <a href='https://github.com/mirescordeiro'>Tamires</a></p>
+      </footer>
     `;
 
     firebase
@@ -119,5 +120,6 @@ export const profile = (user) => {
       mentorship.disabled = true;
       resetForm.reset();
     });
+
   return container;
 };

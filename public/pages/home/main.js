@@ -76,6 +76,9 @@ export const home = (user) => {
         </section>
       </div>
     </div>
+    <footer class='flex center nav-footer'>
+        <p>© Desenvolvido por <a href='https://github.com/larissamiyaji'>Larissa</a>, <a href='https://github.com/kellyalves87'>Kelly</a> e <a href='https://github.com/mirescordeiro'>Tamires</a></p>
+    </footer>
     `; 
 
   const menu = container.querySelector("#menu");

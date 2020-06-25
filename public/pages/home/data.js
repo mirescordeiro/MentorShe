@@ -1,4 +1,3 @@
-// Creates new post on collection posts
 export const newPost = (user, textareaPost, postPrivate) => {
   firebase
     .firestore()
@@ -21,13 +20,11 @@ export const newPost = (user, textareaPost, postPrivate) => {
     });
 };
 
-// Loads all the posts and listens to the new ones
 export const loadPosts = (user, callback) => {
   const load = firebase
     .firestore()
     .collection('posts')
     .orderBy('timestamp', 'desc');
-  // Listening realtime for new posts
   load.onSnapshot((querySnapshot) => {
     const posts = [];
     querySnapshot.forEach((doc) => {
@@ -42,7 +39,6 @@ export const loadPosts = (user, callback) => {
   });
 };
 
-// Deletes a post using its id
 export const deletePost = (postId) => {
   firebase
     .firestore()
@@ -57,7 +53,6 @@ export const deletePost = (postId) => {
     });
 };
 
-// Updates the privacy status
 export const updatePrivacy = (postId, editPrivacy) => {
   firebase
     .firestore()
@@ -74,7 +69,6 @@ export const updatePrivacy = (postId, editPrivacy) => {
     });
 };
 
-// Increases the number of likes in a post using its id
 export const likePost = (postId, userId) => {
   firebase
     .firestore()
@@ -102,7 +96,6 @@ export const likePost = (postId, userId) => {
     });
 };
 
-// Updates the number of likes based on users and post id
 const updateLike = (countLike, userArray, postId) => {
   firebase
     .firestore()
@@ -120,7 +113,6 @@ const updateLike = (countLike, userArray, postId) => {
     });
 };
 
-// Updates the text from a post using its id
 export const updateEdit = (postId, textareaPost) => {
   firebase
     .firestore()
@@ -156,7 +148,6 @@ export const updateProfile = (user, newName, newMentorship, newLanguages) => {
     });
 };
 
-// Logout redirecting to the #login page
 export const logout = () => {
   firebase
     .auth()
