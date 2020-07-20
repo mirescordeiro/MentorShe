@@ -48,8 +48,17 @@ export const home = (user) => {
           <div class='photo-name'>
             <figure>
               <img src='${user.photoURL}' alt='Foto da usuária'>
-              <figcaption>${user.displayName}</figcaption>
+              <div class='flex column'>
+                <figcaption>${user.displayName}</figcaption>
+                <p id='mentorship' class='mentor'>Mentora</p>
+              </div>
             </figure>
+          </div>
+          <div id='languages'>
+            <div class='languages'>
+              <h3>Linguagens</h3>
+              <p>CSS, HTML</p>
+            </div>
           </div>
         </section>
       </div>

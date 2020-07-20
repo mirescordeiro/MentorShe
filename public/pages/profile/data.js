@@ -1,56 +1,28 @@
-export const updateProfileName = (user, newName) => {
+const updateProfileName = (newName) => {
   firebase
-    .auth()
-    .then((user) => {
-      user.updateProfile({displayName: newName,})    
-    });
+  .auth()
+  .currentUser.updateProfile({displayName: newName,})    
 };
 
-/*
-.update({
-  userName: updateProfileName(newName),
-  user: user.uid,
-  mentor: false,
-  languages: [],
-})*/
-
-
-/*
-export const resetEmail = (userResetPassword) => {
+export const updateProfile = (user, newName, newMentorship, newLanguages) => {
   firebase
-    .auth()
-    .currentUser.EmailAuthProvider.credential(user.email, userResetPassword);
-  return resetEmail();
-};
-
-export const resetPassword = () => {
-  firebase.auth().currentUser.getASecureRandomPassword();
-  user
-    .updatePassword(newPassword)
-    .then(() => {
-      console.log("Senha alterada com sucesso!");
-    })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
-};
-
-export const updateProfile = (profile, callback) => {
-  firebase
-    .auth()
-    .currentUser.updateProfile({
-      displayName: profile.displayName,
-      photoURL: profile.photoURL,
+    .firestore()
+    .collection('users')
+    .doc(user)
+    .update({
+      userName: newName,
+      mentorship: newMentorship,
+      languages: newLanguages,
     })
     .then(() => {
-      updatePostsUser(profile.uid, profile.displayName, callback);
+      updateProfileName(newName);
+      console.log("Edited user successfully!");
     })
-    .catch((error) => {
-      console.error("Error removing document: ", error);
+    .catch(() => {
+      console.error("You cannot cancel this edit");
     });
 };
 
-// Logout redirecting to the #login page
 export const logout = () => {
   firebase
     .auth()
@@ -59,4 +31,3 @@ export const logout = () => {
       window.location.href = "#login";
     });
 };
-*/
