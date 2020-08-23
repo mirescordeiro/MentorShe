@@ -1,4 +1,3 @@
-// Login with email
 export const toggleSignIn = ({ email, password }, callback) => {
   firebase
     .auth()
@@ -12,7 +11,6 @@ export const toggleSignIn = ({ email, password }, callback) => {
     });
 };
 
-// Login with Google account
 export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase
@@ -24,7 +22,6 @@ export const loginGoogle = () => {
     });
 };
 
-// Login with GitHub account
 export const loginGithub = () => {
   const provider = new firebase.auth.GithubAuthProvider();
   provider.addScope('user');
@@ -38,15 +35,14 @@ export const loginGithub = () => {
 };
 
 export const newUser = (user) => {
-  console.log(user);
   firebase
     .firestore()
     .collection('users').doc(user.uid)
     .set({
       userName: user.displayName,
       user: user.uid,
-      mentor: false,
-      languages: [],
+      mentorship: '',
+      languages: '',
     })
     .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
@@ -57,7 +53,6 @@ export const newUser = (user) => {
 };
 
 export const checkUser = (user) => {
-  console.log(user);
   const load = firebase
   .firestore()
   .collection('users').doc(user.uid)

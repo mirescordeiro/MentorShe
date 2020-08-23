@@ -28,7 +28,6 @@ body {
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
-  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -92,7 +91,8 @@ body {
   justify-content: center;
 }
 
-.container-home {
+.container-home,
+.container-profile {
   background-color: rgb(194, 133, 255, 0.3);
   display: flex;
   flex-direction: column;
@@ -100,8 +100,12 @@ body {
 }
 
 .space {
-  margin-top: 85px;
+  margin: 85px 0 65px;
   min-height: 90vh;
+}
+
+.fullheight {
+  height: 85vh;
 }
 /*------------*/
 
@@ -149,7 +153,8 @@ body {
   width: 100%;
 }
 
-.data h2 {
+.data h2,
+.info h2 {
   color: #3f1583;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.5em;
@@ -299,12 +304,15 @@ header #bar3 {
   font-size: 14px;
 }
 
+.nav-home #li-profile,
+.nav-home #li-home,
 .nav-home #li-logout {
   background-color: #3f1583;
 }
 
-.nav-home #li-profile,
-.nav-home #li-home {
+.nav-home #li-profile:hover,
+.nav-home #li-home:hover,
+.nav-home #li-logout:hover {
   background-color: #ff9593;
 }
 
@@ -323,11 +331,11 @@ header #bar3 {
 }
 .menu-bg {
   z-index: 2;
-  top: -160%;
-  left: -95%;
+  top: -75px;
+  left: -300px;
   background-color: #c285ff;
   border-radius: 50%;
-  transition: 0.2s ease;
+  transition: 0.3s ease;
 }
 header #menu-bar {
   z-index: 3;
@@ -441,6 +449,7 @@ nav button {
 .mentor {
   font-family: "Fira Code", monospace;
   font-size: 0.8em;
+<<<<<<< HEAD
   font-weight: 600;
   color: #3F1583;
   letter-spacing: 0.01em;
@@ -467,6 +476,14 @@ nav button {
   font-weight: 500;
   color: black;
   padding-top: 3px;
+=======
+  font-weight: 500;
+  color: #3F1583;
+}
+
+.languages {
+  display: none;
+>>>>>>> df5d76e94e03f1f571af355da52f7a91d2a83dbd
 }
 
 .news {
@@ -747,6 +764,63 @@ input:checked + .slider:before {
   color: #3f1583;
 }
 
+/* profile */
+.photo-profile img{
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+.info {
+  margin-top: 65px;
+}
+
+.info textarea {
+  box-sizing: border-box;
+  border: 3px solid #c285ff;
+  border-radius: 25px;
+  background-color: rgba(255, 149, 147, 0.15);
+  color: #4f4f4f;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 0.9em; /*17px*/
+  font-weight: 600;
+  height: 40px;
+  text-align: left;
+  padding: 8px 10px 10px;
+  resize: none;
+  width: 250px;
+  overflow-y: hidden;
+  margin-bottom: 15px;
+}
+
+.info label {
+  align-self: start;
+  margin-bottom: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  padding-left: 12px;
+  text-align: initial;
+  color: #3f1583;
+}
+
+.update button {
+  align-self: flex-end;
+  background: #3f1583;
+  border: 0 none;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  font-family: "Fira Code", monospace;
+  font-size: 0.7em;
+  font-weight: 600;
+  padding: 8px 16px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  width: fit-content;
+}
+
+
 /* scroll */
 ::-webkit-scrollbar-track {
   background-color: #3f1583;
@@ -758,7 +832,6 @@ input:checked + .slider:before {
   background: #8a15ff;
 }
 /*------------*/
-
 /* mobile e desktop*/
 .mobile {
   display: block;
@@ -767,6 +840,29 @@ input:checked + .slider:before {
 .desktop {
   display: none;
 }
+/*------------*/
+
+/*FOOTER*/
+.nav-footer {  
+  padding: 20px 0;
+  background-color: white;
+}
+
+.nav-footer p {
+  font-family: "Fira Code", monospace;
+  font-size: 0.6em;
+  font-weight: 500;
+}
+
+.nav-footer p a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-footer a:hover {
+  color: #8a15ff;
+}
+
 /*------------*/
 
 /* media querie */
@@ -820,12 +916,14 @@ input:checked + .slider:before {
     font-weight: 600;
     font-size: 0.93em;
     letter-spacing: 0.03em;
+    position: absolute;
   }
   
   .menu-desk a{
     text-decoration: none;
     font-size: 1.4em;
     margin-left: 5px;
+    color: #3f1583;
   }
 
   .menu-desk a:hover{
@@ -835,6 +933,8 @@ input:checked + .slider:before {
   nav label {
     display: flex;
     align-items: center;
+    right: 20px;
+    position: absolute;
   }
 
   .profile {
@@ -843,6 +943,29 @@ input:checked + .slider:before {
     border-radius: 10px;
     box-sizing: border-box;
     height: 175px;
+  }
+
+  .languages {
+    display: block;
+    width: 275px;
+    border-bottom: 1.5px solid #C285FF;
+    box-sizing: border-box;
+    padding: 28px 0 10px;
+  }
+  
+  .languages h3 {
+    font-family: "Fira Code", monospace;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: #C285FF;
+  }
+  
+  .languages p {
+    font-family: "Fira Code", monospace;
+    font-size: 0.75em;
+    font-weight: 500;
+    color: black;
+    padding-top: 3px;
   }
 
   .background {

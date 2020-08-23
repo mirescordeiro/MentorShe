@@ -50,6 +50,7 @@ export const home = (user) => {
               <img src='${user.photoURL}' alt='Foto da usuária'>
               <div class='flex column'>
                 <figcaption>${user.displayName}</figcaption>
+<<<<<<< HEAD
                 <p id='mentorship' class='mentor'>Mentora</p>
               </div>
             </figure>
@@ -60,6 +61,13 @@ export const home = (user) => {
               <p>CSS, HTML</p>
             </div>
           </div>
+=======
+                <p id='mentorship' class='mentor'></p>
+              </div>
+            </figure>
+          </div>
+          <div id='languages'></div>
+>>>>>>> df5d76e94e03f1f571af355da52f7a91d2a83dbd
         </section>
       </div>
       <div class='flex'>
@@ -81,9 +89,11 @@ export const home = (user) => {
         </section>
       </div>
     </div>
-    `;
+    <footer class='flex center nav-footer'>
+        <p>© Desenvolvido por <a href='https://github.com/larissamiyaji'>Larissa</a>, <a href='https://github.com/kellyalves87'>Kelly</a> e <a href='https://github.com/mirescordeiro'>Tamires</a></p>
+    </footer>
+    `; 
 
-  // Menu Hambúrguer
   const menu = container.querySelector("#menu");
   const menuLogout = container.querySelector('#li-logout');
   menu.addEventListener("click", showMenu);
@@ -100,6 +110,23 @@ export const home = (user) => {
   const postButton = container.querySelector("#publish");
   const postPrivate = container.querySelector("#privacy");
   const timeline = container.querySelector("#timeline");
+
+  
+  firebase
+    .firestore()
+    .collection('users')
+    .doc(user.uid)
+    .onSnapshot((doc) => {
+      if(doc.data().languages !== ''){
+        container.querySelector('#languages').innerHTML = `
+          <div class='languages'>
+            <h3>Linguagens</h3>
+            <p>${doc.data().languages}</p>
+          </div>
+        `;         
+      } 
+      container.querySelector('#mentorship').innerHTML = doc.data().mentorship;  
+    });
 
   const postTemplate = (array) => {
     timeline.innerHTML = "";

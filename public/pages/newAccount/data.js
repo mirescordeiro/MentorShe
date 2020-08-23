@@ -5,6 +5,7 @@ export const handleSignUp = (document, callback, name) => {
     .then((cred) => {    
       cred.user.updateProfile({ displayName: name})
       cred.user.updateProfile({ photoURL: 'https://firebasestorage.googleapis.com/v0/b/social-network-2b0a2.appspot.com/o/avatar.png?alt=media&token=f90343ed-a939-45fe-9155-d65f90cae71f'});
+      window.location.hash = 'login';
     })
     .catch((error) => {
       const errorCode = error.code;

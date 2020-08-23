@@ -4,7 +4,7 @@ import {
 
 export const profile = (user) => {
   const container = document.createElement("div");
-  container.classList.add("profile-feed");
+  container.classList.add("container-profile");
 
     container.innerHTML = `
     <header>
@@ -31,6 +31,7 @@ export const profile = (user) => {
         </label>
       </nav>
     </header>
+<<<<<<< HEAD
       <section id='user-profile' class='flex center row-desk data'>
         <figure class="photo-profile">
           <img src='${user.photoURL}' alt="Foto do perfil">
@@ -51,7 +52,30 @@ export const profile = (user) => {
             <button id='cancel' type='submit'>Cancelar</button>
           </form>
         </div>
+=======
+      <section id='user-profile' class='flex center column fullheight info'>
+        <figure class="photo-profile">
+          <img src='${user.photoURL}' alt="Foto do perfil">
+        </figure>
+        <h2>Perfil</h2>
+        <form id='resetForm' class='flex column center'>
+          <label for='name'>Nome</label>
+          <textarea id='new-name' disabled='disabled' required>${user.displayName}</textarea>
+          <label for='name'>O que gostaria de ser? </label>
+          <textarea id='mentor-student' disabled='disabled' placeholder='Mentora ou Mentorada' required></textarea>
+          <label for='languages'>Linguagens</label>
+          <textarea id='languages' disabled='disabled' placeholder='Qual sua linguagem favorita?' required></textarea>
+          <div class='update'>
+            <button id='edit-profile' type='submit'>Editar</button>
+            <button id='cancel' type='submit'>Cancelar</button>
+            <button id='save-profile' type='submit'>Salvar</button>
+          </div>
+        </form>
+>>>>>>> df5d76e94e03f1f571af355da52f7a91d2a83dbd
       </section>
+      <footer class='flex center nav-footer'>
+        <p>© Desenvolvido por <a href='https://github.com/larissamiyaji'>Larissa</a>, <a href='https://github.com/kellyalves87'>Kelly</a> e <a href='https://github.com/mirescordeiro'>Tamires</a></p>
+      </footer>
     `;
 
     firebase
@@ -75,6 +99,7 @@ export const profile = (user) => {
       container.querySelector("#nav-home").classList.toggle("change");
       container.querySelector("#menu-bg").classList.toggle("change-bg");
     }
+<<<<<<< HEAD
 
     const newName = container.querySelector('#new-name');
     const mentorship = container.querySelector('#mentor-student');
@@ -120,4 +145,52 @@ export const profile = (user) => {
       resetForm.reset();
     });
   
+=======
+
+    const newName = container.querySelector('#new-name');
+    const mentorship = container.querySelector('#mentor-student');
+    const languages = container.querySelector('#languages');
+    const editProfile = container.querySelector('#edit-profile');
+    const cancelEdit = container.querySelector('#cancel');
+    const saveProfile = container.querySelector('#save-profile');
+    const resetForm = container.querySelector('#resetForm');
+
+    editProfile.hidden = false;
+    editProfile.addEventListener('click', (event) => {
+      event.preventDefault();
+      editProfile.hidden = true;
+      cancelEdit.hidden = false;
+      saveProfile.hidden = false;
+      newName.disabled = false;
+      languages.disabled = false;
+      mentorship.disabled = false;
+
+    });
+
+    saveProfile.hidden = true;
+    saveProfile.addEventListener('click', (event) => {
+      event.preventDefault();
+      editProfile.hidden = false;
+      cancelEdit.hidden = true;
+      saveProfile.hidden = true;
+      newName.disabled = true;
+      languages.disabled = true;
+      mentorship.disabled = true;
+      updateProfile(user.uid, newName.value, mentorship.value, languages.value ); 
+    });
+    
+    cancelEdit.hidden = true;
+    cancelEdit.addEventListener('click', (event) => {
+      event.preventDefault();
+      editProfile.hidden = false;
+      cancelEdit.hidden = true;
+      saveProfile.hidden = true;
+      newName.disabled = true;
+      languages.disabled = true;
+      mentorship.disabled = true;
+      resetForm.reset();
+    });
+
+  return container;
+>>>>>>> df5d76e94e03f1f571af355da52f7a91d2a83dbd
 };
